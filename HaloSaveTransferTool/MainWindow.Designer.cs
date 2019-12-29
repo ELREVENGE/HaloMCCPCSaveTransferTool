@@ -1,0 +1,337 @@
+﻿namespace HaloSaveTransferTool
+{
+    partial class MainWindow
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.OutputTextBox = new System.Windows.Forms.RichTextBox();
+            this.ExportTab = new System.Windows.Forms.TabPage();
+            this.gameTabControl = new System.Windows.Forms.TabControl();
+            this.ReachTab = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.ExportMaps = new System.Windows.Forms.Button();
+            this.GameTypeSaves = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GTLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MapSaves = new System.Windows.Forms.DataGridView();
+            this.SaveName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreatedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ModifiedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Location = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExportGametypes = new System.Windows.Forms.Button();
+            this.Open = new System.Windows.Forms.Button();
+            this.exportAndSettingsTabControl = new System.Windows.Forms.TabControl();
+            this.SettingsTab = new System.Windows.Forms.TabPage();
+            this.settingsControl = new HaloSaveTransferTool.SettingsControl();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.ExportTab.SuspendLayout();
+            this.gameTabControl.SuspendLayout();
+            this.ReachTab.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GameTypeSaves)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MapSaves)).BeginInit();
+            this.exportAndSettingsTabControl.SuspendLayout();
+            this.SettingsTab.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // OutputTextBox
+            // 
+            this.OutputTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.OutputTextBox.Location = new System.Drawing.Point(0, 354);
+            this.OutputTextBox.Name = "OutputTextBox";
+            this.OutputTextBox.ReadOnly = true;
+            this.OutputTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
+            this.OutputTextBox.Size = new System.Drawing.Size(676, 96);
+            this.OutputTextBox.TabIndex = 5;
+            this.OutputTextBox.Text = "";
+            // 
+            // ExportTab
+            // 
+            this.ExportTab.Controls.Add(this.gameTabControl);
+            this.ExportTab.Controls.Add(this.Open);
+            this.ExportTab.Location = new System.Drawing.Point(4, 22);
+            this.ExportTab.Name = "ExportTab";
+            this.ExportTab.Padding = new System.Windows.Forms.Padding(3);
+            this.ExportTab.Size = new System.Drawing.Size(668, 328);
+            this.ExportTab.TabIndex = 0;
+            this.ExportTab.Text = "Export";
+            this.ExportTab.UseVisualStyleBackColor = true;
+            // 
+            // gameTabControl
+            // 
+            this.gameTabControl.Controls.Add(this.ReachTab);
+            this.gameTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gameTabControl.Location = new System.Drawing.Point(3, 32);
+            this.gameTabControl.Name = "gameTabControl";
+            this.gameTabControl.SelectedIndex = 0;
+            this.gameTabControl.Size = new System.Drawing.Size(662, 293);
+            this.gameTabControl.TabIndex = 12;
+            // 
+            // ReachTab
+            // 
+            this.ReachTab.Controls.Add(this.tableLayoutPanel1);
+            this.ReachTab.Location = new System.Drawing.Point(4, 22);
+            this.ReachTab.Name = "ReachTab";
+            this.ReachTab.Padding = new System.Windows.Forms.Padding(3);
+            this.ReachTab.Size = new System.Drawing.Size(654, 267);
+            this.ReachTab.TabIndex = 0;
+            this.ReachTab.Text = "Reach";
+            this.ReachTab.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.ExportMaps, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.GameTypeSaves, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.MapSaves, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.ExportGametypes, 1, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(648, 261);
+            this.tableLayoutPanel1.TabIndex = 16;
+            // 
+            // ExportMaps
+            // 
+            this.ExportMaps.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExportMaps.Location = new System.Drawing.Point(3, 214);
+            this.ExportMaps.Name = "ExportMaps";
+            this.ExportMaps.Size = new System.Drawing.Size(318, 44);
+            this.ExportMaps.TabIndex = 8;
+            this.ExportMaps.Text = "Export Selected Maps";
+            this.ExportMaps.UseVisualStyleBackColor = true;
+            this.ExportMaps.Click += new System.EventHandler(this.ExportMaps_Click);
+            // 
+            // GameTypeSaves
+            // 
+            this.GameTypeSaves.AllowUserToAddRows = false;
+            this.GameTypeSaves.AllowUserToDeleteRows = false;
+            this.GameTypeSaves.AllowUserToResizeRows = false;
+            this.GameTypeSaves.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.GameTypeSaves.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GameTypeSaves.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.GTLocation});
+            this.GameTypeSaves.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GameTypeSaves.Location = new System.Drawing.Point(327, 3);
+            this.GameTypeSaves.Name = "GameTypeSaves";
+            this.GameTypeSaves.RowHeadersVisible = false;
+            this.GameTypeSaves.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.GameTypeSaves.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.GameTypeSaves.Size = new System.Drawing.Size(318, 205);
+            this.GameTypeSaves.TabIndex = 6;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn1.Frozen = true;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Gametype";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Created";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Modified";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // GTLocation
+            // 
+            this.GTLocation.HeaderText = "Location";
+            this.GTLocation.Name = "GTLocation";
+            this.GTLocation.ReadOnly = true;
+            // 
+            // MapSaves
+            // 
+            this.MapSaves.AllowUserToAddRows = false;
+            this.MapSaves.AllowUserToDeleteRows = false;
+            this.MapSaves.AllowUserToResizeRows = false;
+            this.MapSaves.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.MapSaves.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.MapSaves.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.SaveName,
+            this.CreatedDate,
+            this.ModifiedDate,
+            this.Location});
+            this.MapSaves.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MapSaves.Location = new System.Drawing.Point(3, 3);
+            this.MapSaves.Name = "MapSaves";
+            this.MapSaves.RowHeadersVisible = false;
+            this.MapSaves.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.MapSaves.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.MapSaves.Size = new System.Drawing.Size(318, 205);
+            this.MapSaves.TabIndex = 5;
+            // 
+            // SaveName
+            // 
+            this.SaveName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.SaveName.Frozen = true;
+            this.SaveName.HeaderText = "Map";
+            this.SaveName.Name = "SaveName";
+            this.SaveName.ReadOnly = true;
+            this.SaveName.Width = 81;
+            // 
+            // CreatedDate
+            // 
+            this.CreatedDate.HeaderText = "Created";
+            this.CreatedDate.Name = "CreatedDate";
+            this.CreatedDate.ReadOnly = true;
+            // 
+            // ModifiedDate
+            // 
+            this.ModifiedDate.HeaderText = "Modified";
+            this.ModifiedDate.Name = "ModifiedDate";
+            this.ModifiedDate.ReadOnly = true;
+            // 
+            // Location
+            // 
+            this.Location.HeaderText = "Location";
+            this.Location.Name = "Location";
+            this.Location.ReadOnly = true;
+            // 
+            // ExportGametypes
+            // 
+            this.ExportGametypes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExportGametypes.Location = new System.Drawing.Point(327, 214);
+            this.ExportGametypes.Name = "ExportGametypes";
+            this.ExportGametypes.Size = new System.Drawing.Size(318, 44);
+            this.ExportGametypes.TabIndex = 7;
+            this.ExportGametypes.Text = "Export Selected Gametypes";
+            this.ExportGametypes.UseVisualStyleBackColor = true;
+            this.ExportGametypes.Click += new System.EventHandler(this.ExportGametypes_Click);
+            // 
+            // Open
+            // 
+            this.Open.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Open.Location = new System.Drawing.Point(3, 3);
+            this.Open.Name = "Open";
+            this.Open.Size = new System.Drawing.Size(662, 29);
+            this.Open.TabIndex = 11;
+            this.Open.Text = "Open";
+            this.Open.UseVisualStyleBackColor = true;
+            this.Open.Click += new System.EventHandler(this.Open_Click);
+            // 
+            // exportAndSettingsTabControl
+            // 
+            this.exportAndSettingsTabControl.Controls.Add(this.ExportTab);
+            this.exportAndSettingsTabControl.Controls.Add(this.SettingsTab);
+            this.exportAndSettingsTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.exportAndSettingsTabControl.Location = new System.Drawing.Point(0, 0);
+            this.exportAndSettingsTabControl.Name = "exportAndSettingsTabControl";
+            this.exportAndSettingsTabControl.SelectedIndex = 0;
+            this.exportAndSettingsTabControl.Size = new System.Drawing.Size(676, 354);
+            this.exportAndSettingsTabControl.TabIndex = 8;
+            // 
+            // SettingsTab
+            // 
+            this.SettingsTab.Controls.Add(this.settingsControl);
+            this.SettingsTab.Location = new System.Drawing.Point(4, 22);
+            this.SettingsTab.Name = "SettingsTab";
+            this.SettingsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.SettingsTab.Size = new System.Drawing.Size(668, 328);
+            this.SettingsTab.TabIndex = 1;
+            this.SettingsTab.Text = "Settings";
+            this.SettingsTab.UseVisualStyleBackColor = true;
+            // 
+            // settingsControl
+            // 
+            this.settingsControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.settingsControl.Location = new System.Drawing.Point(3, 3);
+            this.settingsControl.Name = "settingsControl";
+            this.settingsControl.Size = new System.Drawing.Size(662, 322);
+            this.settingsControl.TabIndex = 0;
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.AddExtension = false;
+            this.saveFileDialog.CheckFileExists = true;
+            // 
+            // MainWindow
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(676, 450);
+            this.Controls.Add(this.exportAndSettingsTabControl);
+            this.Controls.Add(this.OutputTextBox);
+            this.Name = "MainWindow";
+            this.ShowIcon = false;
+            this.Text = "Halo Map Transfer Tool";
+            this.ExportTab.ResumeLayout(false);
+            this.gameTabControl.ResumeLayout(false);
+            this.ReachTab.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.GameTypeSaves)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MapSaves)).EndInit();
+            this.exportAndSettingsTabControl.ResumeLayout(false);
+            this.SettingsTab.ResumeLayout(false);
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+        private System.Windows.Forms.RichTextBox OutputTextBox;
+        private System.Windows.Forms.TabPage ExportTab;
+        private System.Windows.Forms.TabControl exportAndSettingsTabControl;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.TabPage SettingsTab;
+        private System.Windows.Forms.TabControl gameTabControl;
+        private System.Windows.Forms.TabPage ReachTab;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button ExportMaps;
+        private System.Windows.Forms.DataGridView GameTypeSaves;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GTLocation;
+        private System.Windows.Forms.DataGridView MapSaves;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SaveName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreatedDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ModifiedDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Location;
+        private System.Windows.Forms.Button ExportGametypes;
+        private System.Windows.Forms.Button Open;
+        private SettingsControl settingsControl;
+    }
+}
+

@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="HaloSaveTransferTool.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="BuiltInLocation" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Not set</Value>
+    </Setting>
+    <Setting Name="PrivateLocation" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Not set</Value>
+    </Setting>
+    <Setting Name="DefaultOtherLocation" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Not set</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

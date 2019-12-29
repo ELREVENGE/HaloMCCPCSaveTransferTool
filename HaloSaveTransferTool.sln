@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.757
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HaloSaveTransferTool", "HaloSaveTransferTool\HaloSaveTransferTool.csproj", "{ADD7CB87-F95E-4D4B-B13E-0CCDB58347EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "X360", "HaloSaveTransferTool\X360\X360\X360.csproj", "{404E4AEF-58CC-46F2-9B6A-83CE3774B94E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ADD7CB87-F95E-4D4B-B13E-0CCDB58347EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADD7CB87-F95E-4D4B-B13E-0CCDB58347EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADD7CB87-F95E-4D4B-B13E-0CCDB58347EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADD7CB87-F95E-4D4B-B13E-0CCDB58347EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{404E4AEF-58CC-46F2-9B6A-83CE3774B94E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{404E4AEF-58CC-46F2-9B6A-83CE3774B94E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{404E4AEF-58CC-46F2-9B6A-83CE3774B94E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{404E4AEF-58CC-46F2-9B6A-83CE3774B94E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {55BF59FE-717E-4030-B760-D5F3C67F79BB}
+	EndGlobalSection
+EndGlobal
