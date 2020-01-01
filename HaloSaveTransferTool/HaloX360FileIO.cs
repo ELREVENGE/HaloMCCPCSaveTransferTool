@@ -93,8 +93,12 @@ namespace HaloSaveTransferTool
         }
         public static HaloFiles GetHaloFilesFromDirectory(string directory)
         {
-            List<ContainerInfo> containers= GetAllContainersInfoFromDirectory(directory);
-            return GetHaloFilesFromContainers(containers);
+            if (Directory.Exists(directory))
+            {
+                List<ContainerInfo> containers = GetAllContainersInfoFromDirectory(directory);
+                return GetHaloFilesFromContainers(containers);
+            }
+            else { return new HaloFiles(); }
         }
         public static HaloFiles GetHaloFilesFromContainers(List<ContainerInfo> package)
         {

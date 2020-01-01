@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.BuiltIn = new System.Windows.Forms.Button();
-            this.Private = new System.Windows.Forms.Button();
             this.Other = new System.Windows.Forms.Button();
+            this.Private = new System.Windows.Forms.Button();
+            this.BuiltIn = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,16 +52,16 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(149, 157);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // BuiltIn
+            // Other
             // 
-            this.BuiltIn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BuiltIn.Location = new System.Drawing.Point(3, 3);
-            this.BuiltIn.Name = "BuiltIn";
-            this.BuiltIn.Size = new System.Drawing.Size(143, 46);
-            this.BuiltIn.TabIndex = 0;
-            this.BuiltIn.Text = "Built In";
-            this.BuiltIn.UseVisualStyleBackColor = true;
-            this.BuiltIn.Click += new System.EventHandler(this.BuiltIn_Click);
+            this.Other.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Other.Location = new System.Drawing.Point(3, 107);
+            this.Other.Name = "Other";
+            this.Other.Size = new System.Drawing.Size(143, 47);
+            this.Other.TabIndex = 5;
+            this.Other.Text = "Other";
+            this.Other.UseVisualStyleBackColor = true;
+            this.Other.Click += new System.EventHandler(this.SetOther);
             // 
             // Private
             // 
@@ -74,16 +74,16 @@
             this.Private.UseVisualStyleBackColor = true;
             this.Private.Click += new System.EventHandler(this.Private_Click);
             // 
-            // Other
+            // BuiltIn
             // 
-            this.Other.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Other.Location = new System.Drawing.Point(3, 107);
-            this.Other.Name = "Other";
-            this.Other.Size = new System.Drawing.Size(143, 47);
-            this.Other.TabIndex = 5;
-            this.Other.Text = "Other";
-            this.Other.UseVisualStyleBackColor = true;
-            this.Other.Click += new System.EventHandler(this.SetOther);
+            this.BuiltIn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BuiltIn.Location = new System.Drawing.Point(3, 3);
+            this.BuiltIn.Name = "BuiltIn";
+            this.BuiltIn.Size = new System.Drawing.Size(143, 46);
+            this.BuiltIn.TabIndex = 0;
+            this.BuiltIn.Text = "Built In";
+            this.BuiltIn.UseVisualStyleBackColor = true;
+            this.BuiltIn.Click += new System.EventHandler(this.BuiltIn_Click);
             // 
             // ExportToWindow
             // 
@@ -95,6 +95,7 @@
             this.MinimizeBox = false;
             this.Name = "ExportToWindow";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Export To";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);

@@ -24,7 +24,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <ApplicationVersion>1.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -92,6 +92,12 @@
     <Compile Include="ExportToWindow.Designer.cs">
       <DependentUpon>ExportToWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="LicenseWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LicenseWindow.Designer.cs">
+      <DependentUpon>LicenseWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ExportToWindow.resx">
       <DependentUpon>ExportToWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LicenseWindow.resx">
+      <DependentUpon>LicenseWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>

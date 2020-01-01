@@ -11,5 +11,8 @@
     <Setting Name="DefaultOtherLocation" Type="System.String" Scope="User">
       <Value Profile="(Default)">Not set</Value>
     </Setting>
+    <Setting Name="AgreedToLicense" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

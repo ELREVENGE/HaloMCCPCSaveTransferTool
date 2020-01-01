@@ -29,7 +29,8 @@ namespace HaloSaveTransferTool
                 }
             }
         }
-        CommonOpenFileDialog exportDialog = new CommonOpenFileDialog() { IsFolderPicker = true };
+        string openedDirectory = "";
+        CommonOpenFileDialog exportDialog = new CommonOpenFileDialog() { IsFolderPicker = true, RestoreDirectory = false};
         CommonOpenFileDialog selectDirectoryDialog = new CommonOpenFileDialog() { IsFolderPicker = true };
 
         HaloX360FileIO.HaloFiles loadedFiles;
@@ -43,6 +44,7 @@ namespace HaloSaveTransferTool
             {
                 tableLayoutPanel1.TabIndex = 1;
             }
+            UpdateOpened("");
         }
 
         
@@ -130,13 +132,47 @@ namespace HaloSaveTransferTool
         {
             ExportSelected(GameTypeSaves.SelectedRows, gametypeInfo);
         }
-        private void Open_Click(object sender, EventArgs e)
+        void UpdateOpened(string opened)
         {
-            if (selectDirectoryDialog.ShowDialog() == CommonFileDialogResult.Ok && Directory.Exists(selectDirectoryDialog.FileName))
+            if (opened != null && opened != "")
             {
                 Output.WriteLine("Updating from folder " + selectDirectoryDialog.FileName);
+                openedDirectory = opened;
+                selectDirectoryDialog.InitialDirectory = opened;
+                OpenedLabel.Text = "360 files in: " + opened;
                 UpdateLists(HaloX360FileIO.GetHaloFilesFromDirectory(selectDirectoryDialog.FileName));
             }
+            else
+            {
+                openedDirectory = opened;
+                selectDirectoryDialog.InitialDirectory = ExportToWindow.GetOtherDirectory();
+                OpenedLabel.Text = "360 files in: ";
+                UpdateLists(new HaloX360FileIO.HaloFiles() { reachGametypes = new List<HaloX360FileIO.ContainerInfo>(), reachMaps = new List<HaloX360FileIO.ContainerInfo>() });
+            }
+
+        }
+        private void Open_Click(object sender, EventArgs e)
+        {
+            selectDirectoryDialog.InitialDirectory = openedDirectory;
+            if (selectDirectoryDialog.ShowDialog() == CommonFileDialogResult.Ok && Directory.Exists(selectDirectoryDialog.FileName))
+            {
+                UpdateOpened(selectDirectoryDialog.FileName);
+            }
+        }
+
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            new LicenseWindow().ShowDialog();
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/mtolly/X360");
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/ELREVENGE/HaloSaveTransferTool");
         }
     }
 }

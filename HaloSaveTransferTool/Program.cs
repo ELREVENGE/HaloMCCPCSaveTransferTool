@@ -16,7 +16,10 @@ namespace HaloSaveTransferTool
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainWindow());
+            if (LicenseWindow.AgreedToLicenseCheck())
+            {
+                Application.Run(new MainWindow());
+            }
         }
     }
 }

@@ -69,7 +69,7 @@ namespace HaloSaveTransferTool
 
         private void SettingsGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.RowIndex < 3 && e.ColumnIndex >= 1 && e.ColumnIndex < 3)
+            if (e.RowIndex >= 0 && e.RowIndex < 3 && e.ColumnIndex >= 1 && e.ColumnIndex < 4)
             {
                 if (e.ColumnIndex == 1) // Auto set
                 {
@@ -80,6 +80,10 @@ namespace HaloSaveTransferTool
                 else if (e.ColumnIndex == 2)
                 {
                     ManualSet(e.RowIndex);
+                }
+                else if (e.ColumnIndex == 3)
+                {
+                    System.Diagnostics.Process.Start("https://github.com/ELREVENGE/HaloSaveTransferTool/wiki");
                 }
             }
         }

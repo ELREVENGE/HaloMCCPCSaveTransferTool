@@ -58,5 +58,17 @@ namespace HaloSaveTransferTool.Properties {
                 this["DefaultOtherLocation"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AgreedToLicense {
+            get {
+                return ((bool)(this["AgreedToLicense"]));
+            }
+            set {
+                this["AgreedToLicense"] = value;
+            }
+        }
     }
 }

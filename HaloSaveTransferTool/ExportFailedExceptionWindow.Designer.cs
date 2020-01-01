@@ -144,6 +144,7 @@
             this.ClientSize = new System.Drawing.Size(683, 450);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "ExportFailedExceptionWindow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ExportFailedExceptionWindow";
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.FailedList)).EndInit();
