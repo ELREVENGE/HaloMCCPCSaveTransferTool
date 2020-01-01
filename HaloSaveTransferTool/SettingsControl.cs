@@ -83,7 +83,7 @@ namespace HaloSaveTransferTool
                 }
                 else if (e.ColumnIndex == 3)
                 {
-                    System.Diagnostics.Process.Start("https://github.com/ELREVENGE/HaloSaveTransferTool/wiki");
+                    System.Diagnostics.Process.Start("https://github.com/ELREVENGE/HaloSaveTransferTool/wiki/Help");
                 }
             }
         }
