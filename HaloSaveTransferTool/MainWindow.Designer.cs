@@ -51,14 +51,12 @@
             this.Open = new System.Windows.Forms.Button();
             this.exportAndSettingsTabControl = new System.Windows.Forms.TabControl();
             this.SettingsTab = new System.Windows.Forms.TabPage();
-            this.settingsControl = new HaloSaveTransferTool.SettingsControl();
-            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.OtherTabPage = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.settingsControl = new HaloSaveTransferTool.SettingsControl();
             this.ExportTab.SuspendLayout();
             this.FilesPannel.SuspendLayout();
             this.gameTabControl.SuspendLayout();
@@ -319,24 +317,9 @@
             this.SettingsTab.Text = "Settings";
             this.SettingsTab.UseVisualStyleBackColor = true;
             // 
-            // settingsControl
-            // 
-            this.settingsControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.settingsControl.Location = new System.Drawing.Point(3, 3);
-            this.settingsControl.Name = "settingsControl";
-            this.settingsControl.Size = new System.Drawing.Size(670, 433);
-            this.settingsControl.TabIndex = 0;
-            // 
-            // saveFileDialog
-            // 
-            this.saveFileDialog.AddExtension = false;
-            this.saveFileDialog.CheckFileExists = true;
-            // 
             // OtherTabPage
             // 
             this.OtherTabPage.Controls.Add(this.linkLabel3);
-            this.OtherTabPage.Controls.Add(this.linkLabel2);
-            this.OtherTabPage.Controls.Add(this.label2);
             this.OtherTabPage.Controls.Add(this.linkLabel1);
             this.OtherTabPage.Controls.Add(this.label1);
             this.OtherTabPage.Location = new System.Drawing.Point(4, 22);
@@ -347,14 +330,16 @@
             this.OtherTabPage.Text = "Other";
             this.OtherTabPage.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // linkLabel3
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(266, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "This program is open source the code can be found at:";
+            this.linkLabel3.AutoSize = true;
+            this.linkLabel3.Location = new System.Drawing.Point(3, 16);
+            this.linkLabel3.Name = "linkLabel3";
+            this.linkLabel3.Size = new System.Drawing.Size(75, 13);
+            this.linkLabel3.TabIndex = 4;
+            this.linkLabel3.TabStop = true;
+            this.linkLabel3.Text = "View Licenses";
+            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
             // 
             // linkLabel1
             // 
@@ -367,36 +352,27 @@
             this.linkLabel1.Text = "https://github.com/ELREVENGE/HaloSaveTransferTool";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
-            // label2
+            // label1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 32);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "This program uses";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(266, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "This program is open source the code can be found at:";
             // 
-            // linkLabel2
+            // saveFileDialog
             // 
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(102, 32);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(174, 13);
-            this.linkLabel2.TabIndex = 3;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "DJ SkunkieButt\'s X360 .NET library";
-            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
+            this.saveFileDialog.AddExtension = false;
+            this.saveFileDialog.CheckFileExists = true;
             // 
-            // linkLabel3
+            // settingsControl
             // 
-            this.linkLabel3.AutoSize = true;
-            this.linkLabel3.Location = new System.Drawing.Point(282, 32);
-            this.linkLabel3.Name = "linkLabel3";
-            this.linkLabel3.Size = new System.Drawing.Size(69, 13);
-            this.linkLabel3.TabIndex = 4;
-            this.linkLabel3.TabStop = true;
-            this.linkLabel3.Text = "Open license";
-            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
+            this.settingsControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.settingsControl.Location = new System.Drawing.Point(3, 3);
+            this.settingsControl.Name = "settingsControl";
+            this.settingsControl.Size = new System.Drawing.Size(670, 433);
+            this.settingsControl.TabIndex = 0;
             // 
             // MainWindow
             // 
@@ -407,7 +383,7 @@
             this.Controls.Add(this.OutputTextBox);
             this.Name = "MainWindow";
             this.ShowIcon = false;
-            this.Text = "Halo Map Transfer Tool";
+            this.Text = "Halo MCC PC Map Transfer Tool";
             this.ExportTab.ResumeLayout(false);
             this.FilesPannel.ResumeLayout(false);
             this.gameTabControl.ResumeLayout(false);
@@ -453,8 +429,6 @@
         private System.Windows.Forms.Label OpenedLabel;
         private System.Windows.Forms.TabPage OtherTabPage;
         private System.Windows.Forms.LinkLabel linkLabel3;
-        private System.Windows.Forms.LinkLabel linkLabel2;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label1;
     }

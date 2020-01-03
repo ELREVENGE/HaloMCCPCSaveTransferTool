@@ -145,7 +145,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "ExportFailedExceptionWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "ExportFailedExceptionWindow";
+            this.Text = "Export Failed Files";
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.FailedList)).EndInit();
             this.ResumeLayout(false);

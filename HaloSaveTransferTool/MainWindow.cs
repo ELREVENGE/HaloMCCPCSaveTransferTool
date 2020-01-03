@@ -39,6 +39,7 @@ namespace HaloSaveTransferTool
         public MainWindow()
         {
             InitializeComponent();
+            try { Text += " v" + System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString(4); } catch { }
             Output.SetOutput(OutputTextBox);
             if (!Directory.Exists(Properties.Settings.Default.DefaultOtherLocation) || !Directory.Exists(Properties.Settings.Default.BuiltInLocation) || !Directory.Exists(Properties.Settings.Default.PrivateLocation))
             {

@@ -17,9 +17,9 @@ namespace HaloSaveTransferTool
         public SettingsControl()
         {
             InitializeComponent();
-            SettingsGrid.Rows.Add("Built in", "A", "M" , "Help" , Properties.Settings.Default.BuiltInLocation);
-            SettingsGrid.Rows.Add("Private", "A" , "M" , "Help" , Properties.Settings.Default.PrivateLocation);
-            SettingsGrid.Rows.Add("Other", "A" , "M" , "Help" , Properties.Settings.Default.DefaultOtherLocation);
+            SettingsGrid.Rows.Add("Built in", "Set", "Set", "Help" , Properties.Settings.Default.BuiltInLocation);
+            SettingsGrid.Rows.Add("Private", "Set", "Set", "Help" , Properties.Settings.Default.PrivateLocation);
+            SettingsGrid.Rows.Add("Other", "Set", "Set", "Help" , Properties.Settings.Default.DefaultOtherLocation);
         }
         static string defaultBuiltInLocation = @"C:\Program Files (x86)\Steam\steamapps\common\Halo The Master Chief Collection\";
         static string defaultPrivateLocation = @"C:\Users\" + Environment.UserName + @"\AppData\LocalLow\MCC\LocalFiles\";
