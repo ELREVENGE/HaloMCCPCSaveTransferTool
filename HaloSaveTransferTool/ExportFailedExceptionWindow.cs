@@ -1,16 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Microsoft.WindowsAPICodePack.Dialogs;
 using System.IO;
+using System.Windows.Forms;
 
-namespace HaloSaveTransferTool
+namespace HaloMCCPCSaveTransferTool
 {
     public partial class ExportFailedExceptionWindow : Form
     {
@@ -148,6 +141,63 @@ namespace HaloSaveTransferTool
                         exportedList.Add(pair.Key.path);
                         MainWindow.Output.WriteLine("Exported " + pair.Value.containerInfo.CON.Header.Title_Display + " to " + uniqueName);
                     }
+                }
+            }
+            foreach (string path in exportedList)
+            {
+                failedFilesInfo.Remove(path);
+            }
+            UpdateList();
+        }
+        static string invalidChars = @"<>:" + '"' + @"/\|?*";
+        static string ReplaceInvalidCharactersFromFileName(string fileName, char replaceCharacter = '_')
+        {
+            string retval = fileName;
+            if (fileName != null && fileName.Length > 0)
+            {
+                retval = "";
+                for (int i = 0; i < fileName.Length; i++)
+                {
+                    if (invalidChars.Contains(fileName[i].ToString()))
+                    {
+                        retval += replaceCharacter;
+                    }
+                    else
+                    {
+                        retval += fileName[i];
+                    }
+                }
+            }
+            return retval;
+        }
+        private void FixInvalidCharacter_Click(object sender, EventArgs e)
+        {
+            bool exported;
+            string titleDisplay;
+            List<string> exportedList = new List<string>();
+            foreach (KeyValuePair<HaloX360FileIO.ContainerInfo, MainWindow.ExportFailedException> pair in failedFilesInfo.Values)
+            {
+                titleDisplay = pair.Key.CON.Header.Title_Display;
+                exported = false;
+                string newName = ReplaceInvalidCharactersFromFileName(titleDisplay);
+                if (newName != pair.Key.file.Name)
+                {
+                    try
+                    {
+                        MainWindow.Output.WriteLine("Attempting to save with file name " + newName);
+                        exported = HaloX360FileIO.Export(pair.Key, newName);
+                    }
+                    catch (Exception ex)
+                    {
+                        MainWindow.Output.WriteLine(Environment.NewLine + "Export of file " + titleDisplay + " failed from exception " + Environment.NewLine + ex.Message + Environment.NewLine);
+                        failedFilesInfo[pair.Key.path] = new KeyValuePair<HaloX360FileIO.ContainerInfo, MainWindow.ExportFailedException>(pair.Key, new MainWindow.ExportFailedException("Failed to auto export a file that already exists", ex) { containerInfo = pair.Key, exportDirectory = pair.Value.exportDirectory, exportPath = newName, extention = pair.Value.extention });
+                        UpdateList();
+                    }
+                }
+                if (exported)
+                {
+                    exportedList.Add(pair.Key.path);
+                    MainWindow.Output.WriteLine("Exported " + titleDisplay + " to " + newName);
                 }
             }
             foreach (string path in exportedList)

@@ -1,4 +1,4 @@
-﻿namespace HaloSaveTransferTool
+﻿namespace HaloMCCPCSaveTransferTool
 {
     partial class MainWindow
     {
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.OutputTextBox = new System.Windows.Forms.RichTextBox();
             this.ExportTab = new System.Windows.Forms.TabPage();
             this.FilesPannel = new System.Windows.Forms.TableLayoutPanel();
@@ -51,12 +52,12 @@
             this.Open = new System.Windows.Forms.Button();
             this.exportAndSettingsTabControl = new System.Windows.Forms.TabControl();
             this.SettingsTab = new System.Windows.Forms.TabPage();
+            this.settingsControl = new HaloMCCPCSaveTransferTool.SettingsControl();
             this.OtherTabPage = new System.Windows.Forms.TabPage();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.settingsControl = new HaloSaveTransferTool.SettingsControl();
             this.ExportTab.SuspendLayout();
             this.FilesPannel.SuspendLayout();
             this.gameTabControl.SuspendLayout();
@@ -317,6 +318,14 @@
             this.SettingsTab.Text = "Settings";
             this.SettingsTab.UseVisualStyleBackColor = true;
             // 
+            // settingsControl
+            // 
+            this.settingsControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.settingsControl.Location = new System.Drawing.Point(3, 3);
+            this.settingsControl.Name = "settingsControl";
+            this.settingsControl.Size = new System.Drawing.Size(670, 433);
+            this.settingsControl.TabIndex = 0;
+            // 
             // OtherTabPage
             // 
             this.OtherTabPage.Controls.Add(this.linkLabel3);
@@ -366,14 +375,6 @@
             this.saveFileDialog.AddExtension = false;
             this.saveFileDialog.CheckFileExists = true;
             // 
-            // settingsControl
-            // 
-            this.settingsControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.settingsControl.Location = new System.Drawing.Point(3, 3);
-            this.settingsControl.Name = "settingsControl";
-            this.settingsControl.Size = new System.Drawing.Size(670, 433);
-            this.settingsControl.TabIndex = 0;
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -381,9 +382,9 @@
             this.ClientSize = new System.Drawing.Size(684, 561);
             this.Controls.Add(this.exportAndSettingsTabControl);
             this.Controls.Add(this.OutputTextBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainWindow";
-            this.ShowIcon = false;
-            this.Text = "Halo MCC PC Map Transfer Tool";
+            this.Text = "Halo MCC PC Save Transfer Tool";
             this.ExportTab.ResumeLayout(false);
             this.FilesPannel.ResumeLayout(false);
             this.gameTabControl.ResumeLayout(false);

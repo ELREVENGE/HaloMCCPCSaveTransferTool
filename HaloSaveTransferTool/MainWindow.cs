@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using X360.STFS;
 using Microsoft.WindowsAPICodePack.Dialogs;
 
-namespace HaloSaveTransferTool
+namespace HaloMCCPCSaveTransferTool
 {
     public partial class MainWindow : Form
     {
@@ -117,7 +117,10 @@ namespace HaloSaveTransferTool
                         HaloX360FileIO.ContainerInfo info = infoDictionary[location];
                         try
                         {
-                            HaloX360FileIO.Export(info, exportLocation);
+                            if (HaloX360FileIO.Export(info, exportLocation))
+                            {
+                                Output.WriteLine("Exported to " + exportLocation);
+                            }
                         }
                         catch (Exception ex)
                         {
@@ -126,6 +129,7 @@ namespace HaloSaveTransferTool
                         }
                     }
                     ExportFailedExceptionWindow.OpenDialog(failedFiles);
+                    Output.WriteLine("Export completed!");
                 }
             }
         }

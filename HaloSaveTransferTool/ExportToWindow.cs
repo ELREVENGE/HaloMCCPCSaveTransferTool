@@ -8,10 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using HaloSaveTransferTool;
+using HaloMCCPCSaveTransferTool;
 using Microsoft.WindowsAPICodePack.Dialogs;
 
-namespace HaloSaveTransferTool
+namespace HaloMCCPCSaveTransferTool
 {
     public partial class ExportToWindow : Form
     {

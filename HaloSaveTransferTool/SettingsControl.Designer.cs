@@ -1,4 +1,4 @@
-﻿namespace HaloSaveTransferTool
+﻿namespace HaloMCCPCSaveTransferTool
 {
     partial class SettingsControl
     {

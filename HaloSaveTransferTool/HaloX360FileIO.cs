@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using X360.STFS;
 using X360.IO;
 
-namespace HaloSaveTransferTool
+namespace HaloMCCPCSaveTransferTool
 {
     public static class HaloX360FileIO
     {

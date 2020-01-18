@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Reflection;
 
-namespace HaloSaveTransferTool
+namespace HaloMCCPCSaveTransferTool
 {
     public partial class LicenseWindow : Form
     {

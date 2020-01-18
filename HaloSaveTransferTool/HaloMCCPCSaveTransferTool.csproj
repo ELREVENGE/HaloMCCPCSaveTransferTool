@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{ADD7CB87-F95E-4D4B-B13E-0CCDB58347EC}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>HaloSaveTransferTool</RootNamespace>
-    <AssemblyName>HaloSaveTransferTool</AssemblyName>
+    <RootNamespace>HaloMCCPCSaveTransferTool</RootNamespace>
+    <AssemblyName>Halo MCC PC Save Transfer Tool</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -26,7 +26,7 @@
     <SupportUrl>https://github.com/ELREVENGE/HaloSaveTransferTool/wiki/Help</SupportUrl>
     <ErrorReportUrl>https://github.com/ELREVENGE/HaloSaveTransferTool/wiki/Help</ErrorReportUrl>
     <PublisherName>ELREVENGE</PublisherName>
-    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.2.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -61,7 +61,10 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
@@ -136,11 +139,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="SettingsControl.resx">
       <DependentUpon>SettingsControl.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="HaloSaveTransferTool_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -172,6 +175,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

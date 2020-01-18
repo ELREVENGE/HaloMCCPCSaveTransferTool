@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.757
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HaloSaveTransferTool", "HaloSaveTransferTool\HaloSaveTransferTool.csproj", "{ADD7CB87-F95E-4D4B-B13E-0CCDB58347EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HaloMCCPCSaveTransferTool", "HaloSaveTransferTool\HaloMCCPCSaveTransferTool.csproj", "{ADD7CB87-F95E-4D4B-B13E-0CCDB58347EC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "X360", "HaloSaveTransferTool\X360\X360\X360.csproj", "{404E4AEF-58CC-46F2-9B6A-83CE3774B94E}"
 EndProject

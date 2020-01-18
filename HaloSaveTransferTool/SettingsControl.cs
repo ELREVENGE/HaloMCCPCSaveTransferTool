@@ -10,7 +10,7 @@ using System.IO;
 using System.Windows.Forms;
 using Microsoft.WindowsAPICodePack.Dialogs;
 
-namespace HaloSaveTransferTool
+namespace HaloMCCPCSaveTransferTool
 {
     public partial class SettingsControl : UserControl
     {
