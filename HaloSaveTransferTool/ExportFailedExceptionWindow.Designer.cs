@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.helpLinkLabel = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.RenameExisting = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -45,15 +45,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.FailedList)).BeginInit();
             this.SuspendLayout();
             // 
-            // linkLabel1
+            // helpLinkLabel
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(130, 9);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(29, 13);
-            this.linkLabel1.TabIndex = 1;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Help";
+            this.helpLinkLabel.AutoSize = true;
+            this.helpLinkLabel.Location = new System.Drawing.Point(130, 9);
+            this.helpLinkLabel.Name = "helpLinkLabel";
+            this.helpLinkLabel.Size = new System.Drawing.Size(29, 13);
+            this.helpLinkLabel.TabIndex = 1;
+            this.helpLinkLabel.TabStop = true;
+            this.helpLinkLabel.Text = "Help";
+            this.helpLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.helpLinkLabel_LinkClicked);
             // 
             // label1
             // 
@@ -73,6 +74,7 @@
             this.RenameExisting.TabIndex = 3;
             this.RenameExisting.Text = "FixFiles that already exist ";
             this.RenameExisting.UseVisualStyleBackColor = true;
+            this.RenameExisting.Click += new System.EventHandler(this.RenameExisting_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -88,7 +90,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(659, 31);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
@@ -179,7 +181,7 @@
             this.Controls.Add(this.FailedList);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.helpLinkLabel);
             this.Name = "ExportFailedExceptionWindow";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -193,7 +195,7 @@
 
         #endregion
 
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel helpLinkLabel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button RenameExisting;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;

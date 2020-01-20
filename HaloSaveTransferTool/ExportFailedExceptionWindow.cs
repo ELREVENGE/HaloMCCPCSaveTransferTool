@@ -180,7 +180,7 @@ namespace HaloMCCPCSaveTransferTool
                 titleDisplay = pair.Key.CON.Header.Title_Display;
                 exported = false;
                 string newName = ReplaceInvalidCharactersFromFileName(titleDisplay);
-                if (newName != pair.Key.file.Name)
+                if (newName != titleDisplay)
                 {
                     try
                     {
@@ -205,6 +205,11 @@ namespace HaloMCCPCSaveTransferTool
                 failedFilesInfo.Remove(path);
             }
             UpdateList();
+        }
+
+        private void helpLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/ELREVENGE/HaloMCCPCSaveTransferTool/wiki/Help");
         }
     }
 }
