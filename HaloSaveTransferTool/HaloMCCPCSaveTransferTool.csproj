@@ -26,8 +26,8 @@
     <SupportUrl>https://github.com/ELREVENGE/HaloSaveTransferTool/wiki/Help</SupportUrl>
     <ErrorReportUrl>https://github.com/ELREVENGE/HaloSaveTransferTool/wiki/Help</ErrorReportUrl>
     <PublisherName>ELREVENGE</PublisherName>
-    <ApplicationRevision>4</ApplicationRevision>
-    <ApplicationVersion>1.0.2.4</ApplicationVersion>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.3.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
