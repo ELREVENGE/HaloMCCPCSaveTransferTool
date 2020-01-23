@@ -30,9 +30,8 @@
         {
             this.helpLinkLabel = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
-            this.RenameExisting = new System.Windows.Forms.Button();
+            this.AutoResolve = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.FixInvalidCharacter = new System.Windows.Forms.Button();
             this.FailedList = new System.Windows.Forms.DataGridView();
             this.Exception = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SaveAs = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -65,27 +64,25 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Attempt to resolve errors";
             // 
-            // RenameExisting
+            // AutoResolve
             // 
-            this.RenameExisting.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.RenameExisting.Location = new System.Drawing.Point(3, 3);
-            this.RenameExisting.Name = "RenameExisting";
-            this.RenameExisting.Size = new System.Drawing.Size(323, 25);
-            this.RenameExisting.TabIndex = 3;
-            this.RenameExisting.Text = "FixFiles that already exist ";
-            this.RenameExisting.UseVisualStyleBackColor = true;
-            this.RenameExisting.Click += new System.EventHandler(this.RenameExisting_Click);
+            this.AutoResolve.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AutoResolve.Location = new System.Drawing.Point(3, 3);
+            this.AutoResolve.Name = "AutoResolve";
+            this.AutoResolve.Size = new System.Drawing.Size(653, 25);
+            this.AutoResolve.TabIndex = 3;
+            this.AutoResolve.Text = "Auto resolve ";
+            this.AutoResolve.UseVisualStyleBackColor = true;
+            this.AutoResolve.Click += new System.EventHandler(this.AutoResolve_Click);
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.RenameExisting, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.FixInvalidCharacter, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.AutoResolve, 0, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 25);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
@@ -93,17 +90,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(659, 31);
             this.tableLayoutPanel1.TabIndex = 4;
-            // 
-            // FixInvalidCharacter
-            // 
-            this.FixInvalidCharacter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FixInvalidCharacter.Location = new System.Drawing.Point(332, 3);
-            this.FixInvalidCharacter.Name = "FixInvalidCharacter";
-            this.FixInvalidCharacter.Size = new System.Drawing.Size(324, 25);
-            this.FixInvalidCharacter.TabIndex = 4;
-            this.FixInvalidCharacter.Text = "Replace invalid characters with _";
-            this.FixInvalidCharacter.UseVisualStyleBackColor = true;
-            this.FixInvalidCharacter.Click += new System.EventHandler(this.FixInvalidCharacter_Click);
             // 
             // FailedList
             // 
@@ -124,6 +110,7 @@
             this.FailedList.RowHeadersVisible = false;
             this.FailedList.Size = new System.Drawing.Size(683, 388);
             this.FailedList.TabIndex = 5;
+            this.FailedList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.FailedList_CellContentClick);
             // 
             // Exception
             // 
@@ -197,9 +184,8 @@
 
         private System.Windows.Forms.LinkLabel helpLinkLabel;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button RenameExisting;
+        private System.Windows.Forms.Button AutoResolve;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button FixInvalidCharacter;
         private System.Windows.Forms.DataGridView FailedList;
         private System.Windows.Forms.DataGridViewTextBoxColumn Exception;
         private System.Windows.Forms.DataGridViewButtonColumn SaveAs;

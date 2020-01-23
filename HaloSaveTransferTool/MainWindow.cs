@@ -81,7 +81,16 @@ namespace HaloMCCPCSaveTransferTool
         public class ExportFailedException : Exception
         {
             public string exportPath;
-            public string exportDirectory;
+            string _exportDirectory;
+            public string exportDirectory
+            {
+                get { return _exportDirectory; }
+                set
+                {
+                    if (value != null && value.Length > 0 && value[value.Length-1] != '\\') { _exportDirectory = value + @"\"; }
+                    else _exportDirectory = value;
+                }
+            }
             public string extention;
             public HaloX360FileIO.ContainerInfo containerInfo;
             public ExportFailedException()

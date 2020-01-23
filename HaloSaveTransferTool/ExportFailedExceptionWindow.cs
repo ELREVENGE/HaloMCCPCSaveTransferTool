@@ -115,40 +115,6 @@ namespace HaloMCCPCSaveTransferTool
             }
             return null;
         }
-
-        private void RenameExisting_Click(object sender, EventArgs e)
-        {
-            bool exported;
-            List<string> exportedList = new List<string>();
-            foreach (KeyValuePair<HaloX360FileIO.ContainerInfo, MainWindow.ExportFailedException> pair in failedFilesInfo.Values)
-            {
-                if (pair.Value.Message == "File already exists" || (pair.Value.InnerException != null && pair.Value.InnerException.Message == "File already exists"))
-                {
-                    exported = false;
-                    string uniqueName = GetUniqueName(pair.Value.exportPath);
-                    try
-                    {
-                        exported = HaloX360FileIO.Export(pair.Key, uniqueName);
-                    }
-                    catch (Exception ex)
-                    {
-                        MainWindow.Output.WriteLine(Environment.NewLine + "Export of file " + pair.Value.containerInfo.CON.Header.Title_Display + " failed from exception " + Environment.NewLine + ex.Message + Environment.NewLine);
-                        failedFilesInfo[pair.Key.path] = new KeyValuePair<HaloX360FileIO.ContainerInfo, MainWindow.ExportFailedException>(pair.Key, new MainWindow.ExportFailedException("Failed to auto export a file that already exists", ex) { containerInfo = pair.Key, exportDirectory = pair.Value.exportDirectory, exportPath = uniqueName, extention = pair.Value.extention });
-                        UpdateList();
-                    }
-                    if (exported)
-                    {
-                        exportedList.Add(pair.Key.path);
-                        MainWindow.Output.WriteLine("Exported " + pair.Value.containerInfo.CON.Header.Title_Display + " to " + uniqueName);
-                    }
-                }
-            }
-            foreach (string path in exportedList)
-            {
-                failedFilesInfo.Remove(path);
-            }
-            UpdateList();
-        }
         static string invalidChars = @"<>:" + '"' + @"/\|?*";
         static string ReplaceInvalidCharactersFromFileName(string fileName, char replaceCharacter = '_')
         {
@@ -170,7 +136,7 @@ namespace HaloMCCPCSaveTransferTool
             }
             return retval;
         }
-        private void FixInvalidCharacter_Click(object sender, EventArgs e)
+        private void AutoResolve_Click(object sender, EventArgs e)
         {
             bool exported;
             string titleDisplay;
@@ -180,18 +146,22 @@ namespace HaloMCCPCSaveTransferTool
                 titleDisplay = pair.Key.CON.Header.Title_Display;
                 exported = false;
                 string newName = ReplaceInvalidCharactersFromFileName(titleDisplay);
-                if (newName != titleDisplay)
+                string newPath = pair.Value.exportDirectory + newName + pair.Value.extention;
+                if (newName != titleDisplay || File.Exists(newPath))
                 {
                     try
                     {
+                        if (File.Exists(newPath))
+                        {
+                            newPath = GetUniqueName(newPath);
+                            newName = Path.GetFileNameWithoutExtension(newPath);
+                        }
                         MainWindow.Output.WriteLine("Attempting to save with file name " + newName);
-                        exported = HaloX360FileIO.Export(pair.Key, newName);
+                        exported = HaloX360FileIO.Export(pair.Key, newPath);
                     }
                     catch (Exception ex)
                     {
                         MainWindow.Output.WriteLine(Environment.NewLine + "Export of file " + titleDisplay + " failed from exception " + Environment.NewLine + ex.Message + Environment.NewLine);
-                        failedFilesInfo[pair.Key.path] = new KeyValuePair<HaloX360FileIO.ContainerInfo, MainWindow.ExportFailedException>(pair.Key, new MainWindow.ExportFailedException("Failed to auto export a file that already exists", ex) { containerInfo = pair.Key, exportDirectory = pair.Value.exportDirectory, exportPath = newName, extention = pair.Value.extention });
-                        UpdateList();
                     }
                 }
                 if (exported)
@@ -206,7 +176,6 @@ namespace HaloMCCPCSaveTransferTool
             }
             UpdateList();
         }
-
         private void helpLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/ELREVENGE/HaloMCCPCSaveTransferTool/wiki/Help");
