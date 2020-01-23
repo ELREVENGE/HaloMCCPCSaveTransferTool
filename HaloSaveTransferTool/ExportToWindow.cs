@@ -42,6 +42,14 @@ namespace HaloMCCPCSaveTransferTool
                 if (selectedDirectory != null)
                 {
                     extention = GetExtention(containerInfo);
+                    if (choice == Choice.BuiltIn)
+                    {
+                        selectedDirectory = GetBuiltInDirectory(containerInfo);
+                    }
+                    else if (choice == Choice.Private)
+                    {
+                        selectedDirectory = GetPrivateDirectory(containerInfo);
+                    }
                     return selectedDirectory;
                 }
             }
