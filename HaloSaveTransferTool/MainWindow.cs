@@ -12,12 +12,12 @@ namespace HaloMCCPCSaveTransferTool
     {
         public class Output
         {
-            internal static void SetOutput(System.Windows.Forms.RichTextBox richTextBox)
+            internal static void SetOutput(RichTextBox richTextBox)
             {
                 _output = richTextBox;
             }
             static RichTextBox _output;
-            internal static void WriteLine(string text = null, System.Windows.Forms.RichTextBox output = null)
+            internal static void WriteLine(string text = null, RichTextBox output = null)
             {
                 if (output != null) _output = output;
                 if (_output != null)
@@ -36,11 +36,13 @@ namespace HaloMCCPCSaveTransferTool
         HaloX360FileIO.HaloFiles loadedFiles;
         Dictionary<string, HaloX360FileIO.ContainerInfo> mapInfo = new Dictionary<string, HaloX360FileIO.ContainerInfo>();
         Dictionary<string, HaloX360FileIO.ContainerInfo> gametypeInfo = new Dictionary<string, HaloX360FileIO.ContainerInfo>();
+        Dictionary<string, HaloX360FileIO.ContainerInfo> screenshotInfo = new Dictionary<string, HaloX360FileIO.ContainerInfo>();
         public MainWindow()
         {
             InitializeComponent();
-            try { Text += " v" + System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString(4); } catch { }
             Output.SetOutput(OutputTextBox);
+            if (Properties.Settings.Default.AutoCheckForUpdates) UpdateChecker.UpToDatePrompt();
+            try { Text += " v" + System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString(4); } catch { }
             if (!Directory.Exists(Properties.Settings.Default.DefaultOtherLocation) || !Directory.Exists(Properties.Settings.Default.BuiltInLocation) || !Directory.Exists(Properties.Settings.Default.PrivateLocation))
             {
                 tableLayoutPanel1.TabIndex = 1;
@@ -57,7 +59,7 @@ namespace HaloMCCPCSaveTransferTool
             mapInfo.Clear();
             MapSaves.Rows.Clear();
             GameTypeSaves.Rows.Clear();
-            Output.WriteLine(files.reachMaps.Count + " Maps and " + files.reachGametypes.Count + " Gametypes");
+            Output.WriteLine(files.reachMaps.Count + " Maps, " + files.reachGametypes.Count + " Gametypes, and " + files.reachScreenShots.Count + " Screenshots found");
             foreach (HaloX360FileIO.ContainerInfo map in files.reachMaps)
             {
                 mapInfo.Add(map.path, map);
@@ -70,8 +72,22 @@ namespace HaloMCCPCSaveTransferTool
                 gametypeInfo.Add(gt.path, gt);
                 GameTypeSaves.Rows.Add(gt.CON.Header.Title_Display, gt.file.Created, gt.file.Accessed, gt.path);
             }
-
-            Output.WriteLine("Gametype names listed" + Environment.NewLine + "All files listed!");
+            HaloX360FileIO.ContainerInfo screenshot;
+            for (int i =0; i < files.reachScreenShots.Count; i++)
+            {
+                screenshot = files.reachScreenShots[i];
+                screenshotInfo.Add(screenshot.path, screenshot);
+                Output.WriteLine("Loading thumbnail and info for screenshot #"+ (i + 1) +"/"+files.reachScreenShots.Count+": " + screenshot.CON.Header.Title_Display);
+                screenshotSaves.Rows.Add(HaloX360FileIO.Get16x9Thumbnail(HaloX360FileIO.ExtractImageFromScreenShotFile(screenshot.CON), 12), screenshot.CON.Header.Title_Display, screenshot.file.Created, screenshot.file.Accessed, screenshot.path);
+                screenshotSaves.Rows[screenshotSaves.RowCount - 1].Height = 9 * 12;
+            }
+            //foreach(HaloX360FileIO.ContainerInfo screenshot in files.reachScreenShots)
+            //{
+            //    Output.WriteLine("Loading thumbnail and info for screenshot: " + screenshot.CON.Header.Title_Display);
+            //    screenshotSaves.Rows.Add(HaloX360FileIO.Get16x9Thumbnail(HaloX360FileIO.ExtractImageFromScreenShotFile(screenshot.path), 12), screenshot.CON.Header.Title_Display, screenshot.file.Created, screenshot.file.Accessed, screenshot.path);
+            //    screenshotSaves.Rows[screenshotSaves.RowCount - 1].Height = 9 * 12;
+            //}
+            Output.WriteLine("All files listed!");
         }
 
         private void ExportMaps_Click(object sender, EventArgs e)
@@ -137,7 +153,7 @@ namespace HaloMCCPCSaveTransferTool
                             Output.WriteLine(Environment.NewLine + "Export of file " + name + " failed from exception " + Environment.NewLine + ex.Message + Environment.NewLine);
                         }
                     }
-                    ExportFailedExceptionWindow.OpenDialog(failedFiles);
+                    ExportFailedWindow.OpenDialog(failedFiles);
                     Output.WriteLine("Export completed!");
                 }
             }
@@ -161,7 +177,7 @@ namespace HaloMCCPCSaveTransferTool
                 openedDirectory = opened;
                 selectDirectoryDialog.InitialDirectory = ExportToWindow.GetOtherDirectory();
                 OpenedLabel.Text = "360 files in: ";
-                UpdateLists(new HaloX360FileIO.HaloFiles() { reachGametypes = new List<HaloX360FileIO.ContainerInfo>(), reachMaps = new List<HaloX360FileIO.ContainerInfo>() });
+                UpdateLists(new HaloX360FileIO.HaloFiles() { reachGametypes = new List<HaloX360FileIO.ContainerInfo>(), reachMaps = new List<HaloX360FileIO.ContainerInfo>(), reachScreenShots = new List<HaloX360FileIO.ContainerInfo>() });
             }
 
         }
@@ -187,6 +203,50 @@ namespace HaloMCCPCSaveTransferTool
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/ELREVENGE/HaloSaveTransferTool");
+        }
+
+        private void ExportScreenShots_Click(object sender, EventArgs e)
+        {
+            if (screenshotSaves.SelectedRows != null && screenshotSaves.SelectedRows.Count > 0)
+            {
+                string exportDirectory = ExportToWindow.GetResult(screenshotInfo[screenshotSaves.SelectedRows[0].Cells[4].Value.ToString()]);
+                if (exportDirectory != null && Directory.Exists(exportDirectory))
+                {
+                    string exportExtention = ExportToWindow.extention;
+                    Dictionary<HaloX360FileIO.ContainerInfo, ExportFailedException> failedFiles = new Dictionary<HaloX360FileIO.ContainerInfo, ExportFailedException>();
+                    Output.WriteLine("Exporting to " + exportDirectory + " with an extention of " + exportExtention);
+                    string name, location, exportLocation;
+                    for (int i = 0; i < screenshotSaves.SelectedRows.Count; i++)
+                    {
+                        name = screenshotSaves.SelectedRows[i].Cells[1].Value.ToString();
+                        location = screenshotSaves.SelectedRows[i].Cells[4].Value.ToString();
+                        exportLocation = exportDirectory + @"\" + name + exportExtention;
+                        Output.WriteLine("Exporting " + name + " to " + exportLocation);
+                        HaloX360FileIO.ContainerInfo info = screenshotInfo[location];
+                        try
+                        {
+                            if (exportExtention == ".jpg")
+                            {
+                                if (File.Exists(exportLocation)) throw new Exception("File Already Exists");
+                                HaloX360FileIO.ExtractImageFromScreenShotFile(info.CON).Save(exportLocation);
+                                Output.WriteLine("Exported to " + exportLocation);
+
+                            }
+                            else if (HaloX360FileIO.Export(info, exportLocation))
+                            {
+                                Output.WriteLine("Exported to " + exportLocation);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            failedFiles.Add(info, new ExportFailedException(ex.Message, ex) { containerInfo = info, exportPath = exportLocation, exportDirectory = exportDirectory, extention = exportExtention });
+                            Output.WriteLine(Environment.NewLine + "Export of file " + name + " failed from exception " + Environment.NewLine + ex.Message + Environment.NewLine);
+                        }
+                    }
+                    ExportFailedWindow.OpenDialog(failedFiles);
+                    Output.WriteLine("Export completed!");
+                }
+            }
         }
     }
 }

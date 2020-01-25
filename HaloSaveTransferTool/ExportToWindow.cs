@@ -37,11 +37,28 @@ namespace HaloMCCPCSaveTransferTool
         }
         internal static string GetResult(HaloX360FileIO.ContainerInfo containerInfo)
         {
-            if (new ExportToWindow().ShowDialog() == DialogResult.OK)
+            ExportToWindow exportToWindow = new ExportToWindow();
+            extention = GetExtention(containerInfo);
+            if (extention == ".jpg")
+            {
+                string selectedOtherDirectory = Properties.Settings.Default.DefaultOtherLocation;
+                if (!Directory.Exists(selectedOtherDirectory)) selectedOtherDirectory = @"C:\";
+                CommonOpenFileDialog openFileDialog = new CommonOpenFileDialog();
+                openFileDialog.RestoreDirectory = false;
+                openFileDialog.IsFolderPicker = true;
+                openFileDialog.InitialDirectory = selectedOtherDirectory;
+                if (openFileDialog.ShowDialog() == CommonFileDialogResult.Ok && Directory.Exists(openFileDialog.FileName))
+                {
+                    selectedOtherDirectory = openFileDialog.FileName;
+                    exportToWindow.SetSelected(selectedOtherDirectory, Choice.Other);
+                }
+                return selectedDirectory;
+            }
+            if (exportToWindow.ShowDialog() == DialogResult.OK)
             {
                 if (selectedDirectory != null)
                 {
-                    extention = GetExtention(containerInfo);
+                    
                     if (choice == Choice.BuiltIn)
                     {
                         selectedDirectory = GetBuiltInDirectory(containerInfo);
@@ -133,6 +150,7 @@ namespace HaloMCCPCSaveTransferTool
             {
                 if (containerInfo.file.Name == "sandbox.map") return ".mvar";
                 else if (containerInfo.file.Name == "variant") return ".bin";
+                else if (containerInfo.file.Name == "screen.shot") return ".jpg";
                 else
                 {
                     throw new Exception("Could not get extention for " + containerInfo.file.Name);

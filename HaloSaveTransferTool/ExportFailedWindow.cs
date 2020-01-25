@@ -5,11 +5,11 @@ using System.Windows.Forms;
 
 namespace HaloMCCPCSaveTransferTool
 {
-    public partial class ExportFailedExceptionWindow : Form
+    public partial class ExportFailedWindow : Form
     {
         //failedFiles.Add(exception, save as, save name, created, modified, location, export location)
         Dictionary<string, KeyValuePair<HaloX360FileIO.ContainerInfo, MainWindow.ExportFailedException>> failedFilesInfo;
-        public ExportFailedExceptionWindow()
+        public ExportFailedWindow()
         {
             InitializeComponent();
             failedFilesInfo = new Dictionary<string, KeyValuePair<HaloX360FileIO.ContainerInfo, MainWindow.ExportFailedException>>();
@@ -18,7 +18,7 @@ namespace HaloMCCPCSaveTransferTool
         {
             if (failedFiles != null && failedFiles.Count > 0)
             {
-                ExportFailedExceptionWindow window = new ExportFailedExceptionWindow();
+                ExportFailedWindow window = new ExportFailedWindow();
                 window.InitializeList(failedFiles);
                 window.ShowDialog();
             }
@@ -157,7 +157,15 @@ namespace HaloMCCPCSaveTransferTool
                             newName = Path.GetFileNameWithoutExtension(newPath);
                         }
                         MainWindow.Output.WriteLine("Attempting to save with file name " + newName);
-                        exported = HaloX360FileIO.Export(pair.Key, newPath);
+                        if (pair.Value.extention == ".jpg")
+                        {
+                            HaloX360FileIO.ExtractImageFromScreenShotFile(pair.Key.CON).Save(newPath);
+                            exported = true;
+                        }
+                        else
+                        {
+                            exported = HaloX360FileIO.Export(pair.Key, newPath);
+                        }
                     }
                     catch (Exception ex)
                     {

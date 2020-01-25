@@ -1,6 +1,6 @@
 ﻿namespace HaloMCCPCSaveTransferTool
 {
-    partial class ExportFailedExceptionWindow
+    partial class ExportFailedWindow
     {
         /// <summary>
         /// Required designer variable.

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using X360.STFS;
 using X360.IO;
+using System.Drawing;
 
 namespace HaloMCCPCSaveTransferTool
 {
@@ -62,7 +63,77 @@ namespace HaloMCCPCSaveTransferTool
             }
             throw new Exception("Failed to export file to " + destinationPath);
         }
-        #region non async functions
+        #region Screenshot Extraction
+        public static Image Get16x9Thumbnail(Image img, int size)
+        {
+            if (img != null && size > 0 && size * 16 < 256)
+            {
+                return img.GetThumbnailImage(16 * size, 9 * size, null, new IntPtr());
+            }
+            return null;
+        }
+        //public static Image ExtractImageFromScreenShotFile(string containerPath)
+        //{
+        //    try
+        //    {
+        //        MemoryStream x360FileStream = new MemoryStream(HaloX360FileIO.GetContainer(containerPath).RootDirectory.GetSubFiles()[0].GetTempIO(true).ReadStream(), false);
+        //        return ExtractImageFromScreenShotFile(x360FileStream);
+        //    }
+        //    catch { return null; }
+        //}
+        public static Image ExtractImageFromScreenShotFile(STFSPackage Container)
+        {
+            try
+            {
+                FileEntry[] files = Container.RootDirectory.GetSubFiles();
+                if (files.Length == 1 && files[0].Name == "screen.shot")
+                {
+                    return ExtractImageFromScreenShotFile(new MemoryStream(files[0].GetTempIO(true).ReadStream(), false));
+                }
+                return null;
+            }
+            catch { return null; }
+        }
+        public static Image ExtractImageFromScreenShotFile(MemoryStream fileStream)
+        {
+            if (fileStream == null) return null;
+            try
+            {
+                List<byte> image = new List<byte>();
+                // 0xFF 0xD8 Start of Image (SOI)
+                // 0xFF 0xD9 End of Image (EOI)
+                byte[] buff = new byte[2];
+                BinaryReader br = new BinaryReader(fileStream);
+                bool imgBytes = false;
+                while (br.BaseStream.Position < br.BaseStream.Length)
+                {
+                    byte bCurrent = br.ReadByte();
+                    buff[0] = buff[1];
+                    buff[1] = bCurrent;
+                    if (buff[0] == 0xFF)
+                    {
+                        if (bCurrent == 0xD8) //SOI
+                        {
+                            image.Clear();
+                            imgBytes = true;
+                            image.Add(0xFF); //will add current byte at end of while loop
+                        }
+                        if (bCurrent == 0xD9) //EOI
+                        {
+                            image.Add(bCurrent); //already have 0xFF byte
+                            break;
+                        }
+                    }
+                    if (imgBytes) image.Add(bCurrent);
+                }
+                return (Bitmap)((new ImageConverter()).ConvertFrom(image.ToArray()));
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        #endregion
         public static List<ContainerInfo> GetAllContainersInfoFromDirectory(string directory)
         {
             
@@ -71,9 +142,6 @@ namespace HaloMCCPCSaveTransferTool
             MainWindow.Output.WriteLine("All files Gathered, scanning for potential containers");
             List<string> potentialContainerFiles = GetPotentialContainerFiles(allFiles);
             MainWindow.Output.WriteLine("All Potential Containers Gathered, Gathering Container Info from containers");
-            
-            //
-
             List<ContainerInfo> containersInfo = GetContainerInfoFromPotentialContainers(potentialContainerFiles);
             MainWindow.Output.WriteLine("All Container Files gathered");
             return containersInfo;
@@ -106,6 +174,8 @@ namespace HaloMCCPCSaveTransferTool
             List<ContainerInfo> reachFiles = GetContainersForTitle(package, "Halo: Reach");
             haloFiles.reachMaps = GetMatchingContents(reachFiles, "sandbox.map");
             haloFiles.reachGametypes = GetMatchingContents(reachFiles, "variant");
+            haloFiles.reachScreenShots = GetMatchingContents(reachFiles, "screen.shot");
+
             return haloFiles;
 
         }
@@ -255,7 +325,7 @@ namespace HaloMCCPCSaveTransferTool
         {
             public List<ContainerInfo> reachMaps;
             public List<ContainerInfo> reachGametypes;
+            public List<ContainerInfo> reachScreenShots;
         }
     }
-    #endregion 
 }

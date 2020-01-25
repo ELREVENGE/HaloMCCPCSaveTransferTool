@@ -32,8 +32,8 @@
             this.Setting = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Auto = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Manual = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Help = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Location = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.checkForUpdateCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.SettingsGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -41,19 +41,20 @@
             // 
             this.SettingsGrid.AllowUserToAddRows = false;
             this.SettingsGrid.AllowUserToDeleteRows = false;
+            this.SettingsGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.SettingsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.SettingsGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Setting,
             this.Auto,
             this.Manual,
-            this.Help,
             this.Location});
-            this.SettingsGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SettingsGrid.Location = new System.Drawing.Point(0, 0);
+            this.SettingsGrid.Location = new System.Drawing.Point(0, 30);
             this.SettingsGrid.Name = "SettingsGrid";
             this.SettingsGrid.RowHeadersVisible = false;
             this.SettingsGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.SettingsGrid.Size = new System.Drawing.Size(370, 90);
+            this.SettingsGrid.Size = new System.Drawing.Size(370, 60);
             this.SettingsGrid.TabIndex = 0;
             this.SettingsGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SettingsGrid_CellClick);
             // 
@@ -78,13 +79,6 @@
             this.Manual.ReadOnly = true;
             this.Manual.Width = 50;
             // 
-            // Help
-            // 
-            this.Help.HeaderText = "Help";
-            this.Help.Name = "Help";
-            this.Help.ReadOnly = true;
-            this.Help.Width = 50;
-            // 
             // Location
             // 
             this.Location.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -92,15 +86,27 @@
             this.Location.Name = "Location";
             this.Location.ReadOnly = true;
             // 
+            // checkForUpdateCheckBox
+            // 
+            this.checkForUpdateCheckBox.AutoSize = true;
+            this.checkForUpdateCheckBox.Location = new System.Drawing.Point(3, 7);
+            this.checkForUpdateCheckBox.Name = "checkForUpdateCheckBox";
+            this.checkForUpdateCheckBox.Size = new System.Drawing.Size(309, 17);
+            this.checkForUpdateCheckBox.TabIndex = 1;
+            this.checkForUpdateCheckBox.Text = "Check for updates (Only preformed when the program starts)";
+            this.checkForUpdateCheckBox.UseVisualStyleBackColor = true;
+            // 
             // SettingsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.checkForUpdateCheckBox);
             this.Controls.Add(this.SettingsGrid);
             this.Name = "SettingsControl";
             this.Size = new System.Drawing.Size(370, 90);
             ((System.ComponentModel.ISupportInitialize)(this.SettingsGrid)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -110,7 +116,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Setting;
         private System.Windows.Forms.DataGridViewButtonColumn Auto;
         private System.Windows.Forms.DataGridViewButtonColumn Manual;
-        private System.Windows.Forms.DataGridViewButtonColumn Help;
         private System.Windows.Forms.DataGridViewTextBoxColumn Location;
+        private System.Windows.Forms.CheckBox checkForUpdateCheckBox;
     }
 }
