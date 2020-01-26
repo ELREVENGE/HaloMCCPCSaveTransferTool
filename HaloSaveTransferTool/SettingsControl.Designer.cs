@@ -95,6 +95,7 @@
             this.checkForUpdateCheckBox.TabIndex = 1;
             this.checkForUpdateCheckBox.Text = "Check for updates (Only preformed when the program starts)";
             this.checkForUpdateCheckBox.UseVisualStyleBackColor = true;
+            this.checkForUpdateCheckBox.CheckedChanged += new System.EventHandler(this.checkForUpdateCheckBox_CheckedChanged);
             // 
             // SettingsControl
             // 

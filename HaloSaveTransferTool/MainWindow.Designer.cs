@@ -514,7 +514,6 @@
         private System.Windows.Forms.LinkLabel linkLabel3;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label1;
-        private SettingsControl settingsControl1;
         private System.Windows.Forms.Button ExportScreenShots;
         private System.Windows.Forms.DataGridView screenshotSaves;
         private System.Windows.Forms.DataGridViewImageColumn Thumbnail;
@@ -522,6 +521,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private SettingsControl settingsControl1;
     }
 }
 

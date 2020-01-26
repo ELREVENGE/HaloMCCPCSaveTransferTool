@@ -3,7 +3,6 @@ using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using X360.STFS;
 using X360.IO;
 using System.Drawing;
@@ -12,12 +11,6 @@ namespace HaloMCCPCSaveTransferTool
 {
     public static class HaloX360FileIO
     {
-        /*
-         * get all files (looks for files in directory and subdirectories)
-         * get potential container files (looks for CON)
-         * get Container info from potential containers (grabs location and container data
-         * Look for contents of container that match names
-         */
         public static bool ValidXUID(string XUID)
         {
             if (XUID.Length == 16)
@@ -34,12 +27,29 @@ namespace HaloMCCPCSaveTransferTool
             }
             return false;
         }
+        public static bool Export(ContainerInfo containerInfo, string destinationPath)
+        {
+            if (File.Exists(containerInfo.path) && destinationPath != null)
+            {
+                if (File.Exists(destinationPath)) { throw new Exception("File already exists"); } // should not write over any files without prompting the user 
+                using (MemoryStream x360FileStream = new MemoryStream(containerInfo.file.GetTempIO(true).ReadStream(), false))
+                {
+                    FileStream file = new FileStream(destinationPath, FileMode.Create, FileAccess.Write);
+                    x360FileStream.WriteTo(file);
+                    file.Close();
+                    x360FileStream.Close();
+                }
+                return true;
+            }
+            throw new Exception("Failed to export file to " + destinationPath);
+        }
+        #region PC Utilities
         static readonly char[] InvalidFileNameCharacters = Path.GetInvalidFileNameChars();
-         public static bool FileNameValid(string fileName)
+        public static bool FileNameValid(string fileName)
         {
             if (fileName != null)
             {
-                for(int i = 0; i < InvalidFileNameCharacters.Length; i++)
+                for (int i = 0; i < InvalidFileNameCharacters.Length; i++)
                 {
                     if (fileName.Contains(InvalidFileNameCharacters[i])) return false;
                 }
@@ -47,22 +57,7 @@ namespace HaloMCCPCSaveTransferTool
             }
             return false;
         }
-        public static bool Export(ContainerInfo containerInfo, string destinationPath)
-        {
-            if (File.Exists(containerInfo.path) && destinationPath != null)
-            {
-                if (File.Exists(destinationPath)) { throw new Exception("File already exists"); } // we should not write over any files without prompting the user 
-                using (MemoryStream x360FileStream = new MemoryStream(containerInfo.file.GetTempIO(true).ReadStream(), false))
-                {
-                    FileStream file = new FileStream(destinationPath, FileMode.Create, FileAccess.Write);
-                    x360FileStream.WriteTo(file);
-                    file.Close();
-                    x360FileStream.Close();
-                    return true;
-                }
-            }
-            throw new Exception("Failed to export file to " + destinationPath);
-        }
+        #endregion
         #region Screenshot Extraction
         public static Image Get16x9Thumbnail(Image img, int size)
         {
@@ -72,15 +67,6 @@ namespace HaloMCCPCSaveTransferTool
             }
             return null;
         }
-        //public static Image ExtractImageFromScreenShotFile(string containerPath)
-        //{
-        //    try
-        //    {
-        //        MemoryStream x360FileStream = new MemoryStream(HaloX360FileIO.GetContainer(containerPath).RootDirectory.GetSubFiles()[0].GetTempIO(true).ReadStream(), false);
-        //        return ExtractImageFromScreenShotFile(x360FileStream);
-        //    }
-        //    catch { return null; }
-        //}
         public static Image ExtractImageFromScreenShotFile(STFSPackage Container)
         {
             try
@@ -134,9 +120,9 @@ namespace HaloMCCPCSaveTransferTool
             }
         }
         #endregion
+        #region 360 Drive Utilities
         public static List<ContainerInfo> GetAllContainersInfoFromDirectory(string directory)
         {
-            
             MainWindow.Output.WriteLine("Gathering Files");
             List<string> allFiles = GetAllFiles(directory);
             MainWindow.Output.WriteLine("All files Gathered, scanning for potential containers");
@@ -145,19 +131,6 @@ namespace HaloMCCPCSaveTransferTool
             List<ContainerInfo> containersInfo = GetContainerInfoFromPotentialContainers(potentialContainerFiles);
             MainWindow.Output.WriteLine("All Container Files gathered");
             return containersInfo;
-        }
-        public static List<ContainerInfo> GetAllTitleContainersFromDirectory(string directory, string titleName)
-        {
-            return GetContainersForTitle(GetAllContainersInfoFromDirectory(directory), titleName);
-        }
-        public static List<ContainerInfo> MultiAttemptGetContainers(List<string> potentialContainers)
-        {
-            bool success = false;
-            while (!success)
-            {
-                try { return GetContainerInfoFromPotentialContainers(potentialContainers); } catch { }
-            }
-            return null;
         }
         public static HaloFiles GetHaloFilesFromDirectory(string directory)
         {
@@ -175,7 +148,6 @@ namespace HaloMCCPCSaveTransferTool
             haloFiles.reachMaps = GetMatchingContents(reachFiles, "sandbox.map");
             haloFiles.reachGametypes = GetMatchingContents(reachFiles, "variant");
             haloFiles.reachScreenShots = GetMatchingContents(reachFiles, "screen.shot");
-
             return haloFiles;
 
         }
@@ -191,10 +163,10 @@ namespace HaloMCCPCSaveTransferTool
                     try { retVal.Add(fileEntries[i].Name); } catch { }
                 }
             }
-            catch {  }
+            catch { }
             return retVal.ToArray();
         }
-        public static List<ContainerInfo> GetContainersForTitle(List<ContainerInfo> containers,string titleName)
+        public static List<ContainerInfo> GetContainersForTitle(List<ContainerInfo> containers, string titleName)
         {
             List<ContainerInfo> result = new List<ContainerInfo>();
             ContainerInfo container;
@@ -233,7 +205,7 @@ namespace HaloMCCPCSaveTransferTool
             {
                 filesFound.AddRange(Directory.GetFiles(directoryToSearch));
                 string[] directoriesToSearch = Directory.GetDirectories(directoryToSearch);
-                for(int i = 0; i < directoriesToSearch.Length; i++)
+                for (int i = 0; i < directoriesToSearch.Length; i++)
                 {
                     filesFound.AddRange(GetAllFiles(directoriesToSearch[i]));
                 }
@@ -268,7 +240,7 @@ namespace HaloMCCPCSaveTransferTool
                     if (package != null)
                     {
                         FileEntry[] files = package.RootDirectory.GetSubFiles();
-                        containerFiles.Add(new ContainerInfo() { path = currentFile, CON = package });
+                        containerFiles.Add(new ContainerInfo() { path = currentFile, CON = package, file = files[0] });
                     }
                 }
                 catch { }
@@ -280,16 +252,16 @@ namespace HaloMCCPCSaveTransferTool
             MainWindow.Output.WriteLine("Getting Container from path " + file);
             try
             {
-                    using (FileStream fileStream = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.Read))
-                    {
-                        fileStream.Seek(0, SeekOrigin.Begin);
-                        BinaryReader br = new BinaryReader(fileStream);
-                        byte[] fileInMemory = br.ReadBytes((int)fileStream.Length);
-                        if (fileInMemory.Count() != fileStream.Length)
-                            throw new EndOfStreamException();
-                        STFSPackage CON = new STFSPackage(new DJsIO(fileInMemory, true), new X360.Other.LogRecord());
-                        return CON;
-                    }
+                using (FileStream fileStream = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.Read))
+                {
+                    fileStream.Seek(0, SeekOrigin.Begin);
+                    BinaryReader br = new BinaryReader(fileStream);
+                    byte[] fileInMemory = br.ReadBytes((int)fileStream.Length);
+                    if (fileInMemory.Count() != fileStream.Length)
+                        throw new EndOfStreamException();
+                    STFSPackage CON = new STFSPackage(new DJsIO(fileInMemory, true), new X360.Other.LogRecord());
+                    return CON;
+                }
             }
             catch { return null; }
         }
@@ -300,13 +272,15 @@ namespace HaloMCCPCSaveTransferTool
                 try
                 {
                     using (var stream = File.OpenRead(file))
-                    using (var reader = new StreamReader(stream, Encoding.UTF8))
                     {
-                        char[] buffer = new char[3];
-                        int n = reader.ReadBlock(buffer, 0, 3);
-                        if (buffer[0] == 'C' && buffer[1] == 'O' && buffer[2] == 'N')
+                        using (var reader = new StreamReader(stream, Encoding.UTF8))
                         {
-                            return true;
+                            char[] buffer = new char[3];
+                            int n = reader.ReadBlock(buffer, 0, 3);
+                            if (buffer[0] == 'C' && buffer[1] == 'O' && buffer[2] == 'N')
+                            {
+                                return true;
+                            }
                         }
                     }
                 }
@@ -314,18 +288,20 @@ namespace HaloMCCPCSaveTransferTool
             }
             return false;
         }
+        #endregion
+        #region Structs
         public struct ContainerInfo
         {
             public string path;
             public STFSPackage CON;
             public FileEntry file;
         }
-        
         public struct HaloFiles
         {
             public List<ContainerInfo> reachMaps;
             public List<ContainerInfo> reachGametypes;
             public List<ContainerInfo> reachScreenShots;
         }
+        #endregion
     }
 }
