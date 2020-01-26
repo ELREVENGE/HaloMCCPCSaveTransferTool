@@ -60,7 +60,7 @@ namespace HaloMCCPCSaveTransferTool
             {
                 if (read[i] == false) { allRead = false; }
             }
-            AcceptButton.Enabled = allRead;
+            AcceptLicenseButton.Enabled = allRead;
         }
 
         private void NextButton_Click(object sender, EventArgs e)

@@ -43,7 +43,7 @@
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.NextButton = new System.Windows.Forms.Button();
-            this.AcceptButton = new System.Windows.Forms.Button();
+            this.AcceptLicenseButton = new System.Windows.Forms.Button();
             this.DontShowLicenseWindow = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -186,7 +186,7 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.NextButton);
-            this.panel3.Controls.Add(this.AcceptButton);
+            this.panel3.Controls.Add(this.AcceptLicenseButton);
             this.panel3.Controls.Add(this.DontShowLicenseWindow);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(0, 422);
@@ -205,16 +205,16 @@
             this.NextButton.UseVisualStyleBackColor = true;
             this.NextButton.Click += new System.EventHandler(this.NextButton_Click);
             // 
-            // AcceptButton
+            // AcceptLicenseButton
             // 
-            this.AcceptButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.AcceptButton.Location = new System.Drawing.Point(725, 0);
-            this.AcceptButton.Name = "AcceptButton";
-            this.AcceptButton.Size = new System.Drawing.Size(75, 28);
-            this.AcceptButton.TabIndex = 9;
-            this.AcceptButton.Text = "Accept";
-            this.AcceptButton.UseVisualStyleBackColor = true;
-            this.AcceptButton.Click += new System.EventHandler(this.AcceptButton_Click);
+            this.AcceptLicenseButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this.AcceptLicenseButton.Location = new System.Drawing.Point(725, 0);
+            this.AcceptLicenseButton.Name = "AcceptLicenseButton";
+            this.AcceptLicenseButton.Size = new System.Drawing.Size(75, 28);
+            this.AcceptLicenseButton.TabIndex = 9;
+            this.AcceptLicenseButton.Text = "Accept";
+            this.AcceptLicenseButton.UseVisualStyleBackColor = true;
+            this.AcceptLicenseButton.Click += new System.EventHandler(this.AcceptButton_Click);
             // 
             // DontShowLicenseWindow
             // 
@@ -255,7 +255,7 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button AcceptButton;
+        private System.Windows.Forms.Button AcceptLicenseButton;
         private System.Windows.Forms.CheckBox DontShowLicenseWindow;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;

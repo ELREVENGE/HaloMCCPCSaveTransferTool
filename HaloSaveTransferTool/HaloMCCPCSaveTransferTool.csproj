@@ -13,7 +13,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>F:\Tool\Publish\</PublishUrl>
+    <PublishUrl>C:\Users\Quinn\Downloads\Publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -27,7 +27,7 @@
     <ErrorReportUrl>https://github.com/ELREVENGE/HaloSaveTransferTool/wiki/Help</ErrorReportUrl>
     <PublisherName>ELREVENGE</PublisherName>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.3.0</ApplicationVersion>
+    <ApplicationVersion>1.0.4.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -86,11 +86,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExportFailedExceptionWindow.cs">
+    <Compile Include="ExportFailedWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ExportFailedExceptionWindow.Designer.cs">
-      <DependentUpon>ExportFailedExceptionWindow.cs</DependentUpon>
+    <Compile Include="ExportFailedWindow.Designer.cs">
+      <DependentUpon>ExportFailedWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="ExportToWindow.cs">
       <SubType>Form</SubType>
@@ -119,8 +119,9 @@
     <Compile Include="SettingsControl.Designer.cs">
       <DependentUpon>SettingsControl.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ExportFailedExceptionWindow.resx">
-      <DependentUpon>ExportFailedExceptionWindow.cs</DependentUpon>
+    <Compile Include="UpdateChecker.cs" />
+    <EmbeddedResource Include="ExportFailedWindow.resx">
+      <DependentUpon>ExportFailedWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExportToWindow.resx">
       <DependentUpon>ExportToWindow.cs</DependentUpon>
