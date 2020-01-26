@@ -51,7 +51,7 @@ namespace HaloMCCPCSaveTransferTool
                     NewestVersion = new Version(major, minor, build, revision);
                 }
                 //get version number via split / v and . compare numbers 
-                if (NewestVersion > System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion)
+                if (NewestVersion <= System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion)
                 {
                     MainWindow.Output.WriteLine("Application up to date");
                     return true;
