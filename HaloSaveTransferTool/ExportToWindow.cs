@@ -43,10 +43,7 @@ namespace HaloMCCPCSaveTransferTool
             {
                 string selectedOtherDirectory = Properties.Settings.Default.DefaultOtherLocation;
                 if (!Directory.Exists(selectedOtherDirectory)) selectedOtherDirectory = @"C:\";
-                CommonOpenFileDialog openFileDialog = new CommonOpenFileDialog();
-                openFileDialog.RestoreDirectory = false;
-                openFileDialog.IsFolderPicker = true;
-                openFileDialog.InitialDirectory = selectedOtherDirectory;
+                CommonOpenFileDialog openFileDialog = new CommonOpenFileDialog() { RestoreDirectory = false, IsFolderPicker = true, InitialDirectory = selectedOtherDirectory };
                 if (openFileDialog.ShowDialog() == CommonFileDialogResult.Ok && Directory.Exists(openFileDialog.FileName))
                 {
                     selectedOtherDirectory = openFileDialog.FileName;
@@ -76,10 +73,7 @@ namespace HaloMCCPCSaveTransferTool
         {
             string selectedOtherDirectory = Properties.Settings.Default.DefaultOtherLocation;
             if (!Directory.Exists(selectedOtherDirectory)) selectedOtherDirectory = @"C:\";
-            CommonOpenFileDialog openFileDialog = new CommonOpenFileDialog();
-            openFileDialog.RestoreDirectory = false;
-            openFileDialog.IsFolderPicker = true;
-            openFileDialog.InitialDirectory = selectedOtherDirectory;
+            CommonOpenFileDialog openFileDialog = new CommonOpenFileDialog() { RestoreDirectory = false, IsFolderPicker = true, InitialDirectory = selectedOtherDirectory };
             if (openFileDialog.ShowDialog() == CommonFileDialogResult.Ok && Directory.Exists(openFileDialog.FileName))
             {
                 selectedOtherDirectory = openFileDialog.FileName;

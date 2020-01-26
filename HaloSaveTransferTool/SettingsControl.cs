@@ -20,7 +20,7 @@ namespace HaloMCCPCSaveTransferTool
             SettingsGrid.Rows.Add("Built in", "Set", "Set", Properties.Settings.Default.BuiltInLocation);
             SettingsGrid.Rows.Add("Private", "Set", "Set", Properties.Settings.Default.PrivateLocation);
             SettingsGrid.Rows.Add("Other", "Set", "Set", Properties.Settings.Default.DefaultOtherLocation);
-            checkForUpdateCheckBox.Checked = Properties.Settings.Default.AutoCheckForUpdates;
+            CheckForUpdateCheckBox.Checked = Properties.Settings.Default.AutoCheckForUpdates;
         }
         static string defaultBuiltInLocation = @"C:\Program Files (x86)\Steam\steamapps\common\Halo The Master Chief Collection\";
         static string defaultPrivateLocation = @"C:\Users\" + Environment.UserName + @"\AppData\LocalLow\MCC\LocalFiles\";
@@ -30,7 +30,7 @@ namespace HaloMCCPCSaveTransferTool
             if (Directory.Exists(defaultOtherLocation))
             {
                 Properties.Settings.Default.DefaultOtherLocation = defaultOtherLocation;
-                SettingsGrid.Rows[2].Cells[4].Value = defaultOtherLocation;
+                SettingsGrid.Rows[2].Cells[3].Value = defaultOtherLocation;
                 MainWindow.Output.WriteLine("Other location set to " + defaultOtherLocation);
                 Properties.Settings.Default.Save();
             }
@@ -41,7 +41,7 @@ namespace HaloMCCPCSaveTransferTool
             if (Directory.Exists(defaultBuiltInLocation))
             {
                 Properties.Settings.Default.BuiltInLocation = defaultBuiltInLocation;
-                SettingsGrid.Rows[0].Cells[4].Value = defaultBuiltInLocation;
+                SettingsGrid.Rows[0].Cells[3].Value = defaultBuiltInLocation;
                 MainWindow.Output.WriteLine("Built in location set to " + defaultBuiltInLocation);
                 Properties.Settings.Default.Save();
             }
@@ -59,9 +59,10 @@ namespace HaloMCCPCSaveTransferTool
                     if (HaloX360FileIO.ValidXUID(new DirectoryInfo(currentDirectory).Name))
                     {
                         Properties.Settings.Default.PrivateLocation = currentDirectory;
-                        SettingsGrid.Rows[1].Cells[4].Value = currentDirectory;
+                        SettingsGrid.Rows[1].Cells[3].Value = currentDirectory;
                         MainWindow.Output.WriteLine("Private location set to " + currentDirectory);
                         Properties.Settings.Default.Save();
+                        break;
                     }
                 }
             }
@@ -82,10 +83,6 @@ namespace HaloMCCPCSaveTransferTool
                 {
                     ManualSet(e.RowIndex);
                 }
-                else if (e.ColumnIndex == 3)
-                {
-                    System.Diagnostics.Process.Start("https://github.com/ELREVENGE/HaloSaveTransferTool/wiki/Help");
-                }
             }
         }
         public void ManualSet(int row)
@@ -100,7 +97,7 @@ namespace HaloMCCPCSaveTransferTool
                 {
                     //built in
                     Properties.Settings.Default.BuiltInLocation = dialog.FileName;
-                    SettingsGrid.Rows[0].Cells[4].Value = defaultBuiltInLocation;
+                    SettingsGrid.Rows[0].Cells[3].Value = defaultBuiltInLocation;
                     MainWindow.Output.WriteLine("Built in location set to " + defaultBuiltInLocation);
                     Properties.Settings.Default.Save();
                 }
@@ -108,7 +105,7 @@ namespace HaloMCCPCSaveTransferTool
                 {
                     //private
                     Properties.Settings.Default.PrivateLocation = dialog.FileName;
-                    SettingsGrid.Rows[1].Cells[4].Value = dialog.FileName;
+                    SettingsGrid.Rows[1].Cells[3].Value = dialog.FileName;
                     MainWindow.Output.WriteLine("Private location set to " + dialog.FileName);
                     Properties.Settings.Default.Save();
                 }
@@ -116,7 +113,7 @@ namespace HaloMCCPCSaveTransferTool
                 {
                     //other 
                     Properties.Settings.Default.DefaultOtherLocation = dialog.FileName;
-                    SettingsGrid.Rows[2].Cells[4].Value = dialog.FileName;
+                    SettingsGrid.Rows[2].Cells[3].Value = dialog.FileName;
                     MainWindow.Output.WriteLine("Other location set to " + dialog.FileName);
                     Properties.Settings.Default.Save();
                 }
@@ -124,9 +121,9 @@ namespace HaloMCCPCSaveTransferTool
 
         }
 
-        private void checkForUpdateCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void CheckForUpdateCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.AutoCheckForUpdates = checkForUpdateCheckBox.Checked;
+            Properties.Settings.Default.AutoCheckForUpdates = CheckForUpdateCheckBox.Checked;
             Properties.Settings.Default.Save();
         }
     }

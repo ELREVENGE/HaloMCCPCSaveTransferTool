@@ -52,7 +52,7 @@
             this.SaveName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreatedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ModifiedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Location = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MapLocationColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ExportGametypes = new System.Windows.Forms.Button();
             this.OpenPannel = new System.Windows.Forms.Panel();
             this.OpenedLabel = new System.Windows.Forms.Label();
@@ -64,7 +64,7 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.settingsControl1 = new HaloMCCPCSaveTransferTool.SettingsControl();
+            this.settingsControl = new HaloMCCPCSaveTransferTool.SettingsControl();
             this.ExportTab.SuspendLayout();
             this.FilesPannel.SuspendLayout();
             this.gameTabControl.SuspendLayout();
@@ -299,7 +299,7 @@
             this.SaveName,
             this.CreatedDate,
             this.ModifiedDate,
-            this.Location});
+            this.MapLocationColumn});
             this.MapSaves.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MapSaves.Location = new System.Drawing.Point(3, 3);
             this.MapSaves.Name = "MapSaves";
@@ -330,11 +330,11 @@
             this.ModifiedDate.Name = "ModifiedDate";
             this.ModifiedDate.ReadOnly = true;
             // 
-            // Location
+            // MapLocationColumn
             // 
-            this.Location.HeaderText = "Location";
-            this.Location.Name = "Location";
-            this.Location.ReadOnly = true;
+            this.MapLocationColumn.HeaderText = "Location";
+            this.MapLocationColumn.Name = "MapLocationColumn";
+            this.MapLocationColumn.ReadOnly = true;
             // 
             // ExportGametypes
             // 
@@ -390,7 +390,7 @@
             // 
             // SettingsTab
             // 
-            this.SettingsTab.Controls.Add(this.settingsControl1);
+            this.SettingsTab.Controls.Add(this.settingsControl);
             this.SettingsTab.Location = new System.Drawing.Point(4, 22);
             this.SettingsTab.Name = "SettingsTab";
             this.SettingsTab.Padding = new System.Windows.Forms.Padding(3);
@@ -448,13 +448,13 @@
             this.saveFileDialog.AddExtension = false;
             this.saveFileDialog.CheckFileExists = true;
             // 
-            // settingsControl1
+            // settingsControl
             // 
-            this.settingsControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.settingsControl1.Location = new System.Drawing.Point(3, 3);
-            this.settingsControl1.Name = "settingsControl1";
-            this.settingsControl1.Size = new System.Drawing.Size(1003, 433);
-            this.settingsControl1.TabIndex = 0;
+            this.settingsControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.settingsControl.Location = new System.Drawing.Point(3, 3);
+            this.settingsControl.Name = "settingsControl";
+            this.settingsControl.Size = new System.Drawing.Size(1003, 433);
+            this.settingsControl.TabIndex = 0;
             // 
             // MainWindow
             // 
@@ -490,7 +490,6 @@
         private System.Windows.Forms.TabControl exportAndSettingsTabControl;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.TabPage SettingsTab;
-        private SettingsControl settingsControl;
         private System.Windows.Forms.TableLayoutPanel FilesPannel;
         private System.Windows.Forms.TabControl gameTabControl;
         private System.Windows.Forms.TabPage ReachTab;
@@ -505,7 +504,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SaveName;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreatedDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ModifiedDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Location;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MapLocationColumn;
         private System.Windows.Forms.Button ExportGametypes;
         private System.Windows.Forms.Panel OpenPannel;
         private System.Windows.Forms.Button Open;
@@ -521,7 +520,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private SettingsControl settingsControl1;
+        private SettingsControl settingsControl;
     }
 }
 

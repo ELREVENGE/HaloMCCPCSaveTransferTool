@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.helpLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.HelpLinkLabel = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.AutoResolve = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -36,24 +36,24 @@
             this.Exception = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SaveAs = new System.Windows.Forms.DataGridViewButtonColumn();
             this.SaveName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Created = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreatedColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Modified = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Location = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LocationColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ExportLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FailedList)).BeginInit();
             this.SuspendLayout();
             // 
-            // helpLinkLabel
+            // HelpLinkLabel
             // 
-            this.helpLinkLabel.AutoSize = true;
-            this.helpLinkLabel.Location = new System.Drawing.Point(130, 9);
-            this.helpLinkLabel.Name = "helpLinkLabel";
-            this.helpLinkLabel.Size = new System.Drawing.Size(29, 13);
-            this.helpLinkLabel.TabIndex = 1;
-            this.helpLinkLabel.TabStop = true;
-            this.helpLinkLabel.Text = "Help";
-            this.helpLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.helpLinkLabel_LinkClicked);
+            this.HelpLinkLabel.AutoSize = true;
+            this.HelpLinkLabel.Location = new System.Drawing.Point(130, 9);
+            this.HelpLinkLabel.Name = "HelpLinkLabel";
+            this.HelpLinkLabel.Size = new System.Drawing.Size(29, 13);
+            this.HelpLinkLabel.TabIndex = 1;
+            this.HelpLinkLabel.TabStop = true;
+            this.HelpLinkLabel.Text = "Help";
+            this.HelpLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.helpLinkLabel_LinkClicked);
             // 
             // label1
             // 
@@ -100,9 +100,9 @@
             this.Exception,
             this.SaveAs,
             this.SaveName,
-            this.Created,
+            this.CreatedColumn,
             this.Modified,
-            this.Location,
+            this.LocationColumn,
             this.ExportLocation});
             this.FailedList.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.FailedList.Location = new System.Drawing.Point(0, 62);
@@ -132,12 +132,12 @@
             this.SaveName.Name = "SaveName";
             this.SaveName.ReadOnly = true;
             // 
-            // Created
+            // CreatedColumn
             // 
-            this.Created.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Created.HeaderText = "Created";
-            this.Created.Name = "Created";
-            this.Created.ReadOnly = true;
+            this.CreatedColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CreatedColumn.HeaderText = "Created";
+            this.CreatedColumn.Name = "CreatedColumn";
+            this.CreatedColumn.ReadOnly = true;
             // 
             // Modified
             // 
@@ -146,12 +146,12 @@
             this.Modified.Name = "Modified";
             this.Modified.ReadOnly = true;
             // 
-            // Location
+            // LocationColumn
             // 
-            this.Location.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Location.HeaderText = "Location";
-            this.Location.Name = "Location";
-            this.Location.ReadOnly = true;
+            this.LocationColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.LocationColumn.HeaderText = "Location";
+            this.LocationColumn.Name = "LocationColumn";
+            this.LocationColumn.ReadOnly = true;
             // 
             // ExportLocation
             // 
@@ -160,7 +160,7 @@
             this.ExportLocation.Name = "ExportLocation";
             this.ExportLocation.ReadOnly = true;
             // 
-            // ExportFailedExceptionWindow
+            // ExportFailedWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -168,8 +168,8 @@
             this.Controls.Add(this.FailedList);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.helpLinkLabel);
-            this.Name = "ExportFailedExceptionWindow";
+            this.Controls.Add(this.HelpLinkLabel);
+            this.Name = "ExportFailedWindow";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Export Failed";
@@ -182,7 +182,7 @@
 
         #endregion
 
-        private System.Windows.Forms.LinkLabel helpLinkLabel;
+        private System.Windows.Forms.LinkLabel HelpLinkLabel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button AutoResolve;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -190,9 +190,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Exception;
         private System.Windows.Forms.DataGridViewButtonColumn SaveAs;
         private System.Windows.Forms.DataGridViewTextBoxColumn SaveName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Created;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreatedColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Modified;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Location;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LocationColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ExportLocation;
     }
 }
