@@ -59,12 +59,13 @@
             this.Open = new System.Windows.Forms.Button();
             this.exportAndSettingsTabControl = new System.Windows.Forms.TabControl();
             this.SettingsTab = new System.Windows.Forms.TabPage();
+            this.settingsControl = new HaloMCCPCSaveTransferTool.SettingsControl();
             this.OtherTabPage = new System.Windows.Forms.TabPage();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.settingsControl = new HaloMCCPCSaveTransferTool.SettingsControl();
+            this.HelpLink = new System.Windows.Forms.LinkLabel();
             this.ExportTab.SuspendLayout();
             this.FilesPannel.SuspendLayout();
             this.gameTabControl.SuspendLayout();
@@ -399,8 +400,17 @@
             this.SettingsTab.Text = "Settings";
             this.SettingsTab.UseVisualStyleBackColor = true;
             // 
+            // settingsControl
+            // 
+            this.settingsControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.settingsControl.Location = new System.Drawing.Point(3, 3);
+            this.settingsControl.Name = "settingsControl";
+            this.settingsControl.Size = new System.Drawing.Size(1003, 433);
+            this.settingsControl.TabIndex = 0;
+            // 
             // OtherTabPage
             // 
+            this.OtherTabPage.Controls.Add(this.HelpLink);
             this.OtherTabPage.Controls.Add(this.linkLabel3);
             this.OtherTabPage.Controls.Add(this.linkLabel1);
             this.OtherTabPage.Controls.Add(this.label1);
@@ -448,13 +458,16 @@
             this.saveFileDialog.AddExtension = false;
             this.saveFileDialog.CheckFileExists = true;
             // 
-            // settingsControl
+            // HelpLink
             // 
-            this.settingsControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.settingsControl.Location = new System.Drawing.Point(3, 3);
-            this.settingsControl.Name = "settingsControl";
-            this.settingsControl.Size = new System.Drawing.Size(1003, 433);
-            this.settingsControl.TabIndex = 0;
+            this.HelpLink.AutoSize = true;
+            this.HelpLink.Location = new System.Drawing.Point(84, 16);
+            this.HelpLink.Name = "HelpLink";
+            this.HelpLink.Size = new System.Drawing.Size(87, 13);
+            this.HelpLink.TabIndex = 5;
+            this.HelpLink.TabStop = true;
+            this.HelpLink.Text = "Wiki/Help pages";
+            this.HelpLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.HelpLink_LinkClicked);
             // 
             // MainWindow
             // 
@@ -521,6 +534,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private SettingsControl settingsControl;
+        private System.Windows.Forms.LinkLabel HelpLink;
     }
 }
 
