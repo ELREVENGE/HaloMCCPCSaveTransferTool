@@ -57,42 +57,58 @@ namespace HaloMCCPCSaveTransferTool
             loadedFiles = files;
             gametypeInfo.Clear();
             mapInfo.Clear();
-            MapSaves.Rows.Clear();
-            GameTypeSaves.Rows.Clear();
-            Output.WriteLine(files.reachMaps.Count + " Maps, " + files.reachGametypes.Count + " Gametypes, and " + files.reachScreenShots.Count + " Screenshots found");
+            HaloReachMapSaves.Rows.Clear();
+            HaloReachGameTypeSaves.Rows.Clear();
+            Output.WriteLine(files.reachMaps.Count + " Maps, " + files.reachGametypes.Count + " Gametypes, and " + files.reachScreenShots.Count + " Screenshots for Halo: Reach");
+            Output.WriteLine(files.h3Maps.Count + " Maps, " + files.h3Gametypes.Count + " Gametypes, and " + files.reachScreenShots.Count + " Screenshots for Halo 3");
+            //reach
             foreach (HaloX360FileIO.ContainerInfo map in files.reachMaps)
             {
                 mapInfo.Add(map.path, map);
-                MapSaves.Rows.Add(map.CON.Header.Title_Display, map.file.Created, map.file.Accessed, map.path);
+                HaloReachMapSaves.Rows.Add(map.CON.Header.Title_Display, map.file.Created, map.file.Accessed, map.path);
 
             }
-            Output.WriteLine("Map names listed");
             foreach (HaloX360FileIO.ContainerInfo gt in files.reachGametypes)
             {
                 gametypeInfo.Add(gt.path, gt);
-                GameTypeSaves.Rows.Add(gt.CON.Header.Title_Display, gt.file.Created, gt.file.Accessed, gt.path);
+                HaloReachGameTypeSaves.Rows.Add(gt.CON.Header.Title_Display, gt.file.Created, gt.file.Accessed, gt.path);
             }
-            HaloX360FileIO.ContainerInfo screenshot;
+            HaloX360FileIO.ContainerInfo haloReachScreenshots;
             for (int i =0; i < files.reachScreenShots.Count; i++)
             {
-                screenshot = files.reachScreenShots[i];
-                screenshotInfo.Add(screenshot.path, screenshot);
-                Output.WriteLine("Loading thumbnail and info for screenshot #"+ (i + 1) +"/"+files.reachScreenShots.Count+": " + screenshot.CON.Header.Title_Display);
-                screenshotSaves.Rows.Add(HaloX360FileIO.Get16x9Thumbnail(HaloX360FileIO.ExtractImageFromScreenShotFile(screenshot.CON), 12), screenshot.CON.Header.Title_Display, screenshot.file.Created, screenshot.file.Accessed, screenshot.path);
-                screenshotSaves.Rows[screenshotSaves.RowCount - 1].Height = 9 * 12;
+                haloReachScreenshots = files.reachScreenShots[i];
+                screenshotInfo.Add(haloReachScreenshots.path, haloReachScreenshots);
+                Output.WriteLine("Loading thumbnail and info for screenshot #"+ (i + 1) +"/"+files.reachScreenShots.Count+": " + haloReachScreenshots.CON.Header.Title_Display);
+                HaloReachScreenshotSaves.Rows.Add(HaloX360FileIO.Get16x9Thumbnail(HaloX360FileIO.ExtractImageFromScreenShotFile(haloReachScreenshots.CON), 12), haloReachScreenshots.CON.Header.Title_Display, haloReachScreenshots.file.Created, haloReachScreenshots.file.Accessed, haloReachScreenshots.path);
+                HaloReachScreenshotSaves.Rows[HaloReachScreenshotSaves.RowCount - 1].Height = 9 * 12;
             }
-            //foreach(HaloX360FileIO.ContainerInfo screenshot in files.reachScreenShots)
-            //{
-            //    Output.WriteLine("Loading thumbnail and info for screenshot: " + screenshot.CON.Header.Title_Display);
-            //    screenshotSaves.Rows.Add(HaloX360FileIO.Get16x9Thumbnail(HaloX360FileIO.ExtractImageFromScreenShotFile(screenshot.path), 12), screenshot.CON.Header.Title_Display, screenshot.file.Created, screenshot.file.Accessed, screenshot.path);
-            //    screenshotSaves.Rows[screenshotSaves.RowCount - 1].Height = 9 * 12;
-            //}
+            //Halo 3
+            foreach (HaloX360FileIO.ContainerInfo map in files.h3Maps)
+            {
+                mapInfo.Add(map.path, map);
+                Halo3MapSaves.Rows.Add(map.CON.Header.Title_Display, map.file.Created, map.file.Accessed, map.path);
+
+            }
+            foreach (HaloX360FileIO.ContainerInfo gt in files.h3Gametypes)
+            {
+                gametypeInfo.Add(gt.path, gt);
+                Halo3GameTypeSaves.Rows.Add(gt.CON.Header.Title_Display, gt.file.Created, gt.file.Accessed, gt.path);
+            }
+            HaloX360FileIO.ContainerInfo Halo3Screenshots;
+            for (int i = 0; i < files.h3ScreenShots.Count; i++)
+            {
+                Halo3Screenshots = files.h3ScreenShots[i];
+                screenshotInfo.Add(Halo3Screenshots.path, Halo3Screenshots);
+                Output.WriteLine("Loading thumbnail and info for screenshot #" + (i + 1) + "/" + files.h3ScreenShots.Count + ": " + Halo3Screenshots.CON.Header.Title_Display);
+                Halo3ScreenshotSaves.Rows.Add(HaloX360FileIO.Get16x9Thumbnail(HaloX360FileIO.ExtractImageFromScreenShotFile(Halo3Screenshots.CON), 12), Halo3Screenshots.CON.Header.Title_Display, Halo3Screenshots.file.Created, Halo3Screenshots.file.Accessed, Halo3Screenshots.path);
+                Halo3ScreenshotSaves.Rows[Halo3ScreenshotSaves.RowCount - 1].Height = 9 * 12;
+            }
             Output.WriteLine("All files listed!");
         }
 
         private void ExportMaps_Click(object sender, EventArgs e)
         {
-            ExportSelected(MapSaves.SelectedRows, mapInfo);
+            ExportSelected(HaloReachMapSaves.SelectedRows, mapInfo);
         }
         public class ExportFailedException : Exception
         {
@@ -160,7 +176,7 @@ namespace HaloMCCPCSaveTransferTool
         }
         private void ExportGametypes_Click(object sender, EventArgs e)
         {
-            ExportSelected(GameTypeSaves.SelectedRows, gametypeInfo);
+            ExportSelected(HaloReachGameTypeSaves.SelectedRows, gametypeInfo);
         }
         void UpdateOpened(string opened)
         {
@@ -177,7 +193,7 @@ namespace HaloMCCPCSaveTransferTool
                 openedDirectory = opened;
                 selectDirectoryDialog.InitialDirectory = ExportToWindow.GetOtherDirectory();
                 OpenedLabel.Text = "360 files in: ";
-                UpdateLists(new HaloX360FileIO.HaloFiles() { reachGametypes = new List<HaloX360FileIO.ContainerInfo>(), reachMaps = new List<HaloX360FileIO.ContainerInfo>(), reachScreenShots = new List<HaloX360FileIO.ContainerInfo>() });
+                UpdateLists(new HaloX360FileIO.HaloFiles(true));
             }
 
         }
@@ -207,19 +223,19 @@ namespace HaloMCCPCSaveTransferTool
 
         private void ExportScreenShots_Click(object sender, EventArgs e)
         {
-            if (screenshotSaves.SelectedRows != null && screenshotSaves.SelectedRows.Count > 0)
+            if (HaloReachScreenshotSaves.SelectedRows != null && HaloReachScreenshotSaves.SelectedRows.Count > 0)
             {
-                string exportDirectory = ExportToWindow.GetResult(screenshotInfo[screenshotSaves.SelectedRows[0].Cells[4].Value.ToString()]);
+                string exportDirectory = ExportToWindow.GetResult(screenshotInfo[HaloReachScreenshotSaves.SelectedRows[0].Cells[4].Value.ToString()]);
                 if (exportDirectory != null && Directory.Exists(exportDirectory))
                 {
                     string exportExtention = ExportToWindow.extention;
                     Dictionary<HaloX360FileIO.ContainerInfo, ExportFailedException> failedFiles = new Dictionary<HaloX360FileIO.ContainerInfo, ExportFailedException>();
                     Output.WriteLine("Exporting to " + exportDirectory + " with an extention of " + exportExtention);
                     string name, location, exportLocation;
-                    for (int i = 0; i < screenshotSaves.SelectedRows.Count; i++)
+                    for (int i = 0; i < HaloReachScreenshotSaves.SelectedRows.Count; i++)
                     {
-                        name = screenshotSaves.SelectedRows[i].Cells[1].Value.ToString();
-                        location = screenshotSaves.SelectedRows[i].Cells[4].Value.ToString();
+                        name = HaloReachScreenshotSaves.SelectedRows[i].Cells[1].Value.ToString();
+                        location = HaloReachScreenshotSaves.SelectedRows[i].Cells[4].Value.ToString();
                         exportLocation = exportDirectory + @"\" + name + exportExtention;
                         Output.WriteLine("Exporting " + name + " to " + exportLocation);
                         HaloX360FileIO.ContainerInfo info = screenshotInfo[location];
