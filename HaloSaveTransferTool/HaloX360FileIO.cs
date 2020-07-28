@@ -158,13 +158,6 @@ namespace HaloMCCPCSaveTransferTool
             haloFiles.h3Gametypes = GetMatchingContents(h3Files, "variant", false);
             haloFiles.h3ScreenShots = GetMatchingContents(h3Files, "screen.shot");
 
-            /*
-            #region ODST screenshots
-            List<ContainerInfo> ODSTFiles = GetContainersForTitle(package, "Halo 3: ODST");
-            List<ContainerInfo> sceenshots = GetMatchingContents(ODSTFiles, "screen.shot");
-            #endregion
-            */
-
             return haloFiles;
 
         }
