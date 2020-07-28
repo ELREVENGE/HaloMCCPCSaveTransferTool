@@ -27,7 +27,7 @@ namespace HaloMCCPCSaveTransferTool
             try { ThisVersion = System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion; }
             catch
             {
-                MainWindow.Output.WriteLine("Failed to get current version number from: System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion update check aborted (If the application was not installed with the setup.exe this message is normal.");
+                MainWindow.Output.WriteLine("Failed to get current version number from: System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion update check aborted (If the application was not installed with the setup.exe this message is normal.)");
                 return true;
             }
             string redirectLocation;

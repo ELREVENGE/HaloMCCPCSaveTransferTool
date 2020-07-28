@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
@@ -144,10 +144,20 @@ namespace HaloMCCPCSaveTransferTool
         public static HaloFiles GetHaloFilesFromContainers(List<ContainerInfo> package)
         {
             HaloFiles haloFiles = new HaloFiles();
+
+            // Halo: Reach
+            MainWindow.Output.WriteLine("Searching for Halo: Reach files");
             List<ContainerInfo> reachFiles = GetContainersForTitle(package, "Halo: Reach");
             haloFiles.reachMaps = GetMatchingContents(reachFiles, "sandbox.map");
             haloFiles.reachGametypes = GetMatchingContents(reachFiles, "variant");
             haloFiles.reachScreenShots = GetMatchingContents(reachFiles, "screen.shot");
+            // Halo 3
+            MainWindow.Output.WriteLine("Searching for Halo 3 files");
+            List<ContainerInfo> h3Files = GetContainersForTitle(package, "Halo 3");
+            haloFiles.h3Maps = GetMatchingContents(h3Files, "sandbox.map");
+            haloFiles.h3Gametypes = GetMatchingContents(h3Files, "variant", false);
+            haloFiles.h3ScreenShots = GetMatchingContents(h3Files, "screen.shot");
+
             return haloFiles;
 
         }
@@ -180,7 +190,7 @@ namespace HaloMCCPCSaveTransferTool
             }
             return result;
         }
-        public static List<ContainerInfo> GetMatchingContents(List<ContainerInfo> containers, string contents)
+        public static List<ContainerInfo> GetMatchingContents(List<ContainerInfo> containers, string contents, bool exact = true)
         {
             List<ContainerInfo> MatchingFiles = new List<ContainerInfo>();
             string[] containerContents;
@@ -190,10 +200,18 @@ namespace HaloMCCPCSaveTransferTool
                 container = containers[i];
                 try { containerContents = GetContentsNames(container.CON); }
                 catch { containerContents = null; }
-                if (containerContents != null && containerContents.Length == 1 && containerContents[0] == contents)
+                if (containerContents != null && containerContents.Length == 1)
                 {
-                    container.file = container.CON.GetFiles(container.CON.RootDirectory.FolderPointer)[0];
-                    MatchingFiles.Add(container);
+                    if (exact && containerContents[0] == contents)
+                    {
+                        container.file = container.CON.GetFiles(container.CON.RootDirectory.FolderPointer)[0];
+                        MatchingFiles.Add(container);
+                    }
+                    else if (!exact && containerContents[0].Contains(contents))
+                    {
+                        container.file = container.CON.GetFiles(container.CON.RootDirectory.FolderPointer)[0];
+                        MatchingFiles.Add(container);
+                    }
                 }
             }
             return MatchingFiles;
@@ -298,9 +316,33 @@ namespace HaloMCCPCSaveTransferTool
         }
         public struct HaloFiles
         {
+            //Halo: Reach
             public List<ContainerInfo> reachMaps;
             public List<ContainerInfo> reachGametypes;
             public List<ContainerInfo> reachScreenShots;
+            //Halo 3
+            public List<ContainerInfo> h3Maps;
+            public List<ContainerInfo> h3Gametypes;
+            public List<ContainerInfo> h3ScreenShots;
+
+            public HaloFiles(bool initLists) : this()
+            {
+                if (initLists)
+                {
+                    Clear();
+                }
+            }
+
+            public void Clear()
+            {
+                reachGametypes = new List<ContainerInfo>();
+                reachMaps = new List<ContainerInfo>();
+                reachScreenShots = new List<ContainerInfo>();
+
+                h3Maps = new List<ContainerInfo>();
+                h3Gametypes = new List<ContainerInfo>();
+                h3ScreenShots = new List<ContainerInfo>();
+            }
         }
         #endregion
     }

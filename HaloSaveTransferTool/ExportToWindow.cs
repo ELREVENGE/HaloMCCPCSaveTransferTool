@@ -140,10 +140,10 @@ namespace HaloMCCPCSaveTransferTool
         }
         internal static string GetExtention(HaloX360FileIO.ContainerInfo containerInfo)
         {
-            if (containerInfo.CON.Header.Title_Package == "Halo: Reach")
+            if (containerInfo.CON.Header.Title_Package == "Halo: Reach" || containerInfo.CON.Header.Title_Package == "Halo 3")
             {
                 if (containerInfo.file.Name == "sandbox.map") return ".mvar";
-                else if (containerInfo.file.Name == "variant") return ".bin";
+                else if (containerInfo.file.Name == "variant" || containerInfo.CON.Header.Title_Package == "Halo 3" && containerInfo.file.Name.Contains("variant")) return ".bin";
                 else if (containerInfo.file.Name == "screen.shot") return ".jpg";
                 else
                 {
@@ -160,21 +160,14 @@ namespace HaloMCCPCSaveTransferTool
                 if (containerInfo.CON.Header.Title_Package == "Halo: Reach")
                 {
                     string returnLocation = privateLocaiton + @"\HaloReach";
-                    if (!Directory.Exists(returnLocation)) throw new Exception("Halo Reach folder not found");
-                    if (containerInfo.file.Name == "sandbox.map")
-                    {
-                        returnLocation += @"\Map";
-                        extention = ".mvar";
-                        if (!Directory.Exists(returnLocation)) throw new Exception("Map Variants folder not found");
-                        return returnLocation;
-                    }
-                    else if (containerInfo.file.Name == "variant")
-                    {
-                        returnLocation += @"\GameType";
-                        extention = ".bin";
-                        if (!Directory.Exists(returnLocation)) throw new Exception("Game Variants folder not found");
-                        return returnLocation;
-                    }
+                    if (!Directory.Exists(returnLocation)) throw new Exception("Private Halo Reach folder not found");
+                    return GetMapOrGametypeDirectory(containerInfo, returnLocation, false);
+                }
+                if (containerInfo.CON.Header.Title_Package == "Halo 3")
+                {
+                    string returnLocation = privateLocaiton + @"\Halo3";
+                    if (!Directory.Exists(returnLocation)) throw new Exception("Private Halo 3 folder not found");
+                    return GetMapOrGametypeDirectory(containerInfo, returnLocation, false);
                 }
             }
 
@@ -188,24 +181,35 @@ namespace HaloMCCPCSaveTransferTool
                 if (containerInfo.CON.Header.Title_Package == "Halo: Reach")
                 {
                     string returnLocation = builtInLocaiton + @"\haloreach";
-                    if (!Directory.Exists(returnLocation)) throw new Exception("Halo Reach folder not found");
-                    if (containerInfo.file.Name == "sandbox.map")
-                    {
-                        returnLocation += @"\map_variants";
-                        extention = ".mvar";
-                        if (!Directory.Exists(returnLocation)) throw new Exception("Map Variants folder not found");
-                        return returnLocation;
-                    }
-                    else if (containerInfo.file.Name == "variant")
-                    {
-                        returnLocation += @"\game_variants";
-                        extention = ".bin";
-                        if (!Directory.Exists(returnLocation)) throw new Exception("Game Variants folder not found");
-                        return returnLocation;
-                    }
+                    if (!Directory.Exists(returnLocation)) throw new Exception("Built in Halo Reach folder not found");
+                    return GetMapOrGametypeDirectory(containerInfo, returnLocation, true);
+                }
+                if (containerInfo.CON.Header.Title_Package == "Halo 3")
+                {
+                    string returnLocation = builtInLocaiton + @"\halo3";
+                    if (!Directory.Exists(returnLocation)) throw new Exception("Built in Halo 3 folder not found");
+                    return GetMapOrGametypeDirectory(containerInfo, returnLocation, true);
                 }
             }
             throw new Exception("Failed to get built in folder location");
+        }
+        static string GetMapOrGametypeDirectory(HaloX360FileIO.ContainerInfo containerInfo, string returnLocation, bool isBuiltIn)
+        {
+            if (containerInfo.file.Name == "sandbox.map")
+            {
+                returnLocation += isBuiltIn ? @"\map_variants" : @"\Map";
+                extention = ".mvar";
+                if (!Directory.Exists(returnLocation)) throw new Exception("Map Variants folder not found");
+                return returnLocation;
+            }
+            else if (containerInfo.file.Name == "variant" || containerInfo.CON.Header.Title_Package == "Halo 3" && containerInfo.file.Name.Contains("variant"))
+            {
+                returnLocation += isBuiltIn ? @"\game_variants" : @"\GameType";
+                extention = ".bin";
+                if (!Directory.Exists(returnLocation)) throw new Exception("Game Variants folder not found");
+                return returnLocation;
+            }
+            throw new Exception("Failed to get map or gametype folder location");
         }
     }
 }
