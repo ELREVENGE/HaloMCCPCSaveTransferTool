@@ -157,6 +157,10 @@ namespace HaloMCCPCSaveTransferTool
             haloFiles.h3Maps = GetMatchingContents(h3Files, "sandbox.map");
             haloFiles.h3Gametypes = GetMatchingContents(h3Files, "variant", false);
             haloFiles.h3ScreenShots = GetMatchingContents(h3Files, "screen.shot");
+            // Halo 3 ODST
+            MainWindow.Output.WriteLine("Searching for Halo 3 ODST files");
+            List<ContainerInfo> h3ODSTFiles = GetContainersForTitle(package, "Halo 3: ODST");
+            haloFiles.h3ODSTScreenShots = GetMatchingContents(h3ODSTFiles, "screen.shot");
 
             return haloFiles;
 
@@ -324,6 +328,8 @@ namespace HaloMCCPCSaveTransferTool
             public List<ContainerInfo> h3Maps;
             public List<ContainerInfo> h3Gametypes;
             public List<ContainerInfo> h3ScreenShots;
+            //Halo 3 ODST
+            public List<ContainerInfo> h3ODSTScreenShots;
 
             public HaloFiles(bool initLists) : this()
             {
@@ -342,6 +348,8 @@ namespace HaloMCCPCSaveTransferTool
                 h3Maps = new List<ContainerInfo>();
                 h3Gametypes = new List<ContainerInfo>();
                 h3ScreenShots = new List<ContainerInfo>();
+
+                h3ODSTScreenShots = new List<ContainerInfo>();
             }
         }
         #endregion
