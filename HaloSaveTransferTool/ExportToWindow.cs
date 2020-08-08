@@ -150,6 +150,7 @@ namespace HaloMCCPCSaveTransferTool
                     throw new Exception("Could not get extention for " + containerInfo.file.Name);
                 }
             }
+            else if (containerInfo.CON.Header.Title_Package == "Halo 3: ODST" && containerInfo.file.Name == "screen.shot") return ".jpg";
             throw new Exception("Could not get file name from container");
         }
         internal static string GetPrivateDirectory(HaloX360FileIO.ContainerInfo containerInfo)

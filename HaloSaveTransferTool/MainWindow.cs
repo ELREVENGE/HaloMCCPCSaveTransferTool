@@ -73,9 +73,9 @@ namespace HaloMCCPCSaveTransferTool
 
             public GamePannel(DataGridView mapList, DataGridView gametypeList, DataGridView screenshotList)
             {
-                this.mapList = mapList ?? throw new ArgumentNullException(nameof(mapList));
-                this.gametypeList = gametypeList ?? throw new ArgumentNullException(nameof(gametypeList));
-                this.screenshotList = screenshotList ?? throw new ArgumentNullException(nameof(screenshotList));
+                this.mapList = mapList;// ?? throw new ArgumentNullException(nameof(mapList));
+                this.gametypeList = gametypeList;// ?? throw new ArgumentNullException(nameof(gametypeList));
+                this.screenshotList = screenshotList;// ?? throw new ArgumentNullException(nameof(screenshotList));
             }
 
             public enum FileType
@@ -186,11 +186,13 @@ namespace HaloMCCPCSaveTransferTool
 
         GamePannel reachPannel;
         GamePannel h3Pannel;
+        GamePannel h3ODSTPannel;
         public MainWindow()
         {
             InitializeComponent();
             reachPannel = new GamePannel(HaloReachMapSaves, HaloReachGameTypeSaves, HaloReachScreenshotSaves);
             h3Pannel = new GamePannel(Halo3MapSaves, Halo3GameTypeSaves, Halo3ScreenshotSaves);
+            h3ODSTPannel = new GamePannel(null, null, ODSTScreenshots);
             Output.SetOutput(OutputTextBox);
             if (Properties.Settings.Default.AutoCheckForUpdates) UpdateChecker.UpToDatePrompt();
             try { Text += " v" + System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString(4); } catch { }
@@ -208,9 +210,11 @@ namespace HaloMCCPCSaveTransferTool
             loadedFiles = files;
             reachPannel.Clear();
             h3Pannel.Clear();
+            h3ODSTPannel.Clear();
             int screenshotCounter = 0;
             Output.WriteLine(files.reachMaps.Count + " Maps, " + files.reachGametypes.Count + " Gametypes, and " + files.reachScreenShots.Count + " Screenshots for Halo: Reach");
             Output.WriteLine(files.h3Maps.Count + " Maps, " + files.h3Gametypes.Count + " Gametypes, and " + files.reachScreenShots.Count + " Screenshots for Halo 3");
+            Output.WriteLine(files.h3ODSTScreenShots.Count + " Screenshots for Halo 3: ODST");
             //reach
             foreach (HaloX360FileIO.ContainerInfo map in files.reachMaps)
             {
@@ -241,6 +245,14 @@ namespace HaloMCCPCSaveTransferTool
                 Output.WriteLine("Loading screenshot #" + (screenshotCounter + 1) + "/" + files.h3ScreenShots.Count + ": " + screenshot.CON.Header.Title_Display);
                 screenshotCounter++;
                 h3Pannel.Add(screenshot, GamePannel.FileType.Screenshot);
+            }
+            //Halo 3 ODST
+            screenshotCounter = 0;
+            foreach (HaloX360FileIO.ContainerInfo screenshot in files.h3ODSTScreenShots)
+            {
+                Output.WriteLine("Loading screenshot #" + (screenshotCounter + 1) + "/" + files.h3ODSTScreenShots.Count + ": " + screenshot.CON.Header.Title_Display);
+                screenshotCounter++;
+                h3ODSTPannel.Add(screenshot, GamePannel.FileType.Screenshot);
             }
             Output.WriteLine("All files listed!");
         }
@@ -320,6 +332,11 @@ namespace HaloMCCPCSaveTransferTool
         private void H3ExportScreenshots_Click(object sender, EventArgs e)
         {
             h3Pannel.ExportSelectedFromPannel(GamePannel.FileType.Screenshot);
+        }
+
+        private void Halo3ODSTExportScreenshots_Click(object sender, EventArgs e)
+        {
+            h3ODSTPannel.ExportSelectedFromPannel(GamePannel.FileType.Screenshot);
         }
     }
 }
