@@ -73,17 +73,6 @@
             this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.H3ExportGameTypes = new System.Windows.Forms.Button();
-            this.OpenPannel = new System.Windows.Forms.Panel();
-            this.OpenedLabel = new System.Windows.Forms.Label();
-            this.Open = new System.Windows.Forms.Button();
-            this.exportAndSettingsTabControl = new System.Windows.Forms.TabControl();
-            this.SettingsTab = new System.Windows.Forms.TabPage();
-            this.OtherTabPage = new System.Windows.Forms.TabPage();
-            this.HelpLink = new System.Windows.Forms.LinkLabel();
-            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.ODST = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.Halo3ODSTExportScreenshots = new System.Windows.Forms.Button();
@@ -92,6 +81,26 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OpenPannel = new System.Windows.Forms.Panel();
+            this.OpenedLabel = new System.Windows.Forms.Label();
+            this.Open = new System.Windows.Forms.Button();
+            this.exportAndSettingsTabControl = new System.Windows.Forms.TabControl();
+            this.ManageTab = new System.Windows.Forms.TabPage();
+            this.MapAndGameTypeTabControl = new System.Windows.Forms.TabControl();
+            this.Maps = new System.Windows.Forms.TabPage();
+            this.LocationTabControl = new System.Windows.Forms.TabControl();
+            this.BuiltIn = new System.Windows.Forms.TabPage();
+            this.Private = new System.Windows.Forms.TabPage();
+            this.GameTypes = new System.Windows.Forms.TabPage();
+            this.SettingsTab = new System.Windows.Forms.TabPage();
+            this.OtherTabPage = new System.Windows.Forms.TabPage();
+            this.HelpLink = new System.Windows.Forms.LinkLabel();
+            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.builtInMapsTable = new System.Windows.Forms.TableLayoutPanel();
+            this.builtInMapsReachManageGameFiles = new HaloMCCPCSaveTransferTool.ManageGameFiles();
             this.settingsControl = new HaloMCCPCSaveTransferTool.SettingsControl();
             this.ExportTab.SuspendLayout();
             this.FilesPannel.SuspendLayout();
@@ -106,13 +115,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.Halo3ScreenshotSaves)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Halo3GameTypeSaves)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Halo3MapSaves)).BeginInit();
-            this.OpenPannel.SuspendLayout();
-            this.exportAndSettingsTabControl.SuspendLayout();
-            this.SettingsTab.SuspendLayout();
-            this.OtherTabPage.SuspendLayout();
             this.ODST.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ODSTScreenshots)).BeginInit();
+            this.OpenPannel.SuspendLayout();
+            this.exportAndSettingsTabControl.SuspendLayout();
+            this.ManageTab.SuspendLayout();
+            this.MapAndGameTypeTabControl.SuspendLayout();
+            this.Maps.SuspendLayout();
+            this.LocationTabControl.SuspendLayout();
+            this.BuiltIn.SuspendLayout();
+            this.SettingsTab.SuspendLayout();
+            this.OtherTabPage.SuspendLayout();
+            this.builtInMapsTable.SuspendLayout();
             this.SuspendLayout();
             // 
             // OutputTextBox
@@ -592,119 +607,6 @@
             this.H3ExportGameTypes.UseVisualStyleBackColor = true;
             this.H3ExportGameTypes.Click += new System.EventHandler(this.H3ExportGameTypes_Click);
             // 
-            // OpenPannel
-            // 
-            this.OpenPannel.Controls.Add(this.OpenedLabel);
-            this.OpenPannel.Controls.Add(this.Open);
-            this.OpenPannel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.OpenPannel.Location = new System.Drawing.Point(3, 3);
-            this.OpenPannel.Name = "OpenPannel";
-            this.OpenPannel.Size = new System.Drawing.Size(997, 34);
-            this.OpenPannel.TabIndex = 15;
-            // 
-            // OpenedLabel
-            // 
-            this.OpenedLabel.AutoSize = true;
-            this.OpenedLabel.Location = new System.Drawing.Point(109, 11);
-            this.OpenedLabel.Name = "OpenedLabel";
-            this.OpenedLabel.Size = new System.Drawing.Size(63, 13);
-            this.OpenedLabel.TabIndex = 14;
-            this.OpenedLabel.Text = "360 files in: ";
-            // 
-            // Open
-            // 
-            this.Open.Location = new System.Drawing.Point(3, 3);
-            this.Open.Name = "Open";
-            this.Open.Size = new System.Drawing.Size(100, 28);
-            this.Open.TabIndex = 12;
-            this.Open.Text = "Open";
-            this.Open.UseVisualStyleBackColor = true;
-            this.Open.Click += new System.EventHandler(this.Open_Click);
-            // 
-            // exportAndSettingsTabControl
-            // 
-            this.exportAndSettingsTabControl.Controls.Add(this.ExportTab);
-            this.exportAndSettingsTabControl.Controls.Add(this.SettingsTab);
-            this.exportAndSettingsTabControl.Controls.Add(this.OtherTabPage);
-            this.exportAndSettingsTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.exportAndSettingsTabControl.Location = new System.Drawing.Point(0, 0);
-            this.exportAndSettingsTabControl.Name = "exportAndSettingsTabControl";
-            this.exportAndSettingsTabControl.SelectedIndex = 0;
-            this.exportAndSettingsTabControl.Size = new System.Drawing.Size(1017, 465);
-            this.exportAndSettingsTabControl.TabIndex = 8;
-            // 
-            // SettingsTab
-            // 
-            this.SettingsTab.Controls.Add(this.settingsControl);
-            this.SettingsTab.Location = new System.Drawing.Point(4, 22);
-            this.SettingsTab.Name = "SettingsTab";
-            this.SettingsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.SettingsTab.Size = new System.Drawing.Size(1009, 439);
-            this.SettingsTab.TabIndex = 1;
-            this.SettingsTab.Text = "Settings";
-            this.SettingsTab.UseVisualStyleBackColor = true;
-            // 
-            // OtherTabPage
-            // 
-            this.OtherTabPage.Controls.Add(this.HelpLink);
-            this.OtherTabPage.Controls.Add(this.linkLabel3);
-            this.OtherTabPage.Controls.Add(this.linkLabel1);
-            this.OtherTabPage.Controls.Add(this.label1);
-            this.OtherTabPage.Location = new System.Drawing.Point(4, 22);
-            this.OtherTabPage.Name = "OtherTabPage";
-            this.OtherTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.OtherTabPage.Size = new System.Drawing.Size(1009, 439);
-            this.OtherTabPage.TabIndex = 2;
-            this.OtherTabPage.Text = "Other";
-            this.OtherTabPage.UseVisualStyleBackColor = true;
-            // 
-            // HelpLink
-            // 
-            this.HelpLink.AutoSize = true;
-            this.HelpLink.Location = new System.Drawing.Point(84, 16);
-            this.HelpLink.Name = "HelpLink";
-            this.HelpLink.Size = new System.Drawing.Size(87, 13);
-            this.HelpLink.TabIndex = 5;
-            this.HelpLink.TabStop = true;
-            this.HelpLink.Text = "Wiki/Help pages";
-            this.HelpLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.HelpLink_LinkClicked);
-            // 
-            // linkLabel3
-            // 
-            this.linkLabel3.AutoSize = true;
-            this.linkLabel3.Location = new System.Drawing.Point(3, 16);
-            this.linkLabel3.Name = "linkLabel3";
-            this.linkLabel3.Size = new System.Drawing.Size(75, 13);
-            this.linkLabel3.TabIndex = 4;
-            this.linkLabel3.TabStop = true;
-            this.linkLabel3.Text = "View Licenses";
-            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
-            // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(267, 3);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(277, 13);
-            this.linkLabel1.TabIndex = 1;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "https://github.com/ELREVENGE/HaloSaveTransferTool";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(266, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "This program is open source the code can be found at:";
-            // 
-            // saveFileDialog
-            // 
-            this.saveFileDialog.AddExtension = false;
-            this.saveFileDialog.CheckFileExists = true;
-            // 
             // ODST
             // 
             this.ODST.Controls.Add(this.tableLayoutPanel2);
@@ -796,6 +698,218 @@
             this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
             this.dataGridViewTextBoxColumn20.ReadOnly = true;
             // 
+            // OpenPannel
+            // 
+            this.OpenPannel.Controls.Add(this.OpenedLabel);
+            this.OpenPannel.Controls.Add(this.Open);
+            this.OpenPannel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OpenPannel.Location = new System.Drawing.Point(3, 3);
+            this.OpenPannel.Name = "OpenPannel";
+            this.OpenPannel.Size = new System.Drawing.Size(997, 34);
+            this.OpenPannel.TabIndex = 15;
+            // 
+            // OpenedLabel
+            // 
+            this.OpenedLabel.AutoSize = true;
+            this.OpenedLabel.Location = new System.Drawing.Point(109, 11);
+            this.OpenedLabel.Name = "OpenedLabel";
+            this.OpenedLabel.Size = new System.Drawing.Size(63, 13);
+            this.OpenedLabel.TabIndex = 14;
+            this.OpenedLabel.Text = "360 files in: ";
+            // 
+            // Open
+            // 
+            this.Open.Location = new System.Drawing.Point(3, 3);
+            this.Open.Name = "Open";
+            this.Open.Size = new System.Drawing.Size(100, 28);
+            this.Open.TabIndex = 12;
+            this.Open.Text = "Open";
+            this.Open.UseVisualStyleBackColor = true;
+            this.Open.Click += new System.EventHandler(this.Open_Click);
+            // 
+            // exportAndSettingsTabControl
+            // 
+            this.exportAndSettingsTabControl.Controls.Add(this.ExportTab);
+            this.exportAndSettingsTabControl.Controls.Add(this.ManageTab);
+            this.exportAndSettingsTabControl.Controls.Add(this.SettingsTab);
+            this.exportAndSettingsTabControl.Controls.Add(this.OtherTabPage);
+            this.exportAndSettingsTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.exportAndSettingsTabControl.Location = new System.Drawing.Point(0, 0);
+            this.exportAndSettingsTabControl.Name = "exportAndSettingsTabControl";
+            this.exportAndSettingsTabControl.SelectedIndex = 0;
+            this.exportAndSettingsTabControl.Size = new System.Drawing.Size(1017, 465);
+            this.exportAndSettingsTabControl.TabIndex = 8;
+            // 
+            // ManageTab
+            // 
+            this.ManageTab.Controls.Add(this.MapAndGameTypeTabControl);
+            this.ManageTab.Location = new System.Drawing.Point(4, 22);
+            this.ManageTab.Name = "ManageTab";
+            this.ManageTab.Padding = new System.Windows.Forms.Padding(3);
+            this.ManageTab.Size = new System.Drawing.Size(1009, 439);
+            this.ManageTab.TabIndex = 3;
+            this.ManageTab.Text = "Manage";
+            this.ManageTab.UseVisualStyleBackColor = true;
+            // 
+            // MapAndGameTypeTabControl
+            // 
+            this.MapAndGameTypeTabControl.Controls.Add(this.Maps);
+            this.MapAndGameTypeTabControl.Controls.Add(this.GameTypes);
+            this.MapAndGameTypeTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MapAndGameTypeTabControl.Location = new System.Drawing.Point(3, 3);
+            this.MapAndGameTypeTabControl.Name = "MapAndGameTypeTabControl";
+            this.MapAndGameTypeTabControl.SelectedIndex = 0;
+            this.MapAndGameTypeTabControl.Size = new System.Drawing.Size(1003, 433);
+            this.MapAndGameTypeTabControl.TabIndex = 0;
+            // 
+            // Maps
+            // 
+            this.Maps.Controls.Add(this.LocationTabControl);
+            this.Maps.Location = new System.Drawing.Point(4, 22);
+            this.Maps.Name = "Maps";
+            this.Maps.Padding = new System.Windows.Forms.Padding(3);
+            this.Maps.Size = new System.Drawing.Size(995, 407);
+            this.Maps.TabIndex = 0;
+            this.Maps.Text = "Maps";
+            this.Maps.UseVisualStyleBackColor = true;
+            // 
+            // LocationTabControl
+            // 
+            this.LocationTabControl.Controls.Add(this.BuiltIn);
+            this.LocationTabControl.Controls.Add(this.Private);
+            this.LocationTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LocationTabControl.Location = new System.Drawing.Point(3, 3);
+            this.LocationTabControl.Name = "LocationTabControl";
+            this.LocationTabControl.SelectedIndex = 0;
+            this.LocationTabControl.Size = new System.Drawing.Size(989, 401);
+            this.LocationTabControl.TabIndex = 0;
+            // 
+            // BuiltIn
+            // 
+            this.BuiltIn.Controls.Add(this.builtInMapsTable);
+            this.BuiltIn.Location = new System.Drawing.Point(4, 22);
+            this.BuiltIn.Name = "BuiltIn";
+            this.BuiltIn.Padding = new System.Windows.Forms.Padding(3);
+            this.BuiltIn.Size = new System.Drawing.Size(981, 375);
+            this.BuiltIn.TabIndex = 0;
+            this.BuiltIn.Text = "Built In";
+            this.BuiltIn.UseVisualStyleBackColor = true;
+            // 
+            // Private
+            // 
+            this.Private.Location = new System.Drawing.Point(4, 22);
+            this.Private.Name = "Private";
+            this.Private.Padding = new System.Windows.Forms.Padding(3);
+            this.Private.Size = new System.Drawing.Size(981, 375);
+            this.Private.TabIndex = 1;
+            this.Private.Text = "Private";
+            this.Private.UseVisualStyleBackColor = true;
+            // 
+            // GameTypes
+            // 
+            this.GameTypes.Location = new System.Drawing.Point(4, 22);
+            this.GameTypes.Name = "GameTypes";
+            this.GameTypes.Padding = new System.Windows.Forms.Padding(3);
+            this.GameTypes.Size = new System.Drawing.Size(995, 407);
+            this.GameTypes.TabIndex = 1;
+            this.GameTypes.Text = "Game Types";
+            this.GameTypes.UseVisualStyleBackColor = true;
+            // 
+            // SettingsTab
+            // 
+            this.SettingsTab.Controls.Add(this.settingsControl);
+            this.SettingsTab.Location = new System.Drawing.Point(4, 22);
+            this.SettingsTab.Name = "SettingsTab";
+            this.SettingsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.SettingsTab.Size = new System.Drawing.Size(1009, 439);
+            this.SettingsTab.TabIndex = 1;
+            this.SettingsTab.Text = "Settings";
+            this.SettingsTab.UseVisualStyleBackColor = true;
+            // 
+            // OtherTabPage
+            // 
+            this.OtherTabPage.Controls.Add(this.HelpLink);
+            this.OtherTabPage.Controls.Add(this.linkLabel3);
+            this.OtherTabPage.Controls.Add(this.linkLabel1);
+            this.OtherTabPage.Controls.Add(this.label1);
+            this.OtherTabPage.Location = new System.Drawing.Point(4, 22);
+            this.OtherTabPage.Name = "OtherTabPage";
+            this.OtherTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.OtherTabPage.Size = new System.Drawing.Size(1009, 439);
+            this.OtherTabPage.TabIndex = 2;
+            this.OtherTabPage.Text = "Other";
+            this.OtherTabPage.UseVisualStyleBackColor = true;
+            // 
+            // HelpLink
+            // 
+            this.HelpLink.AutoSize = true;
+            this.HelpLink.Location = new System.Drawing.Point(84, 16);
+            this.HelpLink.Name = "HelpLink";
+            this.HelpLink.Size = new System.Drawing.Size(87, 13);
+            this.HelpLink.TabIndex = 5;
+            this.HelpLink.TabStop = true;
+            this.HelpLink.Text = "Wiki/Help pages";
+            this.HelpLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.HelpLink_LinkClicked);
+            // 
+            // linkLabel3
+            // 
+            this.linkLabel3.AutoSize = true;
+            this.linkLabel3.Location = new System.Drawing.Point(3, 16);
+            this.linkLabel3.Name = "linkLabel3";
+            this.linkLabel3.Size = new System.Drawing.Size(75, 13);
+            this.linkLabel3.TabIndex = 4;
+            this.linkLabel3.TabStop = true;
+            this.linkLabel3.Text = "View Licenses";
+            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(267, 3);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(277, 13);
+            this.linkLabel1.TabIndex = 1;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "https://github.com/ELREVENGE/HaloSaveTransferTool";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(266, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "This program is open source the code can be found at:";
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.AddExtension = false;
+            this.saveFileDialog.CheckFileExists = true;
+            // 
+            // builtInMapsTable
+            // 
+            this.builtInMapsTable.ColumnCount = 2;
+            this.builtInMapsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.builtInMapsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.builtInMapsTable.Controls.Add(this.builtInMapsReachManageGameFiles, 0, 0);
+            this.builtInMapsTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.builtInMapsTable.Location = new System.Drawing.Point(3, 3);
+            this.builtInMapsTable.Name = "builtInMapsTable";
+            this.builtInMapsTable.RowCount = 1;
+            this.builtInMapsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.builtInMapsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 369F));
+            this.builtInMapsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 369F));
+            this.builtInMapsTable.Size = new System.Drawing.Size(975, 369);
+            this.builtInMapsTable.TabIndex = 0;
+            // 
+            // builtInMapsReachManageGameFiles
+            // 
+            this.builtInMapsReachManageGameFiles.Location = new System.Drawing.Point(3, 3);
+            this.builtInMapsReachManageGameFiles.Name = "builtInMapsReachManageGameFiles";
+            this.builtInMapsReachManageGameFiles.Size = new System.Drawing.Size(481, 363);
+            this.builtInMapsReachManageGameFiles.TabIndex = 0;
+            // 
             // settingsControl
             // 
             this.settingsControl.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -827,15 +941,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.Halo3ScreenshotSaves)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Halo3GameTypeSaves)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Halo3MapSaves)).EndInit();
-            this.OpenPannel.ResumeLayout(false);
-            this.OpenPannel.PerformLayout();
-            this.exportAndSettingsTabControl.ResumeLayout(false);
-            this.SettingsTab.ResumeLayout(false);
-            this.OtherTabPage.ResumeLayout(false);
-            this.OtherTabPage.PerformLayout();
             this.ODST.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ODSTScreenshots)).EndInit();
+            this.OpenPannel.ResumeLayout(false);
+            this.OpenPannel.PerformLayout();
+            this.exportAndSettingsTabControl.ResumeLayout(false);
+            this.ManageTab.ResumeLayout(false);
+            this.MapAndGameTypeTabControl.ResumeLayout(false);
+            this.Maps.ResumeLayout(false);
+            this.LocationTabControl.ResumeLayout(false);
+            this.BuiltIn.ResumeLayout(false);
+            this.SettingsTab.ResumeLayout(false);
+            this.OtherTabPage.ResumeLayout(false);
+            this.OtherTabPage.PerformLayout();
+            this.builtInMapsTable.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -905,6 +1025,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
+        private System.Windows.Forms.TabPage ManageTab;
+        private System.Windows.Forms.TabControl MapAndGameTypeTabControl;
+        private System.Windows.Forms.TabPage Maps;
+        private System.Windows.Forms.TabControl LocationTabControl;
+        private System.Windows.Forms.TabPage BuiltIn;
+        private System.Windows.Forms.TabPage Private;
+        private System.Windows.Forms.TabPage GameTypes;
+        private System.Windows.Forms.TableLayoutPanel builtInMapsTable;
+        private ManageGameFiles builtInMapsReachManageGameFiles;
     }
 }
 

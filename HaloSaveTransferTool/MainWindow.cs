@@ -201,6 +201,8 @@ namespace HaloMCCPCSaveTransferTool
                 tableLayoutPanel1.TabIndex = 1;
             }
             UpdateOpened("");
+            //new 
+            builtInMapsReachManageGameFiles.Set("Halo: Reach", Properties.Settings.Default.BuiltInLocation + @"\haloreach\map_variants", Properties.Settings.Default.PrivateLocation + @"\HaloReach\Map", "mvar", new List<string>() { "beaver_creek_cl_031" });
         }
 
         
