@@ -87,11 +87,13 @@
             this.exportAndSettingsTabControl = new System.Windows.Forms.TabControl();
             this.ManageTab = new System.Windows.Forms.TabPage();
             this.MapAndGameTypeTabControl = new System.Windows.Forms.TabControl();
-            this.Maps = new System.Windows.Forms.TabPage();
+            this.MapsTab = new System.Windows.Forms.TabPage();
             this.LocationTabControl = new System.Windows.Forms.TabControl();
             this.BuiltIn = new System.Windows.Forms.TabPage();
+            this.builtInMapsTable = new System.Windows.Forms.TableLayoutPanel();
             this.Private = new System.Windows.Forms.TabPage();
-            this.GameTypes = new System.Windows.Forms.TabPage();
+            this.privateMapsTable = new System.Windows.Forms.TableLayoutPanel();
+            this.GameTypesTab = new System.Windows.Forms.TabPage();
             this.SettingsTab = new System.Windows.Forms.TabPage();
             this.OtherTabPage = new System.Windows.Forms.TabPage();
             this.HelpLink = new System.Windows.Forms.LinkLabel();
@@ -99,9 +101,20 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.builtInMapsTable = new System.Windows.Forms.TableLayoutPanel();
+            this.builtInMaps3ManageGameFiles = new HaloMCCPCSaveTransferTool.ManageGameFiles();
             this.builtInMapsReachManageGameFiles = new HaloMCCPCSaveTransferTool.ManageGameFiles();
+            this.privateMaps3ManageGameFiles = new HaloMCCPCSaveTransferTool.ManageGameFiles();
+            this.privateMapsReachManageGameFiles = new HaloMCCPCSaveTransferTool.ManageGameFiles();
             this.settingsControl = new HaloMCCPCSaveTransferTool.SettingsControl();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.BuiltInGameTypesTab = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.builtInGameTypes3ManageGameFiles = new HaloMCCPCSaveTransferTool.ManageGameFiles();
+            this.builtInGameTypesReachManageGameFiles = new HaloMCCPCSaveTransferTool.ManageGameFiles();
+            this.PrivateGameTypesTab = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.privateGameTypes3ManageGameFiles = new HaloMCCPCSaveTransferTool.ManageGameFiles();
+            this.privateGameTypesReachManageGameFiles = new HaloMCCPCSaveTransferTool.ManageGameFiles();
             this.ExportTab.SuspendLayout();
             this.FilesPannel.SuspendLayout();
             this.gameTabControl.SuspendLayout();
@@ -122,12 +135,20 @@
             this.exportAndSettingsTabControl.SuspendLayout();
             this.ManageTab.SuspendLayout();
             this.MapAndGameTypeTabControl.SuspendLayout();
-            this.Maps.SuspendLayout();
+            this.MapsTab.SuspendLayout();
             this.LocationTabControl.SuspendLayout();
             this.BuiltIn.SuspendLayout();
+            this.builtInMapsTable.SuspendLayout();
+            this.Private.SuspendLayout();
+            this.privateMapsTable.SuspendLayout();
+            this.GameTypesTab.SuspendLayout();
             this.SettingsTab.SuspendLayout();
             this.OtherTabPage.SuspendLayout();
-            this.builtInMapsTable.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.BuiltInGameTypesTab.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.PrivateGameTypesTab.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // OutputTextBox
@@ -753,8 +774,8 @@
             // 
             // MapAndGameTypeTabControl
             // 
-            this.MapAndGameTypeTabControl.Controls.Add(this.Maps);
-            this.MapAndGameTypeTabControl.Controls.Add(this.GameTypes);
+            this.MapAndGameTypeTabControl.Controls.Add(this.MapsTab);
+            this.MapAndGameTypeTabControl.Controls.Add(this.GameTypesTab);
             this.MapAndGameTypeTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MapAndGameTypeTabControl.Location = new System.Drawing.Point(3, 3);
             this.MapAndGameTypeTabControl.Name = "MapAndGameTypeTabControl";
@@ -762,16 +783,16 @@
             this.MapAndGameTypeTabControl.Size = new System.Drawing.Size(1003, 433);
             this.MapAndGameTypeTabControl.TabIndex = 0;
             // 
-            // Maps
+            // MapsTab
             // 
-            this.Maps.Controls.Add(this.LocationTabControl);
-            this.Maps.Location = new System.Drawing.Point(4, 22);
-            this.Maps.Name = "Maps";
-            this.Maps.Padding = new System.Windows.Forms.Padding(3);
-            this.Maps.Size = new System.Drawing.Size(995, 407);
-            this.Maps.TabIndex = 0;
-            this.Maps.Text = "Maps";
-            this.Maps.UseVisualStyleBackColor = true;
+            this.MapsTab.Controls.Add(this.LocationTabControl);
+            this.MapsTab.Location = new System.Drawing.Point(4, 22);
+            this.MapsTab.Name = "MapsTab";
+            this.MapsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.MapsTab.Size = new System.Drawing.Size(995, 407);
+            this.MapsTab.TabIndex = 0;
+            this.MapsTab.Text = "Maps";
+            this.MapsTab.UseVisualStyleBackColor = true;
             // 
             // LocationTabControl
             // 
@@ -795,8 +816,26 @@
             this.BuiltIn.Text = "Built In";
             this.BuiltIn.UseVisualStyleBackColor = true;
             // 
+            // builtInMapsTable
+            // 
+            this.builtInMapsTable.ColumnCount = 2;
+            this.builtInMapsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.builtInMapsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.builtInMapsTable.Controls.Add(this.builtInMaps3ManageGameFiles, 0, 0);
+            this.builtInMapsTable.Controls.Add(this.builtInMapsReachManageGameFiles, 0, 0);
+            this.builtInMapsTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.builtInMapsTable.Location = new System.Drawing.Point(3, 3);
+            this.builtInMapsTable.Name = "builtInMapsTable";
+            this.builtInMapsTable.RowCount = 1;
+            this.builtInMapsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.builtInMapsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 646F));
+            this.builtInMapsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 646F));
+            this.builtInMapsTable.Size = new System.Drawing.Size(975, 369);
+            this.builtInMapsTable.TabIndex = 0;
+            // 
             // Private
             // 
+            this.Private.Controls.Add(this.privateMapsTable);
             this.Private.Location = new System.Drawing.Point(4, 22);
             this.Private.Name = "Private";
             this.Private.Padding = new System.Windows.Forms.Padding(3);
@@ -805,15 +844,33 @@
             this.Private.Text = "Private";
             this.Private.UseVisualStyleBackColor = true;
             // 
-            // GameTypes
+            // privateMapsTable
             // 
-            this.GameTypes.Location = new System.Drawing.Point(4, 22);
-            this.GameTypes.Name = "GameTypes";
-            this.GameTypes.Padding = new System.Windows.Forms.Padding(3);
-            this.GameTypes.Size = new System.Drawing.Size(995, 407);
-            this.GameTypes.TabIndex = 1;
-            this.GameTypes.Text = "Game Types";
-            this.GameTypes.UseVisualStyleBackColor = true;
+            this.privateMapsTable.ColumnCount = 2;
+            this.privateMapsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.privateMapsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.privateMapsTable.Controls.Add(this.privateMaps3ManageGameFiles, 0, 0);
+            this.privateMapsTable.Controls.Add(this.privateMapsReachManageGameFiles, 0, 0);
+            this.privateMapsTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.privateMapsTable.Location = new System.Drawing.Point(3, 3);
+            this.privateMapsTable.Name = "privateMapsTable";
+            this.privateMapsTable.RowCount = 1;
+            this.privateMapsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.privateMapsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 369F));
+            this.privateMapsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 369F));
+            this.privateMapsTable.Size = new System.Drawing.Size(975, 369);
+            this.privateMapsTable.TabIndex = 1;
+            // 
+            // GameTypesTab
+            // 
+            this.GameTypesTab.Controls.Add(this.tabControl1);
+            this.GameTypesTab.Location = new System.Drawing.Point(4, 22);
+            this.GameTypesTab.Name = "GameTypesTab";
+            this.GameTypesTab.Padding = new System.Windows.Forms.Padding(3);
+            this.GameTypesTab.Size = new System.Drawing.Size(995, 407);
+            this.GameTypesTab.TabIndex = 1;
+            this.GameTypesTab.Text = "Game Types";
+            this.GameTypesTab.UseVisualStyleBackColor = true;
             // 
             // SettingsTab
             // 
@@ -887,28 +944,37 @@
             this.saveFileDialog.AddExtension = false;
             this.saveFileDialog.CheckFileExists = true;
             // 
-            // builtInMapsTable
+            // builtInMaps3ManageGameFiles
             // 
-            this.builtInMapsTable.ColumnCount = 2;
-            this.builtInMapsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.builtInMapsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.builtInMapsTable.Controls.Add(this.builtInMapsReachManageGameFiles, 0, 0);
-            this.builtInMapsTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.builtInMapsTable.Location = new System.Drawing.Point(3, 3);
-            this.builtInMapsTable.Name = "builtInMapsTable";
-            this.builtInMapsTable.RowCount = 1;
-            this.builtInMapsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.builtInMapsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 369F));
-            this.builtInMapsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 369F));
-            this.builtInMapsTable.Size = new System.Drawing.Size(975, 369);
-            this.builtInMapsTable.TabIndex = 0;
+            this.builtInMaps3ManageGameFiles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.builtInMaps3ManageGameFiles.Location = new System.Drawing.Point(490, 3);
+            this.builtInMaps3ManageGameFiles.Name = "builtInMaps3ManageGameFiles";
+            this.builtInMaps3ManageGameFiles.Size = new System.Drawing.Size(482, 363);
+            this.builtInMaps3ManageGameFiles.TabIndex = 1;
             // 
             // builtInMapsReachManageGameFiles
             // 
+            this.builtInMapsReachManageGameFiles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.builtInMapsReachManageGameFiles.Location = new System.Drawing.Point(3, 3);
             this.builtInMapsReachManageGameFiles.Name = "builtInMapsReachManageGameFiles";
             this.builtInMapsReachManageGameFiles.Size = new System.Drawing.Size(481, 363);
             this.builtInMapsReachManageGameFiles.TabIndex = 0;
+            // 
+            // privateMaps3ManageGameFiles
+            // 
+            this.privateMaps3ManageGameFiles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.privateMaps3ManageGameFiles.Location = new System.Drawing.Point(490, 3);
+            this.privateMaps3ManageGameFiles.Name = "privateMaps3ManageGameFiles";
+            this.privateMaps3ManageGameFiles.Size = new System.Drawing.Size(482, 363);
+            this.privateMaps3ManageGameFiles.TabIndex = 1;
+            // 
+            // privateMapsReachManageGameFiles
+            // 
+            this.privateMapsReachManageGameFiles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.privateMapsReachManageGameFiles.Location = new System.Drawing.Point(3, 3);
+            this.privateMapsReachManageGameFiles.Name = "privateMapsReachManageGameFiles";
+            this.privateMapsReachManageGameFiles.Size = new System.Drawing.Size(481, 363);
+            this.privateMapsReachManageGameFiles.TabIndex = 0;
             // 
             // settingsControl
             // 
@@ -917,6 +983,105 @@
             this.settingsControl.Name = "settingsControl";
             this.settingsControl.Size = new System.Drawing.Size(1003, 433);
             this.settingsControl.TabIndex = 0;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.BuiltInGameTypesTab);
+            this.tabControl1.Controls.Add(this.PrivateGameTypesTab);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(3, 3);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(989, 401);
+            this.tabControl1.TabIndex = 1;
+            // 
+            // BuiltInGameTypesTab
+            // 
+            this.BuiltInGameTypesTab.Controls.Add(this.tableLayoutPanel3);
+            this.BuiltInGameTypesTab.Location = new System.Drawing.Point(4, 22);
+            this.BuiltInGameTypesTab.Name = "BuiltInGameTypesTab";
+            this.BuiltInGameTypesTab.Padding = new System.Windows.Forms.Padding(3);
+            this.BuiltInGameTypesTab.Size = new System.Drawing.Size(981, 375);
+            this.BuiltInGameTypesTab.TabIndex = 0;
+            this.BuiltInGameTypesTab.Text = "Built In";
+            this.BuiltInGameTypesTab.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.builtInGameTypes3ManageGameFiles, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.builtInGameTypesReachManageGameFiles, 0, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 646F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 646F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(975, 369);
+            this.tableLayoutPanel3.TabIndex = 0;
+            // 
+            // builtInGameTypes3ManageGameFiles
+            // 
+            this.builtInGameTypes3ManageGameFiles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.builtInGameTypes3ManageGameFiles.Location = new System.Drawing.Point(490, 3);
+            this.builtInGameTypes3ManageGameFiles.Name = "builtInGameTypes3ManageGameFiles";
+            this.builtInGameTypes3ManageGameFiles.Size = new System.Drawing.Size(482, 363);
+            this.builtInGameTypes3ManageGameFiles.TabIndex = 1;
+            // 
+            // builtInGameTypesReachManageGameFiles
+            // 
+            this.builtInGameTypesReachManageGameFiles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.builtInGameTypesReachManageGameFiles.Location = new System.Drawing.Point(3, 3);
+            this.builtInGameTypesReachManageGameFiles.Name = "builtInGameTypesReachManageGameFiles";
+            this.builtInGameTypesReachManageGameFiles.Size = new System.Drawing.Size(481, 363);
+            this.builtInGameTypesReachManageGameFiles.TabIndex = 0;
+            // 
+            // PrivateGameTypesTab
+            // 
+            this.PrivateGameTypesTab.Controls.Add(this.tableLayoutPanel4);
+            this.PrivateGameTypesTab.Location = new System.Drawing.Point(4, 22);
+            this.PrivateGameTypesTab.Name = "PrivateGameTypesTab";
+            this.PrivateGameTypesTab.Padding = new System.Windows.Forms.Padding(3);
+            this.PrivateGameTypesTab.Size = new System.Drawing.Size(981, 375);
+            this.PrivateGameTypesTab.TabIndex = 1;
+            this.PrivateGameTypesTab.Text = "Private";
+            this.PrivateGameTypesTab.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Controls.Add(this.privateGameTypes3ManageGameFiles, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.privateGameTypesReachManageGameFiles, 0, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 369F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 369F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(975, 369);
+            this.tableLayoutPanel4.TabIndex = 1;
+            // 
+            // privateGameTypes3ManageGameFiles
+            // 
+            this.privateGameTypes3ManageGameFiles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.privateGameTypes3ManageGameFiles.Location = new System.Drawing.Point(490, 3);
+            this.privateGameTypes3ManageGameFiles.Name = "privateGameTypes3ManageGameFiles";
+            this.privateGameTypes3ManageGameFiles.Size = new System.Drawing.Size(482, 363);
+            this.privateGameTypes3ManageGameFiles.TabIndex = 1;
+            // 
+            // privateGameTypesReachManageGameFiles
+            // 
+            this.privateGameTypesReachManageGameFiles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.privateGameTypesReachManageGameFiles.Location = new System.Drawing.Point(3, 3);
+            this.privateGameTypesReachManageGameFiles.Name = "privateGameTypesReachManageGameFiles";
+            this.privateGameTypesReachManageGameFiles.Size = new System.Drawing.Size(481, 363);
+            this.privateGameTypesReachManageGameFiles.TabIndex = 0;
             // 
             // MainWindow
             // 
@@ -949,13 +1114,21 @@
             this.exportAndSettingsTabControl.ResumeLayout(false);
             this.ManageTab.ResumeLayout(false);
             this.MapAndGameTypeTabControl.ResumeLayout(false);
-            this.Maps.ResumeLayout(false);
+            this.MapsTab.ResumeLayout(false);
             this.LocationTabControl.ResumeLayout(false);
             this.BuiltIn.ResumeLayout(false);
+            this.builtInMapsTable.ResumeLayout(false);
+            this.Private.ResumeLayout(false);
+            this.privateMapsTable.ResumeLayout(false);
+            this.GameTypesTab.ResumeLayout(false);
             this.SettingsTab.ResumeLayout(false);
             this.OtherTabPage.ResumeLayout(false);
             this.OtherTabPage.PerformLayout();
-            this.builtInMapsTable.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            this.BuiltInGameTypesTab.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.PrivateGameTypesTab.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1027,13 +1200,26 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
         private System.Windows.Forms.TabPage ManageTab;
         private System.Windows.Forms.TabControl MapAndGameTypeTabControl;
-        private System.Windows.Forms.TabPage Maps;
+        private System.Windows.Forms.TabPage MapsTab;
         private System.Windows.Forms.TabControl LocationTabControl;
         private System.Windows.Forms.TabPage BuiltIn;
         private System.Windows.Forms.TabPage Private;
-        private System.Windows.Forms.TabPage GameTypes;
+        private System.Windows.Forms.TabPage GameTypesTab;
         private System.Windows.Forms.TableLayoutPanel builtInMapsTable;
         private ManageGameFiles builtInMapsReachManageGameFiles;
+        private ManageGameFiles builtInMaps3ManageGameFiles;
+        private System.Windows.Forms.TableLayoutPanel privateMapsTable;
+        private ManageGameFiles privateMaps3ManageGameFiles;
+        private ManageGameFiles privateMapsReachManageGameFiles;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage BuiltInGameTypesTab;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private ManageGameFiles builtInGameTypes3ManageGameFiles;
+        private ManageGameFiles builtInGameTypesReachManageGameFiles;
+        private System.Windows.Forms.TabPage PrivateGameTypesTab;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private ManageGameFiles privateGameTypes3ManageGameFiles;
+        private ManageGameFiles privateGameTypesReachManageGameFiles;
     }
 }
 

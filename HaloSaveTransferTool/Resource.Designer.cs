@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HaloMCCPCSaveTransferTool.Properties {
+namespace HaloMCCPCSaveTransferTool {
     using System;
     
     
@@ -22,24 +22,24 @@ namespace HaloMCCPCSaveTransferTool.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal Resource() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("HaloMCCPCSaveTransferTool.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("HaloMCCPCSaveTransferTool.Resource", typeof(Resource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace HaloMCCPCSaveTransferTool.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -81,7 +81,7 @@ namespace HaloMCCPCSaveTransferTool.Properties {
         ///h3_ffa_hardcoreSlayer_12min.bin
         ///infection-0_ [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Halo3GameTypeIgnoreList {
+        public static string Halo3GameTypeIgnoreList {
             get {
                 return ResourceManager.GetString("Halo3GameTypeIgnoreList", resourceCulture);
             }
@@ -102,7 +102,7 @@ namespace HaloMCCPCSaveTransferTool.Properties {
         ///year2_snowbound_boundless_012.mvar
         ///year2_the_pit_pitstop_012.mvar.
         /// </summary>
-        internal static string Halo3MapIgnoreList {
+        public static string Halo3MapIgnoreList {
             get {
                 return ResourceManager.GetString("Halo3MapIgnoreList", resourceCulture);
             }
@@ -129,7 +129,7 @@ namespace HaloMCCPCSaveTransferTool.Properties {
         ///hr_4v4_team_crazyKing_dmr_ar_150points_tu.bin
         ///hr_4v4_team_headhunter_dmr_ar_50points_ [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string HaloReachGameTypeIgnoreList {
+        public static string HaloReachGameTypeIgnoreList {
             get {
                 return ResourceManager.GetString("HaloReachGameTypeIgnoreList", resourceCulture);
             }
@@ -148,7 +148,7 @@ namespace HaloMCCPCSaveTransferTool.Properties {
         ///prisoner_cl_031.mvar
         ///timberland_cl_031.mvar.
         /// </summary>
-        internal static string HaloReachMapIgnoreList {
+        public static string HaloReachMapIgnoreList {
             get {
                 return ResourceManager.GetString("HaloReachMapIgnoreList", resourceCulture);
             }

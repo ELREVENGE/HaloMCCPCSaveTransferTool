@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using X360.STFS;
 using Microsoft.WindowsAPICodePack.Dialogs;
+using System.Reflection;
 
 namespace HaloMCCPCSaveTransferTool
 {
@@ -187,8 +188,30 @@ namespace HaloMCCPCSaveTransferTool
         GamePannel reachPannel;
         GamePannel h3Pannel;
         GamePannel h3ODSTPannel;
+        void VerifiyResources()
+        {
+            //create files if they don't exist
+            string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            if (!File.Exists(currentDirectory + "Halo3GameTypeIgnoreList.txt"))
+            {
+                File.WriteAllText(currentDirectory + "Halo3GameTypeIgnoreList.txt", Resource.Halo3GameTypeIgnoreList);
+            }
+            if (!File.Exists(currentDirectory + "Halo3MapIgnoreList.txt"))
+            {
+                File.WriteAllText(currentDirectory + "Halo3MapIgnoreList.txt", Resource.Halo3MapIgnoreList);
+            }
+            if (!File.Exists(currentDirectory + "HaloReachGameTypeIgnoreList.txt"))
+            {
+                File.WriteAllText(currentDirectory + "HaloReachGameTypeIgnoreList.txt", Resource.HaloReachGameTypeIgnoreList);
+            }
+            if (!File.Exists(currentDirectory + "HaloReachMapIgnoreList.txt"))
+            {
+                File.WriteAllText(currentDirectory + "HaloReachMapIgnoreList.txt", Resource.HaloReachMapIgnoreList);
+            }
+        }
         public MainWindow()
         {
+            VerifiyResources();
             InitializeComponent();
             reachPannel = new GamePannel(HaloReachMapSaves, HaloReachGameTypeSaves, HaloReachScreenshotSaves);
             h3Pannel = new GamePannel(Halo3MapSaves, Halo3GameTypeSaves, Halo3ScreenshotSaves);
@@ -201,14 +224,24 @@ namespace HaloMCCPCSaveTransferTool
                 tableLayoutPanel1.TabIndex = 1;
             }
             UpdateOpened("");
-            //new 
-            builtInMapsReachManageGameFiles.Set("Halo: Reach", Properties.Settings.Default.BuiltInLocation + @"\haloreach\map_variants", Properties.Settings.Default.PrivateLocation + @"\HaloReach\Map", "mvar", new List<string>() { "beaver_creek_cl_031" });
+            //manage tab
+            //built in
+            builtInMapsReachManageGameFiles.Set("Halo: Reach", Properties.Settings.Default.BuiltInLocation + @"\haloreach\map_variants", Properties.Settings.Default.PrivateLocation + @"\HaloReach\Map", "mvar", AppDomain.CurrentDomain.BaseDirectory + "HaloReachMapIgnoreList.txt");
+            builtInMaps3ManageGameFiles.Set("Halo 3", Properties.Settings.Default.BuiltInLocation + @"\halo3\map_variants", Properties.Settings.Default.PrivateLocation + @"\Halo3\Map", "mvar", AppDomain.CurrentDomain.BaseDirectory + "Halo3MapIgnoreList.txt");
+            builtInGameTypesReachManageGameFiles.Set("Halo: Reach", Properties.Settings.Default.BuiltInLocation + @"\haloreach\game_variants", Properties.Settings.Default.PrivateLocation + @"\HaloReach\GameType", "bin", AppDomain.CurrentDomain.BaseDirectory + "HaloReachGameTypeIgnoreList.txt");
+            builtInGameTypes3ManageGameFiles.Set("Halo 3", Properties.Settings.Default.BuiltInLocation + @"\halo3\game_variants", Properties.Settings.Default.PrivateLocation + @"\Halo3\GameType", "bin", AppDomain.CurrentDomain.BaseDirectory + "Halo3GameTypeIgnoreList.txt");
+
+            //private
+            privateMapsReachManageGameFiles.Set("Halo: Reach", Properties.Settings.Default.PrivateLocation + @"\HaloReach\Map", Properties.Settings.Default.BuiltInLocation + @"\haloreach\map_variants", "mvar", new List<string>());
+            privateMaps3ManageGameFiles.Set("Halo 3", Properties.Settings.Default.PrivateLocation + @"\Halo3\Map", Properties.Settings.Default.BuiltInLocation + @"\halo3\map_variants", "mvar", new List<string>());
+            privateGameTypesReachManageGameFiles.Set("Halo: Reach", Properties.Settings.Default.PrivateLocation + @"\HaloReach\GameType", Properties.Settings.Default.BuiltInLocation + @"\HaloReach\game_variants", "bin", new List<string>());
+            privateGameTypes3ManageGameFiles.Set("Halo 3", Properties.Settings.Default.PrivateLocation + @"\Halo3\GameType", Properties.Settings.Default.BuiltInLocation + @"\Halo3\game_variants", "bin", new List<string>());
         }
 
         
         void UpdateLists(HaloX360FileIO.HaloFiles files)
         {
-            Output.WriteLine("Updating lists");
+            Output.WriteLine("Updating Export tab lists");
             loadedFiles = files;
             reachPannel.Clear();
             h3Pannel.Clear();
@@ -256,7 +289,7 @@ namespace HaloMCCPCSaveTransferTool
                 screenshotCounter++;
                 h3ODSTPannel.Add(screenshot, GamePannel.FileType.Screenshot);
             }
-            Output.WriteLine("All files listed!");
+            Output.WriteLine("All files in Export tab listed!");
         }
 
         private void ReachExportMaps_Click(object sender, EventArgs e)

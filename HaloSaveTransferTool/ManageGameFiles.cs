@@ -16,6 +16,16 @@ namespace HaloMCCPCSaveTransferTool
 {
     public partial class ManageGameFiles : UserControl
     {
+        struct InGameNameAndDescription
+        {
+            public string InGameName;
+            public string Description;
+            public InGameNameAndDescription(string inGameName, string description)
+            {
+                InGameName = inGameName;
+                Description = description;
+            }
+        }
         string GameName = "";
         string FilesDirectory = "";
         string MoveLocation = "";
@@ -44,6 +54,16 @@ namespace HaloMCCPCSaveTransferTool
             FileExtention = fileExtention == null ? "" : fileExtention;
             SetUp();
         }
+        public void Set(string gameName, string filesDirectory, string moveLocation, string fileExtention, string ignoreListFile)
+        {
+            //repeat normal set to make sure values can be used for debugging if ignore list has issues
+            GameName = gameName;
+            FilesDirectory = filesDirectory == null ? "" : filesDirectory;
+            MoveLocation = moveLocation == null ? "" : moveLocation;
+            IgnoreList = GetIgnoreListFromFile(ignoreListFile);
+            FileExtention = fileExtention == null ? "" : fileExtention;
+            SetUp();
+        }
         void UpdateLists()
         {
             if (Directory.Exists(FilesDirectory))
@@ -51,17 +71,27 @@ namespace HaloMCCPCSaveTransferTool
                 List<string> files = new List<string>();
                 foreach (string file in Directory.GetFiles(FilesDirectory, @"*." + FileExtention))
                 {
-                    files.Add(Path.GetFileNameWithoutExtension(file));
+                    files.Add(file);
                 }
                 foreach (string file in IgnoreList)
                 {
-                    files.Remove(file);
+                    files.Remove(FilesDirectory + @"\" + file);
                 }
                 fileList.ClearSelection();
                 fileList.Rows.Clear();
-                foreach(string file in files)
+                InGameNameAndDescription inGameNameAndDescription;
+                foreach (string file in files)
                 {
-                    fileList.Rows.Add("Not implemented", Path.GetFileNameWithoutExtension(file), File.GetLastWriteTime(file).ToString("dd/MM/yy HH:mm:ss"));
+                    inGameNameAndDescription = new InGameNameAndDescription("","");
+                    if (GameName == "Halo: Reach")
+                    {
+                        inGameNameAndDescription = GetReachInGameNameAndDescription(file);
+                    }
+                    else if (GameName == "Halo 3")
+                    {
+                        inGameNameAndDescription = Get3InGameNameAndDescription(file);
+                    }
+                    fileList.Rows.Add(inGameNameAndDescription.InGameName, inGameNameAndDescription.Description, Path.GetFileNameWithoutExtension(file), File.GetLastWriteTime(file).ToString("yy/MM/dd HH:mm:ss"));
                 }
             }
         }
@@ -96,7 +126,7 @@ namespace HaloMCCPCSaveTransferTool
                 string sourcePath;
                 for(int i = 0; i < selectedRowsCount; i++)
                 {
-                    fileName = fileList.SelectedRows[i].Cells[1].Value.ToString();
+                    fileName = fileList.SelectedRows[i].Cells[2].Value.ToString();
                     sourcePath = FilesDirectory + @"\" + fileName + "." + FileExtention;
                     destinationPath = MoveLocation + @"\" + fileName + "." + FileExtention;
                     if (File.Exists(sourcePath) && !File.Exists(destinationPath))
@@ -127,13 +157,13 @@ namespace HaloMCCPCSaveTransferTool
         private void Delete_Click(object sender, EventArgs e)
         {
             int selectedRowsCount = fileList.SelectedRows.Count;
-            if (selectedRowsCount > 0 && MessageBox.Show("Are you sure you want to delete the selected files? The file WILL show up in the recyling bin in case you decide you want it later.", "Delete?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (selectedRowsCount > 0 && MessageBox.Show("Are you sure you want to delete the selected files? The file WILL show up in the recyling bin in case you decide you want it later.", "Delete?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 string fileName;
                 string path;
                 for (int i = 0; i < selectedRowsCount; i++)
                 {
-                    fileName = fileList.SelectedRows[i].Cells[1].Value.ToString();
+                    fileName = fileList.SelectedRows[i].Cells[2].Value.ToString();
                     path = FilesDirectory + @"\" + fileName + "." + FileExtention;
                     if (File.Exists(path))
                     {
@@ -226,6 +256,115 @@ namespace HaloMCCPCSaveTransferTool
                 UpdateLists();
                 MainWindow.Output.WriteLine("Add operation complete");
             }
+        }
+
+        public List<string> GetIgnoreListFromFile(string file)
+        {
+            List<string> returnValue = new List<string>();
+            if (File.Exists(file))
+            {
+                try
+                {
+                    string line;
+                    StreamReader fileStream = new StreamReader(file);
+                    while ((line = fileStream.ReadLine()) != null)
+                    {
+                        returnValue.Add(line);
+                    }
+                    fileStream.Close();
+                }
+                catch
+                {
+                    MainWindow.Output.WriteLine("ERROR: Couldn't get ignore list for " + GameName + " from file: " + file + " Some files in " + FilesDirectory + " may be listed that are supposed to be ignored.");
+                }
+            }
+            else
+            {
+                MainWindow.Output.WriteLine("Ignore list missing for " + GameName + ". Ignore list file should have been at: " + file + ". Some files in " + FilesDirectory + " may be listed that are supposed to be ignored.");
+            }
+            return returnValue;
+        }
+        InGameNameAndDescription GetReachInGameNameAndDescription(string file)
+        {
+            byte[] fileBytes;
+            InGameNameAndDescription returnInfo = new InGameNameAndDescription("","");
+            if (file != null && File.Exists(file) && Path.GetExtension(file) == ".mvar" || Path.GetExtension(file) == ".bin")
+            {
+                fileBytes = File.ReadAllBytes(file);
+                int startName = 192;
+                int length = 256;
+                int offset = 0;
+                if (fileBytes[startName] == 0)
+                {
+                    //shift 1
+                    offset = 1;
+                }
+                char currentChar;
+                for(int i = startName + offset; i < startName + offset + length; i+=2)
+                {
+                    currentChar = (char)fileBytes[i];
+                    if (currentChar == 0) //End of name
+                    {
+                        break;
+                    }
+                    returnInfo.InGameName += currentChar;
+                }
+                int startDescription = 448;
+                for (int i = startDescription + offset; i < 752; i += 2)
+                {
+                    currentChar = (char)fileBytes[i];
+                    if (currentChar == 0) //End of name
+                    {
+                        break;
+                    }
+                    returnInfo.Description += currentChar;
+                }
+            }
+            return returnInfo;
+        }
+        InGameNameAndDescription Get3InGameNameAndDescription(string file)
+        {
+            byte[] fileBytes;
+            InGameNameAndDescription returnInfo = new InGameNameAndDescription("", "");
+            if (file != null && File.Exists(file) && Path.GetExtension(file) == ".mvar") //|| Path.GetExtension(file) == ".bin")
+            {
+                fileBytes = File.ReadAllBytes(file);
+                //check if built in file
+                int offset = 0;
+                string builtInTextCheck = "";
+                char currentChar;
+                for (int i = 14; i < 24; i++)
+                {
+                    currentChar = (char)fileBytes[i];
+                    builtInTextCheck += currentChar;
+                }
+                if (builtInTextCheck == "map variant")
+                {
+                    offset = 76;
+                }
+                int startName = 73;
+                int length = 32;
+                for (int i = startName + offset; i < startName + offset + length; i += 2)
+                {
+                    currentChar = (char)fileBytes[i];
+                    if (currentChar == 0) //End of name
+                    {
+                        break;
+                    }
+                    returnInfo.InGameName += currentChar;
+                }
+                int startDescription = 104;
+                for (int i = startDescription + offset; i < 232+offset; i++)
+                {
+                    currentChar = (char)fileBytes[i];
+                    if (currentChar == 0) //End of description
+                    {
+                        break;
+                    }
+                    returnInfo.Description += currentChar;
+                }
+            }
+            return returnInfo;
         }
     }
 }
