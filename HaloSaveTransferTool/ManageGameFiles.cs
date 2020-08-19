@@ -326,37 +326,52 @@ namespace HaloMCCPCSaveTransferTool
         {
             byte[] fileBytes;
             InGameNameAndDescription returnInfo = new InGameNameAndDescription("", "");
-            if (file != null && File.Exists(file) && Path.GetExtension(file) == ".mvar") //|| Path.GetExtension(file) == ".bin")
+            if (file != null && File.Exists(file) && Path.GetExtension(file) == ".mvar" || Path.GetExtension(file) == ".bin")
             {
                 fileBytes = File.ReadAllBytes(file);
                 //check if built in file
                 int offset = 0;
                 string builtInTextCheck = "";
                 char currentChar;
-                for (int i = 14; i < 24; i++)
+                for (int i = 14; i < 25; i++)
                 {
                     currentChar = (char)fileBytes[i];
                     builtInTextCheck += currentChar;
                 }
-                if (builtInTextCheck == "map variant")
+                if (builtInTextCheck == "game var\0\0\0")
                 {
+                    //abort cant read built in game var 
+                    MainWindow.Output.WriteLine("Unable to obtain built in Halo 3 game type name and description. Does the file belong on the ignore list? Path:" + file);
+                    returnInfo.InGameName = "Unable to get in game name";
+                    returnInfo.Description = "Unable to obtain description";
+                }
+                else if (builtInTextCheck == "map variant")
+                {
+                    //built in map var, add offset
                     offset = 76;
                 }
-                int startName = 73;
+                int startName = 72;
+                if (fileBytes[startName+offset] == '\0') { offset++; } //check if info is shifted by 1 if so adjust offset
                 int length = 32;
+                int startDescription = 0;
                 for (int i = startName + offset; i < startName + offset + length; i += 2)
                 {
                     currentChar = (char)fileBytes[i];
                     if (currentChar == 0) //End of name
                     {
+                        startDescription = i;
                         break;
                     }
                     returnInfo.InGameName += currentChar;
                 }
-                int startDescription = 104;
-                for (int i = startDescription + offset; i < 232+offset; i++)
+                for (int i = 0; i <32; i++)
                 {
-                    currentChar = (char)fileBytes[i];
+                    if (fileBytes[startDescription] != '\0') break; //find start of description from end of name
+                    else break;
+                }
+                for (int i = 0; i < 127; i++) //get description
+                {
+                    currentChar = (char)fileBytes[startDescription+i];
                     if (currentChar == 0) //End of description
                     {
                         break;
