@@ -82,5 +82,29 @@ namespace HaloMCCPCSaveTransferTool.Properties {
                 this["AutoCheckForUpdates"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool UseRecyclingBin {
+            get {
+                return ((bool)(this["UseRecyclingBin"]));
+            }
+            set {
+                this["UseRecyclingBin"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool WarnBeforeDeleting {
+            get {
+                return ((bool)(this["WarnBeforeDeleting"]));
+            }
+            set {
+                this["WarnBeforeDeleting"] = value;
+            }
+        }
     }
 }

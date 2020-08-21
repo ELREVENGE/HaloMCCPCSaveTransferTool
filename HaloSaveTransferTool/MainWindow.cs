@@ -224,18 +224,24 @@ namespace HaloMCCPCSaveTransferTool
                 tableLayoutPanel1.TabIndex = 1;
             }
             UpdateOpened("");
+            Output.WriteLine("Updating Manage tab file lists");
             //manage tab
             //built in
-            builtInMapsReachManageGameFiles.Set("Halo: Reach", Properties.Settings.Default.BuiltInLocation + @"\haloreach\map_variants", Properties.Settings.Default.PrivateLocation + @"\HaloReach\Map", "mvar", AppDomain.CurrentDomain.BaseDirectory + "HaloReachMapIgnoreList.txt");
-            builtInMaps3ManageGameFiles.Set("Halo 3", Properties.Settings.Default.BuiltInLocation + @"\halo3\map_variants", Properties.Settings.Default.PrivateLocation + @"\Halo3\Map", "mvar", AppDomain.CurrentDomain.BaseDirectory + "Halo3MapIgnoreList.txt");
-            builtInGameTypesReachManageGameFiles.Set("Halo: Reach", Properties.Settings.Default.BuiltInLocation + @"\haloreach\game_variants", Properties.Settings.Default.PrivateLocation + @"\HaloReach\GameType", "bin", AppDomain.CurrentDomain.BaseDirectory + "HaloReachGameTypeIgnoreList.txt");
-            builtInGameTypes3ManageGameFiles.Set("Halo 3", Properties.Settings.Default.BuiltInLocation + @"\halo3\game_variants", Properties.Settings.Default.PrivateLocation + @"\Halo3\GameType", "bin", AppDomain.CurrentDomain.BaseDirectory + "Halo3GameTypeIgnoreList.txt");
+            //maps
+            builtInMapsReachManageGameFiles.Set("Halo: Reach", Properties.Settings.Default.BuiltInLocation + @"\haloreach\map_variants", "mvar", AppDomain.CurrentDomain.BaseDirectory + "HaloReachMapIgnoreList.txt", privateMapsReachManageGameFiles);
+            builtInMaps3ManageGameFiles.Set("Halo 3", Properties.Settings.Default.BuiltInLocation + @"\halo3\map_variants", "mvar", AppDomain.CurrentDomain.BaseDirectory + "Halo3MapIgnoreList.txt", privateMaps3ManageGameFiles);
+            //gametypes
+            builtInGameTypesReachManageGameFiles.Set("Halo: Reach", Properties.Settings.Default.BuiltInLocation + @"\haloreach\game_variants", "bin", AppDomain.CurrentDomain.BaseDirectory + "HaloReachGameTypeIgnoreList.txt", privateGameTypesReachManageGameFiles);
+            builtInGameTypes3ManageGameFiles.Set("Halo 3", Properties.Settings.Default.BuiltInLocation + @"\halo3\game_variants", "bin", AppDomain.CurrentDomain.BaseDirectory + "Halo3GameTypeIgnoreList.txt", privateGameTypes3ManageGameFiles);
 
             //private
-            privateMapsReachManageGameFiles.Set("Halo: Reach", Properties.Settings.Default.PrivateLocation + @"\HaloReach\Map", Properties.Settings.Default.BuiltInLocation + @"\haloreach\map_variants", "mvar", new List<string>());
-            privateMaps3ManageGameFiles.Set("Halo 3", Properties.Settings.Default.PrivateLocation + @"\Halo3\Map", Properties.Settings.Default.BuiltInLocation + @"\halo3\map_variants", "mvar", new List<string>());
-            privateGameTypesReachManageGameFiles.Set("Halo: Reach", Properties.Settings.Default.PrivateLocation + @"\HaloReach\GameType", Properties.Settings.Default.BuiltInLocation + @"\HaloReach\game_variants", "bin", new List<string>());
-            privateGameTypes3ManageGameFiles.Set("Halo 3", Properties.Settings.Default.PrivateLocation + @"\Halo3\GameType", Properties.Settings.Default.BuiltInLocation + @"\Halo3\game_variants", "bin", new List<string>());
+            //maps
+            privateMapsReachManageGameFiles.Set("Halo: Reach", Properties.Settings.Default.PrivateLocation + @"\HaloReach\Map", "mvar", new List<string>(), builtInMapsReachManageGameFiles);
+            privateMaps3ManageGameFiles.Set("Halo 3", Properties.Settings.Default.PrivateLocation + @"\Halo3\Map", "mvar", new List<string>(), builtInMaps3ManageGameFiles);
+            //Gametypes
+            privateGameTypesReachManageGameFiles.Set("Halo: Reach", Properties.Settings.Default.PrivateLocation + @"\HaloReach\GameType", "bin", new List<string>(), builtInGameTypesReachManageGameFiles);
+            privateGameTypes3ManageGameFiles.Set("Halo 3", Properties.Settings.Default.PrivateLocation + @"\Halo3\GameType", "bin", new List<string>(), builtInGameTypes3ManageGameFiles);
+            MainWindow.Output.WriteLine("All files in Manage tab listed!");
         }
 
         

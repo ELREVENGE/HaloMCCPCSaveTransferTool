@@ -27,10 +27,10 @@ namespace HaloMCCPCSaveTransferTool
             }
         }
         string GameName = "";
-        string FilesDirectory = "";
-        string MoveLocation = "";
+        internal string FilesDirectory = "";
         string FileExtention = "";
         static OpenFileDialog openFileDialog = new OpenFileDialog() { Multiselect = true, RestoreDirectory = true };
+        ManageGameFiles MoveDirectoryManageGameFiles; 
         List<string> IgnoreList = new List<string>();
         public ManageGameFiles()
         {
@@ -42,29 +42,34 @@ namespace HaloMCCPCSaveTransferTool
             if (this != null)
             {
                 locationLinkLabel.Text = GameName;
-                UpdateLists();
+                UpdateList();
             }
         }
-        public void Set(string gameName, string filesDirectory, string moveLocation, string fileExtention, List<string> ignoreList)
+        public void Set(string gameName, string filesDirectory, string fileExtention, List<string> ignoreList, ManageGameFiles moveDirectoryManageGameFiles)
         {
             GameName = gameName;
             FilesDirectory = filesDirectory == null ? "" : filesDirectory;
-            MoveLocation = moveLocation == null ? "" : moveLocation;
             IgnoreList = ignoreList == null ? new List<string>() : ignoreList;
             FileExtention = fileExtention == null ? "" : fileExtention;
+            MoveDirectoryManageGameFiles = moveDirectoryManageGameFiles;
             SetUp();
         }
-        public void Set(string gameName, string filesDirectory, string moveLocation, string fileExtention, string ignoreListFile)
+        public void Set(string gameName, string filesDirectory, string fileExtention, string ignoreListFile, ManageGameFiles moveDirectoryManageGameFiles)
         {
             //repeat normal set to make sure values can be used for debugging if ignore list has issues
             GameName = gameName;
             FilesDirectory = filesDirectory == null ? "" : filesDirectory;
-            MoveLocation = moveLocation == null ? "" : moveLocation;
             IgnoreList = GetIgnoreListFromFile(ignoreListFile);
             FileExtention = fileExtention == null ? "" : fileExtention;
+            MoveDirectoryManageGameFiles = moveDirectoryManageGameFiles;
             SetUp();
         }
         void UpdateLists()
+        {
+            UpdateList();
+            if (MoveDirectoryManageGameFiles != null) MoveDirectoryManageGameFiles.UpdateList();
+        }
+        internal void UpdateList()
         {
             if (Directory.Exists(FilesDirectory))
             {
@@ -93,14 +98,16 @@ namespace HaloMCCPCSaveTransferTool
                     }
                     fileList.Rows.Add(inGameNameAndDescription.InGameName, inGameNameAndDescription.Description, Path.GetFileNameWithoutExtension(file), File.GetLastWriteTime(file).ToString("yy/MM/dd HH:mm:ss"));
                 }
+                UpdateAllButtons();
             }
         }
-        void UpdateAllButtons()
+        private void UpdateAllButtons()
         {
             bool exists = Directory.Exists(FilesDirectory);
+            bool filesListed = fileList.SelectedRows.Count > 0;
             Add.Enabled = exists;
-            Delete.Enabled = (exists && fileList.SelectedRows.Count > 0);
-            Move.Enabled = (exists && Directory.Exists(MoveLocation));
+            Delete.Enabled = (exists && filesListed);
+            Move.Enabled = (exists && filesListed && Directory.Exists(GetMoveLocation()));
         }
         private void locationLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -113,13 +120,21 @@ namespace HaloMCCPCSaveTransferTool
         {
             bool selected = fileList.SelectedRows.Count > 0;
             Delete.Enabled = selected;
-            Move.Enabled = Directory.Exists(MoveLocation) && selected;
+            Move.Enabled = Directory.Exists(GetMoveLocation()) && selected;
         }
-
+        string GetMoveLocation()
+        {
+            if (MoveDirectoryManageGameFiles == null)
+            {
+                return "";
+            }
+            return MoveDirectoryManageGameFiles.FilesDirectory;
+        }
         private void Move_Click(object sender, EventArgs e)
         {
             int selectedRowsCount = fileList.SelectedRows.Count;
-            if (selectedRowsCount > 0 && Directory.Exists(MoveLocation))
+            string moveLocation = GetMoveLocation();
+            if (selectedRowsCount > 0 && Directory.Exists(moveLocation))
             {
                 string fileName;
                 string destinationPath;
@@ -128,24 +143,24 @@ namespace HaloMCCPCSaveTransferTool
                 {
                     fileName = fileList.SelectedRows[i].Cells[2].Value.ToString();
                     sourcePath = FilesDirectory + @"\" + fileName + "." + FileExtention;
-                    destinationPath = MoveLocation + @"\" + fileName + "." + FileExtention;
+                    destinationPath = moveLocation + @"\" + fileName + "." + FileExtention;
                     if (File.Exists(sourcePath) && !File.Exists(destinationPath))
                     {
                         try
                         {
                             File.Move(sourcePath, destinationPath);
-                            MainWindow.Output.WriteLine("Successfully moved " + fileName + " from " + FilesDirectory + "  to " + MoveLocation);
+                            MainWindow.Output.WriteLine("Successfully moved " + fileName + " from " + FilesDirectory + "  to " + moveLocation);
                         }
                         catch (Exception ex)
                         {
                             //list exception
-                            MainWindow.Output.WriteLine("Failed to move " + fileName + " from " + FilesDirectory + "  to " + MoveLocation);
+                            MainWindow.Output.WriteLine("Failed to move " + fileName + " from " + FilesDirectory + "  to " + moveLocation);
                         }
                     }
                     else
                     {
                         //list exception
-                        MainWindow.Output.WriteLine("Failed to move " + fileName + " from " + FilesDirectory + "  to " + MoveLocation);
+                        MainWindow.Output.WriteLine("Failed to move " + fileName + " from " + FilesDirectory + " to " + moveLocation);
                     }
                 }
                 //attempt to resolve exceptions
@@ -157,20 +172,27 @@ namespace HaloMCCPCSaveTransferTool
         private void Delete_Click(object sender, EventArgs e)
         {
             int selectedRowsCount = fileList.SelectedRows.Count;
-            if (selectedRowsCount > 0 && MessageBox.Show("Are you sure you want to delete the selected files? The file WILL show up in the recyling bin in case you decide you want it later.", "Delete?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (selectedRowsCount > 0)
             {
+                if (Properties.Settings.Default.WarnBeforeDeleting && MessageBox.Show("Are you sure you want to delete the selected files?", "Delete?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes)
+                {
+                    //user didn't press yes
+                    MainWindow.Output.WriteLine("Delete operation canceled");
+                    return;
+                }
                 string fileName;
                 string path;
                 for (int i = 0; i < selectedRowsCount; i++)
                 {
                     fileName = fileList.SelectedRows[i].Cells[2].Value.ToString();
                     path = FilesDirectory + @"\" + fileName + "." + FileExtention;
+                    RecycleOption recycleOption = Properties.Settings.Default.UseRecyclingBin ? RecycleOption.SendToRecycleBin : RecycleOption.DeletePermanently;
                     if (File.Exists(path))
                     {
                         try
                         {
-                            FileSystem.DeleteFile(path, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
-                            MainWindow.Output.WriteLine("Successfully deleted " + fileName + " from " + FilesDirectory + ". If this was a mistake you can find it in the recyling bin.");
+                            FileSystem.DeleteFile(path, UIOption.OnlyErrorDialogs, recycleOption);
+                            MainWindow.Output.WriteLine("Successfully deleted " + fileName + " from " + FilesDirectory);
                         }
                         catch(Exception ex)
                         {
@@ -186,7 +208,7 @@ namespace HaloMCCPCSaveTransferTool
                 }
                 //attempt to resolve exceptions
 
-                UpdateLists();
+                UpdateList();
                 MainWindow.Output.WriteLine("Delete operation complete");
             }
         }
@@ -253,7 +275,7 @@ namespace HaloMCCPCSaveTransferTool
                     }
                 }
                 //attempt to resolve exceptions
-                UpdateLists();
+                UpdateList();
                 MainWindow.Output.WriteLine("Add operation complete");
             }
         }
@@ -338,6 +360,7 @@ namespace HaloMCCPCSaveTransferTool
                     currentChar = (char)fileBytes[i];
                     builtInTextCheck += currentChar;
                 }
+                //check of built in map or game type
                 if (builtInTextCheck == "game var\0\0\0")
                 {
                     //abort cant read built in game var 
@@ -351,9 +374,10 @@ namespace HaloMCCPCSaveTransferTool
                     offset = 76;
                 }
                 int startName = 72;
-                if (fileBytes[startName+offset] == '\0') { offset++; } //check if info is shifted by 1 if so adjust offset
+                if (fileBytes[startName+offset] == 0) { offset++; } //check if info is shifted by 1 if so adjust offset
                 int length = 32;
                 int startDescription = 0;
+                //Get Name
                 for (int i = startName + offset; i < startName + offset + length; i += 2)
                 {
                     currentChar = (char)fileBytes[i];
@@ -364,12 +388,14 @@ namespace HaloMCCPCSaveTransferTool
                     }
                     returnInfo.InGameName += currentChar;
                 }
+                //find start of description from end of name
                 for (int i = 0; i <32; i++)
                 {
-                    if (fileBytes[startDescription] != '\0') break; //find start of description from end of name
-                    else break;
+                    if (fileBytes[startDescription] != 0) break;
+                    else startDescription++;
                 }
-                for (int i = 0; i < 127; i++) //get description
+                //get description
+                for (int i = 0; i < 127; i++) 
                 {
                     currentChar = (char)fileBytes[startDescription+i];
                     if (currentChar == 0) //End of description
