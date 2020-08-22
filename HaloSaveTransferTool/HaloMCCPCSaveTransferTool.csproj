@@ -99,6 +99,7 @@
     <Compile Include="ExportToWindow.Designer.cs">
       <DependentUpon>ExportToWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="FailedFileHelper.cs" />
     <Compile Include="LicenseWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +113,12 @@
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="HaloX360FileIO.cs" />
+    <Compile Include="ManageFailedWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageFailedWindow.Designer.cs">
+      <DependentUpon>ManageFailedWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="ManageGameFiles.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -143,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageFailedWindow.resx">
+      <DependentUpon>ManageFailedWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ManageGameFiles.resx">
       <DependentUpon>ManageGameFiles.cs</DependentUpon>

@@ -16,7 +16,7 @@ namespace HaloMCCPCSaveTransferTool
 {
     public partial class ManageGameFiles : UserControl
     {
-        struct InGameNameAndDescription
+        public struct InGameNameAndDescription
         {
             public string InGameName;
             public string Description;
@@ -73,6 +73,7 @@ namespace HaloMCCPCSaveTransferTool
         {
             if (Directory.Exists(FilesDirectory))
             {
+                Enabled = true;
                 List<string> files = new List<string>();
                 foreach (string file in Directory.GetFiles(FilesDirectory, @"*." + FileExtention))
                 {
@@ -100,6 +101,7 @@ namespace HaloMCCPCSaveTransferTool
                 }
                 UpdateAllButtons();
             }
+            else { Enabled = false; }
         }
         private void UpdateAllButtons()
         {
@@ -139,6 +141,7 @@ namespace HaloMCCPCSaveTransferTool
                 string fileName;
                 string destinationPath;
                 string sourcePath;
+                List<ManageFailedWindow.ManageFailedException> exceptions = new List<ManageFailedWindow.ManageFailedException>();
                 for(int i = 0; i < selectedRowsCount; i++)
                 {
                     fileName = fileList.SelectedRows[i].Cells[2].Value.ToString();
@@ -153,17 +156,18 @@ namespace HaloMCCPCSaveTransferTool
                         }
                         catch (Exception ex)
                         {
-                            //list exception
                             MainWindow.Output.WriteLine("Failed to move " + fileName + " from " + FilesDirectory + "  to " + moveLocation);
+                            exceptions.Add(new ManageFailedWindow.ManageFailedException("Failed to move file because: " + ex.Message, ex, sourcePath, moveLocation, new InGameNameAndDescription(fileList.SelectedRows[i].Cells[0].Value.ToString(), fileList.SelectedRows[i].Cells[1].Value.ToString())));
                         }
                     }
                     else
                     {
-                        //list exception
                         MainWindow.Output.WriteLine("Failed to move " + fileName + " from " + FilesDirectory + " to " + moveLocation);
+                        exceptions.Add(new ManageFailedWindow.ManageFailedException("Failed to move file because the file doesn't exist", new Exception("File doesn't exist"), sourcePath, moveLocation, new InGameNameAndDescription(fileList.SelectedRows[i].Cells[0].Value.ToString(), fileList.SelectedRows[i].Cells[1].Value.ToString())));
                     }
                 }
                 //attempt to resolve exceptions
+                if (exceptions.Count > 0) ManageFailedWindow.OpenDialog(exceptions, FilesDirectory, moveLocation, ManageFailedWindow.Operation.Move);
                 UpdateLists();
                 MainWindow.Output.WriteLine("Move operation complete");
             }
@@ -182,6 +186,7 @@ namespace HaloMCCPCSaveTransferTool
                 }
                 string fileName;
                 string path;
+                List<ManageFailedWindow.ManageFailedException> exceptions = new List<ManageFailedWindow.ManageFailedException>();
                 for (int i = 0; i < selectedRowsCount; i++)
                 {
                     fileName = fileList.SelectedRows[i].Cells[2].Value.ToString();
@@ -196,18 +201,18 @@ namespace HaloMCCPCSaveTransferTool
                         }
                         catch(Exception ex)
                         {
-                            //List exception
                             MainWindow.Output.WriteLine("Failed to delete " + fileName + " (full path: " + path + ")");
+                            exceptions.Add(new ManageFailedWindow.ManageFailedException("Failed to delete file because: " + ex.Message, ex, path, path, new InGameNameAndDescription(fileList.SelectedRows[i].Cells[0].Value.ToString(), fileList.SelectedRows[i].Cells[1].Value.ToString())));
                         }
                     }
                     else
                     {
-                        //list exception
                         MainWindow.Output.WriteLine("Failed to delete " + fileName + " File doesn't exist (full path: " + path + ")");
+                        exceptions.Add(new ManageFailedWindow.ManageFailedException("Failed to delete file because the file doesn't exist", new Exception("File doesn't exist"), path, path, new InGameNameAndDescription(fileList.SelectedRows[i].Cells[0].Value.ToString(), fileList.SelectedRows[i].Cells[1].Value.ToString())));
                     }
                 }
                 //attempt to resolve exceptions
-
+                if (exceptions.Count > 0) ManageFailedWindow.OpenDialog(exceptions, FilesDirectory, FilesDirectory, ManageFailedWindow.Operation.Delete);
                 UpdateList();
                 MainWindow.Output.WriteLine("Delete operation complete");
             }
@@ -251,6 +256,7 @@ namespace HaloMCCPCSaveTransferTool
                 //add files
                 string file;
                 string newFile;
+                List<ManageFailedWindow.ManageFailedException> exceptions = new List<ManageFailedWindow.ManageFailedException>();
                 for (int i = 0; i < openFileDialog.FileNames.Length; i++)
                 {
                     file = openFileDialog.FileNames[i];
@@ -259,6 +265,7 @@ namespace HaloMCCPCSaveTransferTool
                     {
                         MainWindow.Output.WriteLine("Failed to add " + Path.GetFileNameWithoutExtension(file) + " another file already exists with that name at: " + newFile);
                         //list exception
+                        exceptions.Add(new ManageFailedWindow.ManageFailedException("Failed to add file because another file with the same name already exists there", new Exception("File already exists"), file, FilesDirectory, GetInGameNameAndDescription(file)));
                     }
                     else
                     {
@@ -270,11 +277,12 @@ namespace HaloMCCPCSaveTransferTool
                         catch (Exception ex)
                         {
                             MainWindow.Output.WriteLine("Failed to add " + Path.GetFileNameWithoutExtension(file) + " new location: " + newFile);
-                            //list exception
+                            exceptions.Add(new ManageFailedWindow.ManageFailedException("Failed to add file because: " + ex.Message, ex, file, FilesDirectory, GetInGameNameAndDescription(file)));
                         }
                     }
                 }
                 //attempt to resolve exceptions
+                if (exceptions.Count > 0) ManageFailedWindow.OpenDialog(exceptions, FilesDirectory, FilesDirectory, ManageFailedWindow.Operation.Add);
                 UpdateList();
                 MainWindow.Output.WriteLine("Add operation complete");
             }
@@ -305,6 +313,18 @@ namespace HaloMCCPCSaveTransferTool
                 MainWindow.Output.WriteLine("Ignore list missing for " + GameName + ". Ignore list file should have been at: " + file + ". Some files in " + FilesDirectory + " may be listed that are supposed to be ignored.");
             }
             return returnValue;
+        }
+        InGameNameAndDescription GetInGameNameAndDescription(string file)
+        {
+            if (GameName == "Halo: Reach")
+            {
+                return GetReachInGameNameAndDescription(file);
+            }
+            else if (GameName == "Halo 3")
+            {
+                return Get3InGameNameAndDescription(file);
+            }
+            return new InGameNameAndDescription("", ""); 
         }
         InGameNameAndDescription GetReachInGameNameAndDescription(string file)
         {
@@ -392,7 +412,7 @@ namespace HaloMCCPCSaveTransferTool
                 for (int i = 0; i <32; i++)
                 {
                     if (fileBytes[startDescription] != 0) break;
-                    else startDescription++;
+                    startDescription++;
                 }
                 //get description
                 for (int i = 0; i < 127; i++) 
