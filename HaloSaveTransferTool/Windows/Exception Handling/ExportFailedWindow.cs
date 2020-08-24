@@ -145,7 +145,8 @@ namespace HaloMCCPCSaveTransferTool
             }
             UpdateList();
         }
-        private void helpLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+
+        private void HelpLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/ELREVENGE/HaloMCCPCSaveTransferTool/wiki/Help");
         }

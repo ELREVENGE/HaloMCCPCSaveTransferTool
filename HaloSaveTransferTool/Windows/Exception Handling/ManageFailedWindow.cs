@@ -221,7 +221,6 @@ namespace HaloMCCPCSaveTransferTool
         private void AutoResolve_Click(object sender, EventArgs e)
         {
             /*
-             * Fix this
              * add help link 
              * make game pannels a user control
              */
@@ -256,6 +255,11 @@ namespace HaloMCCPCSaveTransferTool
                 }
             }
             UpdateList();
+        }
+
+        private void HelpLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/ELREVENGE/HaloMCCPCSaveTransferTool/wiki/Help");
         }
     }
 }

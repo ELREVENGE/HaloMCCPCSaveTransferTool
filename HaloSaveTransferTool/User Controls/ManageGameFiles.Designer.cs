@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.mainTableLayoutPannel = new System.Windows.Forms.TableLayoutPanel();
-            this.fileList = new System.Windows.Forms.DataGridView();
+            this.LocationLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.FileList = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.Delete = new System.Windows.Forms.Button();
-            this.Move = new System.Windows.Forms.Button();
-            this.Add = new System.Windows.Forms.Button();
-            this.locationLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.DeleteButton = new System.Windows.Forms.Button();
+            this.MoveButton = new System.Windows.Forms.Button();
+            this.AddButton = new System.Windows.Forms.Button();
             this.mainTableLayoutPannel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fileList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FileList)).BeginInit();
             this.buttonsTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,8 +48,8 @@
             // 
             this.mainTableLayoutPannel.ColumnCount = 1;
             this.mainTableLayoutPannel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.mainTableLayoutPannel.Controls.Add(this.locationLinkLabel, 0, 0);
-            this.mainTableLayoutPannel.Controls.Add(this.fileList, 0, 1);
+            this.mainTableLayoutPannel.Controls.Add(this.LocationLinkLabel, 0, 0);
+            this.mainTableLayoutPannel.Controls.Add(this.FileList, 0, 1);
             this.mainTableLayoutPannel.Controls.Add(this.buttonsTableLayoutPanel, 0, 2);
             this.mainTableLayoutPannel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTableLayoutPannel.Location = new System.Drawing.Point(0, 0);
@@ -62,27 +62,39 @@
             this.mainTableLayoutPannel.Size = new System.Drawing.Size(500, 500);
             this.mainTableLayoutPannel.TabIndex = 1;
             // 
-            // fileList
+            // LocationLinkLabel
             // 
-            this.fileList.AllowUserToAddRows = false;
-            this.fileList.AllowUserToDeleteRows = false;
-            this.fileList.AllowUserToResizeRows = false;
-            this.fileList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.fileList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.fileList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.LocationLinkLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.LocationLinkLabel.AutoSize = true;
+            this.LocationLinkLabel.Location = new System.Drawing.Point(3, 11);
+            this.LocationLinkLabel.Name = "LocationLinkLabel";
+            this.LocationLinkLabel.Size = new System.Drawing.Size(66, 13);
+            this.LocationLinkLabel.TabIndex = 9;
+            this.LocationLinkLabel.TabStop = true;
+            this.LocationLinkLabel.Text = "Game Name";
+            this.LocationLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LocationLinkLabel_LinkClicked);
+            // 
+            // FileList
+            // 
+            this.FileList.AllowUserToAddRows = false;
+            this.FileList.AllowUserToDeleteRows = false;
+            this.FileList.AllowUserToResizeRows = false;
+            this.FileList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.FileList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.FileList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn21,
             this.Description,
             this.dataGridViewTextBoxColumn24,
             this.dataGridViewTextBoxColumn23});
-            this.fileList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fileList.Location = new System.Drawing.Point(3, 38);
-            this.fileList.Name = "fileList";
-            this.fileList.RowHeadersVisible = false;
-            this.fileList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.fileList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.fileList.Size = new System.Drawing.Size(494, 409);
-            this.fileList.TabIndex = 6;
-            this.fileList.SelectionChanged += new System.EventHandler(this.fileList_SelectionChanged);
+            this.FileList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FileList.Location = new System.Drawing.Point(3, 38);
+            this.FileList.Name = "FileList";
+            this.FileList.RowHeadersVisible = false;
+            this.FileList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.FileList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.FileList.Size = new System.Drawing.Size(494, 409);
+            this.FileList.TabIndex = 6;
+            this.FileList.SelectionChanged += new System.EventHandler(this.FileList_SelectionChanged);
             // 
             // dataGridViewTextBoxColumn21
             // 
@@ -116,9 +128,9 @@
             this.buttonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.buttonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.buttonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.buttonsTableLayoutPanel.Controls.Add(this.Delete, 0, 0);
-            this.buttonsTableLayoutPanel.Controls.Add(this.Move, 1, 0);
-            this.buttonsTableLayoutPanel.Controls.Add(this.Add, 0, 0);
+            this.buttonsTableLayoutPanel.Controls.Add(this.DeleteButton, 0, 0);
+            this.buttonsTableLayoutPanel.Controls.Add(this.MoveButton, 1, 0);
+            this.buttonsTableLayoutPanel.Controls.Add(this.AddButton, 0, 0);
             this.buttonsTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonsTableLayoutPanel.Location = new System.Drawing.Point(3, 453);
             this.buttonsTableLayoutPanel.Name = "buttonsTableLayoutPanel";
@@ -128,49 +140,38 @@
             this.buttonsTableLayoutPanel.Size = new System.Drawing.Size(494, 44);
             this.buttonsTableLayoutPanel.TabIndex = 8;
             // 
-            // Delete
+            // DeleteButton
             // 
-            this.Delete.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Delete.Location = new System.Drawing.Point(167, 3);
-            this.Delete.Name = "Delete";
-            this.Delete.Size = new System.Drawing.Size(158, 38);
-            this.Delete.TabIndex = 3;
-            this.Delete.Text = "Delete";
-            this.Delete.UseVisualStyleBackColor = true;
-            this.Delete.Click += new System.EventHandler(this.Delete_Click);
+            this.DeleteButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DeleteButton.Location = new System.Drawing.Point(167, 3);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(158, 38);
+            this.DeleteButton.TabIndex = 3;
+            this.DeleteButton.Text = "Delete";
+            this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.Delete_Click);
             // 
-            // Move
+            // MoveButton
             // 
-            this.Move.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Move.Location = new System.Drawing.Point(331, 3);
-            this.Move.Name = "Move";
-            this.Move.Size = new System.Drawing.Size(160, 38);
-            this.Move.TabIndex = 1;
-            this.Move.Text = "Move";
-            this.Move.UseVisualStyleBackColor = true;
-            this.Move.Click += new System.EventHandler(this.Move_Click);
+            this.MoveButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MoveButton.Location = new System.Drawing.Point(331, 3);
+            this.MoveButton.Name = "MoveButton";
+            this.MoveButton.Size = new System.Drawing.Size(160, 38);
+            this.MoveButton.TabIndex = 1;
+            this.MoveButton.Text = "Move";
+            this.MoveButton.UseVisualStyleBackColor = true;
+            this.MoveButton.Click += new System.EventHandler(this.Move_Click);
             // 
-            // Add
+            // AddButton
             // 
-            this.Add.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Add.Location = new System.Drawing.Point(3, 3);
-            this.Add.Name = "Add";
-            this.Add.Size = new System.Drawing.Size(158, 38);
-            this.Add.TabIndex = 0;
-            this.Add.Text = "Add";
-            this.Add.UseVisualStyleBackColor = true;
-            this.Add.Click += new System.EventHandler(this.Add_Click);
-            // 
-            // locationLinkLabel
-            // 
-            this.locationLinkLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.locationLinkLabel.AutoSize = true;
-            this.locationLinkLabel.Location = new System.Drawing.Point(3, 11);
-            this.locationLinkLabel.Name = "locationLinkLabel";
-            this.locationLinkLabel.Size = new System.Drawing.Size(66, 13);
-            this.locationLinkLabel.TabIndex = 9;
-            this.locationLinkLabel.TabStop = true;
-            this.locationLinkLabel.Text = "Game Name";
+            this.AddButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AddButton.Location = new System.Drawing.Point(3, 3);
+            this.AddButton.Name = "AddButton";
+            this.AddButton.Size = new System.Drawing.Size(158, 38);
+            this.AddButton.TabIndex = 0;
+            this.AddButton.Text = "Add";
+            this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.Add_Click);
             // 
             // ManageGameFiles
             // 
@@ -181,7 +182,7 @@
             this.Size = new System.Drawing.Size(500, 500);
             this.mainTableLayoutPannel.ResumeLayout(false);
             this.mainTableLayoutPannel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fileList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FileList)).EndInit();
             this.buttonsTableLayoutPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -190,15 +191,15 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel mainTableLayoutPannel;
-        private System.Windows.Forms.DataGridView fileList;
+        private System.Windows.Forms.DataGridView FileList;
         private System.Windows.Forms.TableLayoutPanel buttonsTableLayoutPanel;
-        private System.Windows.Forms.Button Delete;
-        private System.Windows.Forms.Button Move;
-        private System.Windows.Forms.Button Add;
+        private System.Windows.Forms.Button DeleteButton;
+        private System.Windows.Forms.Button MoveButton;
+        private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
-        private System.Windows.Forms.LinkLabel locationLinkLabel;
+        private System.Windows.Forms.LinkLabel LocationLinkLabel;
     }
 }

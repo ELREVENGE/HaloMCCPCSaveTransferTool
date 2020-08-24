@@ -32,6 +32,7 @@ namespace HaloMCCPCSaveTransferTool
         static OpenFileDialog openFileDialog = new OpenFileDialog() { Multiselect = true, RestoreDirectory = true };
         ManageGameFiles MoveDirectoryManageGameFiles; 
         List<string> IgnoreList = new List<string>();
+        #region Initialization and setup
         public ManageGameFiles()
         {
             InitializeComponent();
@@ -41,16 +42,16 @@ namespace HaloMCCPCSaveTransferTool
         {
             if (this != null)
             {
-                locationLinkLabel.Text = GameName;
+                LocationLinkLabel.Text = GameName;
                 UpdateList();
             }
         }
         public void Set(string gameName, string filesDirectory, string fileExtention, List<string> ignoreList, ManageGameFiles moveDirectoryManageGameFiles)
         {
             GameName = gameName;
-            FilesDirectory = filesDirectory == null ? "" : filesDirectory;
-            IgnoreList = ignoreList == null ? new List<string>() : ignoreList;
-            FileExtention = fileExtention == null ? "" : fileExtention;
+            FilesDirectory = filesDirectory ?? "";
+            IgnoreList = ignoreList ?? new List<string>();
+            FileExtention = fileExtention ?? "";
             MoveDirectoryManageGameFiles = moveDirectoryManageGameFiles;
             SetUp();
         }
@@ -58,12 +59,13 @@ namespace HaloMCCPCSaveTransferTool
         {
             //repeat normal set to make sure values can be used for debugging if ignore list has issues
             GameName = gameName;
-            FilesDirectory = filesDirectory == null ? "" : filesDirectory;
+            FilesDirectory = filesDirectory ?? "";
             IgnoreList = GetIgnoreListFromFile(ignoreListFile);
-            FileExtention = fileExtention == null ? "" : fileExtention;
+            FileExtention = fileExtention ?? "";
             MoveDirectoryManageGameFiles = moveDirectoryManageGameFiles;
             SetUp();
         }
+        #endregion
         void UpdateLists()
         {
             UpdateList();
@@ -83,8 +85,8 @@ namespace HaloMCCPCSaveTransferTool
                 {
                     files.Remove(FilesDirectory + @"\" + file);
                 }
-                fileList.ClearSelection();
-                fileList.Rows.Clear();
+                FileList.ClearSelection();
+                FileList.Rows.Clear();
                 InGameNameAndDescription inGameNameAndDescription;
                 foreach (string file in files)
                 {
@@ -97,7 +99,7 @@ namespace HaloMCCPCSaveTransferTool
                     {
                         inGameNameAndDescription = Get3InGameNameAndDescription(file);
                     }
-                    fileList.Rows.Add(inGameNameAndDescription.InGameName, inGameNameAndDescription.Description, Path.GetFileNameWithoutExtension(file), File.GetLastWriteTime(file).ToString("yy/MM/dd HH:mm:ss"));
+                    FileList.Rows.Add(inGameNameAndDescription.InGameName, inGameNameAndDescription.Description, Path.GetFileNameWithoutExtension(file), File.GetLastWriteTime(file).ToString("yy/MM/dd HH:mm:ss"));
                 }
                 UpdateAllButtons();
             }
@@ -106,23 +108,10 @@ namespace HaloMCCPCSaveTransferTool
         private void UpdateAllButtons()
         {
             bool exists = Directory.Exists(FilesDirectory);
-            bool filesListed = fileList.SelectedRows.Count > 0;
-            Add.Enabled = exists;
-            Delete.Enabled = (exists && filesListed);
-            Move.Enabled = (exists && filesListed && Directory.Exists(GetMoveLocation()));
-        }
-        private void locationLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            if (Directory.Exists(FilesDirectory))
-            {
-                Process.Start(FilesDirectory);
-            }
-        }
-        private void fileList_SelectionChanged(object sender, EventArgs e)
-        {
-            bool selected = fileList.SelectedRows.Count > 0;
-            Delete.Enabled = selected;
-            Move.Enabled = Directory.Exists(GetMoveLocation()) && selected;
+            bool filesListed = FileList.SelectedRows.Count > 0;
+            AddButton.Enabled = exists;
+            DeleteButton.Enabled = (exists && filesListed);
+            MoveButton.Enabled = (exists && filesListed && Directory.Exists(GetMoveLocation()));
         }
         string GetMoveLocation()
         {
@@ -132,9 +121,10 @@ namespace HaloMCCPCSaveTransferTool
             }
             return MoveDirectoryManageGameFiles.FilesDirectory;
         }
+        #region Buttons
         private void Move_Click(object sender, EventArgs e)
         {
-            int selectedRowsCount = fileList.SelectedRows.Count;
+            int selectedRowsCount = FileList.SelectedRows.Count;
             string moveLocation = GetMoveLocation();
             if (selectedRowsCount > 0 && Directory.Exists(moveLocation))
             {
@@ -144,7 +134,7 @@ namespace HaloMCCPCSaveTransferTool
                 List<ManageFailedWindow.ManageFailedException> exceptions = new List<ManageFailedWindow.ManageFailedException>();
                 for(int i = 0; i < selectedRowsCount; i++)
                 {
-                    fileName = fileList.SelectedRows[i].Cells[2].Value.ToString();
+                    fileName = FileList.SelectedRows[i].Cells[2].Value.ToString();
                     sourcePath = FilesDirectory + @"\" + fileName + "." + FileExtention;
                     destinationPath = moveLocation + @"\" + fileName + "." + FileExtention;
                     if (File.Exists(sourcePath) && !File.Exists(destinationPath))
@@ -157,13 +147,13 @@ namespace HaloMCCPCSaveTransferTool
                         catch (Exception ex)
                         {
                             MainWindow.Output.WriteLine("Failed to move " + fileName + " from " + FilesDirectory + "  to " + moveLocation);
-                            exceptions.Add(new ManageFailedWindow.ManageFailedException("Failed to move file because: " + ex.Message, ex, sourcePath, moveLocation, new InGameNameAndDescription(fileList.SelectedRows[i].Cells[0].Value.ToString(), fileList.SelectedRows[i].Cells[1].Value.ToString())));
+                            exceptions.Add(new ManageFailedWindow.ManageFailedException("Failed to move file because: " + ex.Message, ex, sourcePath, moveLocation, new InGameNameAndDescription(FileList.SelectedRows[i].Cells[0].Value.ToString(), FileList.SelectedRows[i].Cells[1].Value.ToString())));
                         }
                     }
                     else
                     {
                         MainWindow.Output.WriteLine("Failed to move " + fileName + " from " + FilesDirectory + " to " + moveLocation);
-                        exceptions.Add(new ManageFailedWindow.ManageFailedException("Failed to move file because the file doesn't exist", new Exception("File doesn't exist"), sourcePath, moveLocation, new InGameNameAndDescription(fileList.SelectedRows[i].Cells[0].Value.ToString(), fileList.SelectedRows[i].Cells[1].Value.ToString())));
+                        exceptions.Add(new ManageFailedWindow.ManageFailedException("Failed to move file because the file doesn't exist", new Exception("File doesn't exist"), sourcePath, moveLocation, new InGameNameAndDescription(FileList.SelectedRows[i].Cells[0].Value.ToString(), FileList.SelectedRows[i].Cells[1].Value.ToString())));
                     }
                 }
                 //attempt to resolve exceptions
@@ -172,10 +162,9 @@ namespace HaloMCCPCSaveTransferTool
                 MainWindow.Output.WriteLine("Move operation complete");
             }
         }
-
         private void Delete_Click(object sender, EventArgs e)
         {
-            int selectedRowsCount = fileList.SelectedRows.Count;
+            int selectedRowsCount = FileList.SelectedRows.Count;
             if (selectedRowsCount > 0)
             {
                 if (Properties.Settings.Default.WarnBeforeDeleting && MessageBox.Show("Are you sure you want to delete the selected files?", "Delete?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes)
@@ -189,7 +178,7 @@ namespace HaloMCCPCSaveTransferTool
                 List<ManageFailedWindow.ManageFailedException> exceptions = new List<ManageFailedWindow.ManageFailedException>();
                 for (int i = 0; i < selectedRowsCount; i++)
                 {
-                    fileName = fileList.SelectedRows[i].Cells[2].Value.ToString();
+                    fileName = FileList.SelectedRows[i].Cells[2].Value.ToString();
                     path = FilesDirectory + @"\" + fileName + "." + FileExtention;
                     RecycleOption recycleOption = Properties.Settings.Default.UseRecyclingBin ? RecycleOption.SendToRecycleBin : RecycleOption.DeletePermanently;
                     if (File.Exists(path))
@@ -202,13 +191,13 @@ namespace HaloMCCPCSaveTransferTool
                         catch(Exception ex)
                         {
                             MainWindow.Output.WriteLine("Failed to delete " + fileName + " (full path: " + path + ")");
-                            exceptions.Add(new ManageFailedWindow.ManageFailedException("Failed to delete file because: " + ex.Message, ex, path, path, new InGameNameAndDescription(fileList.SelectedRows[i].Cells[0].Value.ToString(), fileList.SelectedRows[i].Cells[1].Value.ToString())));
+                            exceptions.Add(new ManageFailedWindow.ManageFailedException("Failed to delete file because: " + ex.Message, ex, path, path, new InGameNameAndDescription(FileList.SelectedRows[i].Cells[0].Value.ToString(), FileList.SelectedRows[i].Cells[1].Value.ToString())));
                         }
                     }
                     else
                     {
                         MainWindow.Output.WriteLine("Failed to delete " + fileName + " File doesn't exist (full path: " + path + ")");
-                        exceptions.Add(new ManageFailedWindow.ManageFailedException("Failed to delete file because the file doesn't exist", new Exception("File doesn't exist"), path, path, new InGameNameAndDescription(fileList.SelectedRows[i].Cells[0].Value.ToString(), fileList.SelectedRows[i].Cells[1].Value.ToString())));
+                        exceptions.Add(new ManageFailedWindow.ManageFailedException("Failed to delete file because the file doesn't exist", new Exception("File doesn't exist"), path, path, new InGameNameAndDescription(FileList.SelectedRows[i].Cells[0].Value.ToString(), FileList.SelectedRows[i].Cells[1].Value.ToString())));
                     }
                 }
                 //attempt to resolve exceptions
@@ -217,7 +206,6 @@ namespace HaloMCCPCSaveTransferTool
                 MainWindow.Output.WriteLine("Delete operation complete");
             }
         }
-
         private void Add_Click(object sender, EventArgs e)
         {
             //file dialog filter set up
@@ -287,7 +275,7 @@ namespace HaloMCCPCSaveTransferTool
                 MainWindow.Output.WriteLine("Add operation complete");
             }
         }
-
+        #endregion
         public List<string> GetIgnoreListFromFile(string file)
         {
             List<string> returnValue = new List<string>();
@@ -314,6 +302,7 @@ namespace HaloMCCPCSaveTransferTool
             }
             return returnValue;
         }
+        #region Get name and desctiption from file
         InGameNameAndDescription GetInGameNameAndDescription(string file)
         {
             if (GameName == "Halo: Reach")
@@ -426,6 +415,22 @@ namespace HaloMCCPCSaveTransferTool
                 }
             }
             return returnInfo;
+        }
+        #endregion
+
+        private void LocationLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (Directory.Exists(FilesDirectory))
+            {
+                Process.Start(FilesDirectory);
+            }
+        }
+
+        private void FileList_SelectionChanged(object sender, EventArgs e)
+        {
+            bool selected = FileList.SelectedRows.Count > 0;
+            DeleteButton.Enabled = selected;
+            MoveButton.Enabled = Directory.Exists(GetMoveLocation()) && selected;
         }
     }
 }

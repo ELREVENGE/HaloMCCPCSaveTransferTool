@@ -87,42 +87,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExportFailedWindow.cs">
+    <Compile Include="Windows\Exception Handling\ExportFailedWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ExportFailedWindow.Designer.cs">
+    <Compile Include="Windows\Exception Handling\ExportFailedWindow.Designer.cs">
       <DependentUpon>ExportFailedWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="ExportToWindow.cs">
+    <Compile Include="Windows\ExportToWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ExportToWindow.Designer.cs">
+    <Compile Include="Windows\ExportToWindow.Designer.cs">
       <DependentUpon>ExportToWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="FailedFileHelper.cs" />
-    <Compile Include="LicenseWindow.cs">
+    <Compile Include="Classes\FailedFileHelper.cs" />
+    <Compile Include="Windows\LicenseWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LicenseWindow.Designer.cs">
+    <Compile Include="Windows\LicenseWindow.Designer.cs">
       <DependentUpon>LicenseWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.cs">
+    <Compile Include="Windows\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainWindow.Designer.cs">
+    <Compile Include="Windows\MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="HaloX360FileIO.cs" />
-    <Compile Include="ManageFailedWindow.cs">
+    <Compile Include="Classes\HaloX360FileIO.cs" />
+    <Compile Include="Windows\Exception Handling\ManageFailedWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ManageFailedWindow.Designer.cs">
+    <Compile Include="Windows\Exception Handling\ManageFailedWindow.Designer.cs">
       <DependentUpon>ManageFailedWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="ManageGameFiles.cs">
+    <Compile Include="User Controls\ManageGameFiles.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ManageGameFiles.Designer.cs">
+    <Compile Include="User Controls\ManageGameFiles.Designer.cs">
       <DependentUpon>ManageGameFiles.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -132,29 +132,29 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
-    <Compile Include="SettingsControl.cs">
+    <Compile Include="User Controls\SettingsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SettingsControl.Designer.cs">
+    <Compile Include="User Controls\SettingsControl.Designer.cs">
       <DependentUpon>SettingsControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UpdateChecker.cs" />
-    <EmbeddedResource Include="ExportFailedWindow.resx">
+    <Compile Include="Classes\UpdateChecker.cs" />
+    <EmbeddedResource Include="Windows\Exception Handling\ExportFailedWindow.resx">
       <DependentUpon>ExportFailedWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ExportToWindow.resx">
+    <EmbeddedResource Include="Windows\ExportToWindow.resx">
       <DependentUpon>ExportToWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LicenseWindow.resx">
+    <EmbeddedResource Include="Windows\LicenseWindow.resx">
       <DependentUpon>LicenseWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainWindow.resx">
+    <EmbeddedResource Include="Windows\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ManageFailedWindow.resx">
+    <EmbeddedResource Include="Windows\Exception Handling\ManageFailedWindow.resx">
       <DependentUpon>ManageFailedWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ManageGameFiles.resx">
+    <EmbeddedResource Include="User Controls\ManageGameFiles.resx">
       <DependentUpon>ManageGameFiles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -171,7 +171,7 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="SettingsControl.resx">
+    <EmbeddedResource Include="User Controls\SettingsControl.resx">
       <DependentUpon>SettingsControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />

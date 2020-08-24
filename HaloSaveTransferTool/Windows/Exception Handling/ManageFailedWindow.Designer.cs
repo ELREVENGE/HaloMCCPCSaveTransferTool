@@ -32,13 +32,13 @@
             this.HelpLinkLabel = new System.Windows.Forms.LinkLabel();
             this.AutoResolve = new System.Windows.Forms.Button();
             this.FailedList = new System.Windows.Forms.DataGridView();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.Exception = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ResolveAction = new System.Windows.Forms.DataGridViewButtonColumn();
             this.InGameName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LastModified = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.FailedList)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -61,6 +61,7 @@
             this.HelpLinkLabel.TabIndex = 6;
             this.HelpLinkLabel.TabStop = true;
             this.HelpLinkLabel.Text = "Help";
+            this.HelpLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.HelpLinkLabel_LinkClicked);
             // 
             // AutoResolve
             // 
@@ -92,22 +93,6 @@
             this.FailedList.Size = new System.Drawing.Size(683, 388);
             this.FailedList.TabIndex = 9;
             this.FailedList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.FailedList_CellContentClick);
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.AutoResolve, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 21);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(659, 31);
-            this.tableLayoutPanel1.TabIndex = 8;
             // 
             // Exception
             // 
@@ -147,6 +132,22 @@
             this.LastModified.HeaderText = "Last Modified";
             this.LastModified.Name = "LastModified";
             this.LastModified.ReadOnly = true;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.AutoResolve, 0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 21);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(659, 31);
+            this.tableLayoutPanel1.TabIndex = 8;
             // 
             // ManageFailedWindow
             // 
