@@ -87,6 +87,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="User Controls\ExportPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Controls\ExportPanel.Designer.cs">
+      <DependentUpon>ExportPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Exception Handling\ExportFailedWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +145,9 @@
       <DependentUpon>SettingsControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\UpdateChecker.cs" />
+    <EmbeddedResource Include="User Controls\ExportPanel.resx">
+      <DependentUpon>ExportPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Windows\Exception Handling\ExportFailedWindow.resx">
       <DependentUpon>ExportFailedWindow.cs</DependentUpon>
     </EmbeddedResource>
