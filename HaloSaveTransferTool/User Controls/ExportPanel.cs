@@ -61,6 +61,24 @@ namespace HaloMCCPCSaveTransferTool
             if (fileType == FileType.Gametype && GameTypeList != null) Add(file, GametypeInfo, GameTypeList);
             if (fileType == FileType.Screenshot && ScreenshotList != null) AddScreenshot(file);
         }
+        public void Add(List<HaloX360FileIO.ContainerInfo> files, FileType fileType)
+        {
+            if (fileType == FileType.Screenshot)
+            {
+                for (int i = 0; i < files.Count; i++)
+                {
+                    MainWindow.Output.WriteLine("Loading screenshot #" + (i + 1) + "/" + files.Count + " : " + files[i].CON.Header.Title_Display);
+                    Add(files[i], fileType);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < files.Count; i++)
+                {
+                    Add(files[i], fileType);
+                }
+            }
+        }
         void Add(HaloX360FileIO.ContainerInfo file, Dictionary<string, HaloX360FileIO.ContainerInfo> info, DataGridView list)
         {
             if (info != null) info.Add(file.path, file);

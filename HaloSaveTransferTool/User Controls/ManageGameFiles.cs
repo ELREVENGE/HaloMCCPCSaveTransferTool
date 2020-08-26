@@ -416,6 +416,59 @@ namespace HaloMCCPCSaveTransferTool
             }
             return returnInfo;
         }
+        //In Progress/Untested
+        #region Untested
+        InGameNameAndDescription GetInGameNameAndDescription(string file, int startOfName, int startOfDescription)
+        {
+            byte[] fileBytes;
+            InGameNameAndDescription returnInfo = new InGameNameAndDescription("", "");
+            if (file != null && File.Exists(file) && Path.GetExtension(file) == ".bin" || Path.GetExtension(file) == ".mvar")
+            {
+                fileBytes = File.ReadAllBytes(file);
+                char currentChar;
+                //Get Name
+                for (int i = startOfName; i < startOfDescription; i += 2)
+                {
+                    currentChar = (char)fileBytes[i];
+                    if (currentChar == 0) //End of name
+                    {
+                        break;
+                    }
+                    returnInfo.InGameName += currentChar;
+                }
+                //get description
+                for (int i = startOfDescription; i < startOfDescription+256/*need exact but usually ~128 chars*/; i += 2)
+                {
+                    currentChar = (char)fileBytes[i];
+                    if (currentChar == 0) //End of description
+                    {
+                        break;
+                    }
+                    returnInfo.Description += currentChar;
+                }
+            }
+            return returnInfo;
+        }
+        InGameNameAndDescription Get1InGameNameAndDescription(string file)
+        {
+            return GetInGameNameAndDescription(file, 152, 408);
+        }
+        InGameNameAndDescription Get2InGameNameAndDescription(string file)
+        {
+            return GetInGameNameAndDescription(file, 304, 560);
+        }
+        //Doesn't work for maps
+        InGameNameAndDescription Get2AInGameNameAndDescription(string file)
+        {
+            if (Path.GetExtension(file) == ".bin") { return GetInGameNameAndDescription(file, 192, 448); }
+            return new InGameNameAndDescription();
+        }
+        //hasen't been tested on maps 
+        InGameNameAndDescription Get4InGameNameAndDescription(string file)
+        {
+            return GetInGameNameAndDescription(file, 193, 449);
+        }
+        #endregion
         #endregion
 
         private void LocationLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

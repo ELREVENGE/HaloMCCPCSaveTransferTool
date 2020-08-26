@@ -148,19 +148,19 @@ namespace HaloMCCPCSaveTransferTool
             // Halo: Reach
             MainWindow.Output.WriteLine("Searching for Halo: Reach files");
             List<ContainerInfo> reachFiles = GetContainersForTitle(package, "Halo: Reach");
-            haloFiles.reachMaps = GetMatchingContents(reachFiles, "sandbox.map");
-            haloFiles.reachGametypes = GetMatchingContents(reachFiles, "variant");
-            haloFiles.reachScreenShots = GetMatchingContents(reachFiles, "screen.shot");
+            haloFiles.Reach.Maps = GetMatchingContents(reachFiles, "sandbox.map");
+            haloFiles.Reach.GameTypes = GetMatchingContents(reachFiles, "variant");
+            haloFiles.Reach.Screenshots = GetMatchingContents(reachFiles, "screen.shot");
             // Halo 3
             MainWindow.Output.WriteLine("Searching for Halo 3 files");
             List<ContainerInfo> h3Files = GetContainersForTitle(package, "Halo 3");
-            haloFiles.h3Maps = GetMatchingContents(h3Files, "sandbox.map");
-            haloFiles.h3Gametypes = GetMatchingContents(h3Files, "variant", false);
-            haloFiles.h3ScreenShots = GetMatchingContents(h3Files, "screen.shot");
+            haloFiles.Halo3.Maps = GetMatchingContents(h3Files, "sandbox.map");
+            haloFiles.Halo3.GameTypes = GetMatchingContents(h3Files, "variant", false);
+            haloFiles.Halo3.Screenshots = GetMatchingContents(h3Files, "screen.shot");
             // Halo 3 ODST
             MainWindow.Output.WriteLine("Searching for Halo 3 ODST files");
             List<ContainerInfo> h3ODSTFiles = GetContainersForTitle(package, "Halo 3: ODST");
-            haloFiles.h3ODSTScreenShots = GetMatchingContents(h3ODSTFiles, "screen.shot");
+            haloFiles.Halo3ODST.Screenshots = GetMatchingContents(h3ODSTFiles, "screen.shot");
 
             return haloFiles;
 
@@ -318,18 +318,31 @@ namespace HaloMCCPCSaveTransferTool
             public STFSPackage CON;
             public FileEntry file;
         }
+        public struct GameFiles
+        {
+            public List<ContainerInfo> Maps;
+            public List<ContainerInfo> GameTypes;
+            public List<ContainerInfo> Screenshots;
+            public GameFiles(bool initLists) : this()
+            {
+                if (initLists)
+                {
+                    Clear();
+                }
+            }
+
+            public void Clear()
+            {
+                GameTypes = new List<ContainerInfo>();
+                Maps = new List<ContainerInfo>();
+                Screenshots = new List<ContainerInfo>();
+            }
+        }
         public struct HaloFiles
         {
-            //Halo: Reach
-            public List<ContainerInfo> reachMaps;
-            public List<ContainerInfo> reachGametypes;
-            public List<ContainerInfo> reachScreenShots;
-            //Halo 3
-            public List<ContainerInfo> h3Maps;
-            public List<ContainerInfo> h3Gametypes;
-            public List<ContainerInfo> h3ScreenShots;
-            //Halo 3 ODST
-            public List<ContainerInfo> h3ODSTScreenShots;
+            public GameFiles Reach;
+            public GameFiles Halo3;
+            public GameFiles Halo3ODST;
 
             public HaloFiles(bool initLists) : this()
             {
@@ -341,15 +354,9 @@ namespace HaloMCCPCSaveTransferTool
 
             public void Clear()
             {
-                reachGametypes = new List<ContainerInfo>();
-                reachMaps = new List<ContainerInfo>();
-                reachScreenShots = new List<ContainerInfo>();
-
-                h3Maps = new List<ContainerInfo>();
-                h3Gametypes = new List<ContainerInfo>();
-                h3ScreenShots = new List<ContainerInfo>();
-
-                h3ODSTScreenShots = new List<ContainerInfo>();
+                Reach.Clear();
+                Halo3.Clear();
+                Halo3ODST.Clear();
             }
         }
         #endregion

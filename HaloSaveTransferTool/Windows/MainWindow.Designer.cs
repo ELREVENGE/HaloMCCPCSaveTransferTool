@@ -34,53 +34,11 @@
             this.FilesPannel = new System.Windows.Forms.TableLayoutPanel();
             this.gameTabControl = new System.Windows.Forms.TabControl();
             this.ReachTab = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.ReachExportScreenShots = new System.Windows.Forms.Button();
-            this.HaloReachScreenshotSaves = new System.Windows.Forms.DataGridView();
-            this.Thumbnail = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ReachExportMaps = new System.Windows.Forms.Button();
-            this.HaloReachGameTypeSaves = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GTLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HaloReachMapSaves = new System.Windows.Forms.DataGridView();
-            this.SaveName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreatedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ModifiedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MapLocationColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ReachExportGametypes = new System.Windows.Forms.Button();
+            this.ReachExportPanel = new HaloMCCPCSaveTransferTool.ExportPanel();
             this.Halo3 = new System.Windows.Forms.TabPage();
-            this.Halo3TableLayoutPannel = new System.Windows.Forms.TableLayoutPanel();
-            this.H3ExportScreenshots = new System.Windows.Forms.Button();
-            this.Halo3ScreenshotSaves = new System.Windows.Forms.DataGridView();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.H3ExportMaps = new System.Windows.Forms.Button();
-            this.Halo3GameTypeSaves = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Halo3MapSaves = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.H3ExportGameTypes = new System.Windows.Forms.Button();
+            this.Halo3ExportPanel = new HaloMCCPCSaveTransferTool.ExportPanel();
             this.ODST = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.Halo3ODSTExportScreenshots = new System.Windows.Forms.Button();
-            this.ODSTScreenshots = new System.Windows.Forms.DataGridView();
-            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Halo3ODSTExportPanel = new HaloMCCPCSaveTransferTool.ExportPanel();
             this.OpenPannel = new System.Windows.Forms.Panel();
             this.OpenedLabel = new System.Windows.Forms.Label();
             this.Open = new System.Windows.Forms.Button();
@@ -88,67 +46,32 @@
             this.ManageTab = new System.Windows.Forms.TabPage();
             this.MapAndGameTypeTabControl = new System.Windows.Forms.TabControl();
             this.MapsTab = new System.Windows.Forms.TabPage();
-            this.LocationTabControl = new System.Windows.Forms.TabControl();
-            this.BuiltIn = new System.Windows.Forms.TabPage();
-            this.builtInMapsTable = new System.Windows.Forms.TableLayoutPanel();
-            this.Private = new System.Windows.Forms.TabPage();
-            this.privateMapsTable = new System.Windows.Forms.TableLayoutPanel();
+            this.ManageMapsPanel = new HaloMCCPCSaveTransferTool.ManagePanel();
             this.GameTypesTab = new System.Windows.Forms.TabPage();
+            this.ManageGameTypesPanel = new HaloMCCPCSaveTransferTool.ManagePanel();
             this.SettingsTab = new System.Windows.Forms.TabPage();
+            this.settingsControl = new HaloMCCPCSaveTransferTool.SettingsControl();
             this.OtherTabPage = new System.Windows.Forms.TabPage();
             this.HelpLink = new System.Windows.Forms.LinkLabel();
-            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.ViewLicensesLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.GitHubLinkLabel = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.builtInMaps3ManageGameFiles = new HaloMCCPCSaveTransferTool.ManageGameFiles();
-            this.builtInMapsReachManageGameFiles = new HaloMCCPCSaveTransferTool.ManageGameFiles();
-            this.privateMaps3ManageGameFiles = new HaloMCCPCSaveTransferTool.ManageGameFiles();
-            this.privateMapsReachManageGameFiles = new HaloMCCPCSaveTransferTool.ManageGameFiles();
-            this.settingsControl = new HaloMCCPCSaveTransferTool.SettingsControl();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.BuiltInGameTypesTab = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.builtInGameTypes3ManageGameFiles = new HaloMCCPCSaveTransferTool.ManageGameFiles();
-            this.builtInGameTypesReachManageGameFiles = new HaloMCCPCSaveTransferTool.ManageGameFiles();
-            this.PrivateGameTypesTab = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.privateGameTypes3ManageGameFiles = new HaloMCCPCSaveTransferTool.ManageGameFiles();
-            this.privateGameTypesReachManageGameFiles = new HaloMCCPCSaveTransferTool.ManageGameFiles();
+            this.IssuesLinkLabel = new System.Windows.Forms.LinkLabel();
             this.ExportTab.SuspendLayout();
             this.FilesPannel.SuspendLayout();
             this.gameTabControl.SuspendLayout();
             this.ReachTab.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.HaloReachScreenshotSaves)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HaloReachGameTypeSaves)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HaloReachMapSaves)).BeginInit();
             this.Halo3.SuspendLayout();
-            this.Halo3TableLayoutPannel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Halo3ScreenshotSaves)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Halo3GameTypeSaves)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Halo3MapSaves)).BeginInit();
             this.ODST.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ODSTScreenshots)).BeginInit();
             this.OpenPannel.SuspendLayout();
             this.exportAndSettingsTabControl.SuspendLayout();
             this.ManageTab.SuspendLayout();
             this.MapAndGameTypeTabControl.SuspendLayout();
             this.MapsTab.SuspendLayout();
-            this.LocationTabControl.SuspendLayout();
-            this.BuiltIn.SuspendLayout();
-            this.builtInMapsTable.SuspendLayout();
-            this.Private.SuspendLayout();
-            this.privateMapsTable.SuspendLayout();
             this.GameTypesTab.SuspendLayout();
             this.SettingsTab.SuspendLayout();
             this.OtherTabPage.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.BuiltInGameTypesTab.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
-            this.PrivateGameTypesTab.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // OutputTextBox
@@ -202,7 +125,7 @@
             // 
             // ReachTab
             // 
-            this.ReachTab.Controls.Add(this.tableLayoutPanel1);
+            this.ReachTab.Controls.Add(this.ReachExportPanel);
             this.ReachTab.Location = new System.Drawing.Point(4, 22);
             this.ReachTab.Name = "ReachTab";
             this.ReachTab.Padding = new System.Windows.Forms.Padding(3);
@@ -211,212 +134,17 @@
             this.ReachTab.Text = "Reach";
             this.ReachTab.UseVisualStyleBackColor = true;
             // 
-            // tableLayoutPanel1
+            // ReachExportPanel
             // 
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Controls.Add(this.ReachExportScreenShots, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.HaloReachScreenshotSaves, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.ReachExportMaps, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.HaloReachGameTypeSaves, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.HaloReachMapSaves, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.ReachExportGametypes, 1, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(983, 355);
-            this.tableLayoutPanel1.TabIndex = 16;
-            // 
-            // ReachExportScreenShots
-            // 
-            this.ReachExportScreenShots.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ReachExportScreenShots.Location = new System.Drawing.Point(657, 308);
-            this.ReachExportScreenShots.Name = "ReachExportScreenShots";
-            this.ReachExportScreenShots.Size = new System.Drawing.Size(323, 44);
-            this.ReachExportScreenShots.TabIndex = 9;
-            this.ReachExportScreenShots.Text = "Export Selected Screenshots";
-            this.ReachExportScreenShots.UseVisualStyleBackColor = true;
-            this.ReachExportScreenShots.Click += new System.EventHandler(this.ReachExportScreenShots_Click);
-            // 
-            // HaloReachScreenshotSaves
-            // 
-            this.HaloReachScreenshotSaves.AllowUserToAddRows = false;
-            this.HaloReachScreenshotSaves.AllowUserToDeleteRows = false;
-            this.HaloReachScreenshotSaves.AllowUserToResizeRows = false;
-            this.HaloReachScreenshotSaves.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.HaloReachScreenshotSaves.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.HaloReachScreenshotSaves.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Thumbnail,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn7});
-            this.HaloReachScreenshotSaves.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.HaloReachScreenshotSaves.Location = new System.Drawing.Point(657, 3);
-            this.HaloReachScreenshotSaves.Name = "HaloReachScreenshotSaves";
-            this.HaloReachScreenshotSaves.RowHeadersVisible = false;
-            this.HaloReachScreenshotSaves.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.HaloReachScreenshotSaves.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.HaloReachScreenshotSaves.Size = new System.Drawing.Size(323, 299);
-            this.HaloReachScreenshotSaves.TabIndex = 9;
-            // 
-            // Thumbnail
-            // 
-            this.Thumbnail.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Thumbnail.Frozen = true;
-            this.Thumbnail.HeaderText = "Screenshot";
-            this.Thumbnail.Name = "Thumbnail";
-            this.Thumbnail.ReadOnly = true;
-            this.Thumbnail.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Thumbnail.Width = 192;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewTextBoxColumn4.Frozen = true;
-            this.dataGridViewTextBoxColumn4.HeaderText = "Name";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 80;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "Created";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "Location";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            // 
-            // ReachExportMaps
-            // 
-            this.ReachExportMaps.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ReachExportMaps.Location = new System.Drawing.Point(3, 308);
-            this.ReachExportMaps.Name = "ReachExportMaps";
-            this.ReachExportMaps.Size = new System.Drawing.Size(321, 44);
-            this.ReachExportMaps.TabIndex = 8;
-            this.ReachExportMaps.Text = "Export Selected Maps";
-            this.ReachExportMaps.UseVisualStyleBackColor = true;
-            this.ReachExportMaps.Click += new System.EventHandler(this.ReachExportMaps_Click);
-            // 
-            // HaloReachGameTypeSaves
-            // 
-            this.HaloReachGameTypeSaves.AllowUserToAddRows = false;
-            this.HaloReachGameTypeSaves.AllowUserToDeleteRows = false;
-            this.HaloReachGameTypeSaves.AllowUserToResizeRows = false;
-            this.HaloReachGameTypeSaves.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.HaloReachGameTypeSaves.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.HaloReachGameTypeSaves.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.GTLocation});
-            this.HaloReachGameTypeSaves.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.HaloReachGameTypeSaves.Location = new System.Drawing.Point(330, 3);
-            this.HaloReachGameTypeSaves.Name = "HaloReachGameTypeSaves";
-            this.HaloReachGameTypeSaves.RowHeadersVisible = false;
-            this.HaloReachGameTypeSaves.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.HaloReachGameTypeSaves.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.HaloReachGameTypeSaves.Size = new System.Drawing.Size(321, 299);
-            this.HaloReachGameTypeSaves.TabIndex = 6;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewTextBoxColumn1.Frozen = true;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Gametype";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 80;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Created";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Modified";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // GTLocation
-            // 
-            this.GTLocation.HeaderText = "Location";
-            this.GTLocation.Name = "GTLocation";
-            this.GTLocation.ReadOnly = true;
-            // 
-            // HaloReachMapSaves
-            // 
-            this.HaloReachMapSaves.AllowUserToAddRows = false;
-            this.HaloReachMapSaves.AllowUserToDeleteRows = false;
-            this.HaloReachMapSaves.AllowUserToResizeRows = false;
-            this.HaloReachMapSaves.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.HaloReachMapSaves.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.HaloReachMapSaves.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.SaveName,
-            this.CreatedDate,
-            this.ModifiedDate,
-            this.MapLocationColumn});
-            this.HaloReachMapSaves.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.HaloReachMapSaves.Location = new System.Drawing.Point(3, 3);
-            this.HaloReachMapSaves.Name = "HaloReachMapSaves";
-            this.HaloReachMapSaves.RowHeadersVisible = false;
-            this.HaloReachMapSaves.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.HaloReachMapSaves.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.HaloReachMapSaves.Size = new System.Drawing.Size(321, 299);
-            this.HaloReachMapSaves.TabIndex = 5;
-            // 
-            // SaveName
-            // 
-            this.SaveName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.SaveName.Frozen = true;
-            this.SaveName.HeaderText = "Map";
-            this.SaveName.Name = "SaveName";
-            this.SaveName.ReadOnly = true;
-            this.SaveName.Width = 81;
-            // 
-            // CreatedDate
-            // 
-            this.CreatedDate.HeaderText = "Created";
-            this.CreatedDate.Name = "CreatedDate";
-            this.CreatedDate.ReadOnly = true;
-            // 
-            // ModifiedDate
-            // 
-            this.ModifiedDate.HeaderText = "Modified";
-            this.ModifiedDate.Name = "ModifiedDate";
-            this.ModifiedDate.ReadOnly = true;
-            // 
-            // MapLocationColumn
-            // 
-            this.MapLocationColumn.HeaderText = "Location";
-            this.MapLocationColumn.Name = "MapLocationColumn";
-            this.MapLocationColumn.ReadOnly = true;
-            // 
-            // ReachExportGametypes
-            // 
-            this.ReachExportGametypes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ReachExportGametypes.Location = new System.Drawing.Point(330, 308);
-            this.ReachExportGametypes.Name = "ReachExportGametypes";
-            this.ReachExportGametypes.Size = new System.Drawing.Size(321, 44);
-            this.ReachExportGametypes.TabIndex = 7;
-            this.ReachExportGametypes.Text = "Export Selected Gametypes";
-            this.ReachExportGametypes.UseVisualStyleBackColor = true;
-            this.ReachExportGametypes.Click += new System.EventHandler(this.ReachExportGametypes_Click);
+            this.ReachExportPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ReachExportPanel.Location = new System.Drawing.Point(3, 3);
+            this.ReachExportPanel.Name = "ReachExportPanel";
+            this.ReachExportPanel.Size = new System.Drawing.Size(983, 355);
+            this.ReachExportPanel.TabIndex = 0;
             // 
             // Halo3
             // 
-            this.Halo3.Controls.Add(this.Halo3TableLayoutPannel);
+            this.Halo3.Controls.Add(this.Halo3ExportPanel);
             this.Halo3.Location = new System.Drawing.Point(4, 22);
             this.Halo3.Name = "Halo3";
             this.Halo3.Padding = new System.Windows.Forms.Padding(3);
@@ -425,212 +153,17 @@
             this.Halo3.Text = "Halo 3";
             this.Halo3.UseVisualStyleBackColor = true;
             // 
-            // Halo3TableLayoutPannel
+            // Halo3ExportPanel
             // 
-            this.Halo3TableLayoutPannel.ColumnCount = 3;
-            this.Halo3TableLayoutPannel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.Halo3TableLayoutPannel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.Halo3TableLayoutPannel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.Halo3TableLayoutPannel.Controls.Add(this.H3ExportScreenshots, 2, 1);
-            this.Halo3TableLayoutPannel.Controls.Add(this.Halo3ScreenshotSaves, 2, 0);
-            this.Halo3TableLayoutPannel.Controls.Add(this.H3ExportMaps, 0, 1);
-            this.Halo3TableLayoutPannel.Controls.Add(this.Halo3GameTypeSaves, 0, 0);
-            this.Halo3TableLayoutPannel.Controls.Add(this.Halo3MapSaves, 0, 0);
-            this.Halo3TableLayoutPannel.Controls.Add(this.H3ExportGameTypes, 1, 1);
-            this.Halo3TableLayoutPannel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Halo3TableLayoutPannel.Location = new System.Drawing.Point(3, 3);
-            this.Halo3TableLayoutPannel.Name = "Halo3TableLayoutPannel";
-            this.Halo3TableLayoutPannel.RowCount = 2;
-            this.Halo3TableLayoutPannel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.Halo3TableLayoutPannel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.Halo3TableLayoutPannel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.Halo3TableLayoutPannel.Size = new System.Drawing.Size(983, 355);
-            this.Halo3TableLayoutPannel.TabIndex = 17;
-            // 
-            // H3ExportScreenshots
-            // 
-            this.H3ExportScreenshots.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.H3ExportScreenshots.Location = new System.Drawing.Point(657, 308);
-            this.H3ExportScreenshots.Name = "H3ExportScreenshots";
-            this.H3ExportScreenshots.Size = new System.Drawing.Size(323, 44);
-            this.H3ExportScreenshots.TabIndex = 9;
-            this.H3ExportScreenshots.Text = "Export Selected Screenshots";
-            this.H3ExportScreenshots.UseVisualStyleBackColor = true;
-            this.H3ExportScreenshots.Click += new System.EventHandler(this.H3ExportScreenshots_Click);
-            // 
-            // Halo3ScreenshotSaves
-            // 
-            this.Halo3ScreenshotSaves.AllowUserToAddRows = false;
-            this.Halo3ScreenshotSaves.AllowUserToDeleteRows = false;
-            this.Halo3ScreenshotSaves.AllowUserToResizeRows = false;
-            this.Halo3ScreenshotSaves.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.Halo3ScreenshotSaves.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Halo3ScreenshotSaves.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewImageColumn1,
-            this.dataGridViewTextBoxColumn8,
-            this.dataGridViewTextBoxColumn9,
-            this.dataGridViewTextBoxColumn11});
-            this.Halo3ScreenshotSaves.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Halo3ScreenshotSaves.Location = new System.Drawing.Point(657, 3);
-            this.Halo3ScreenshotSaves.Name = "Halo3ScreenshotSaves";
-            this.Halo3ScreenshotSaves.RowHeadersVisible = false;
-            this.Halo3ScreenshotSaves.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.Halo3ScreenshotSaves.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Halo3ScreenshotSaves.Size = new System.Drawing.Size(323, 299);
-            this.Halo3ScreenshotSaves.TabIndex = 9;
-            // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewImageColumn1.Frozen = true;
-            this.dataGridViewImageColumn1.HeaderText = "Screenshot";
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.ReadOnly = true;
-            this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewImageColumn1.Width = 192;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewTextBoxColumn8.Frozen = true;
-            this.dataGridViewTextBoxColumn8.HeaderText = "Name";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            this.dataGridViewTextBoxColumn8.Width = 80;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.HeaderText = "Created";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.HeaderText = "Location";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.ReadOnly = true;
-            // 
-            // H3ExportMaps
-            // 
-            this.H3ExportMaps.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.H3ExportMaps.Location = new System.Drawing.Point(3, 308);
-            this.H3ExportMaps.Name = "H3ExportMaps";
-            this.H3ExportMaps.Size = new System.Drawing.Size(321, 44);
-            this.H3ExportMaps.TabIndex = 8;
-            this.H3ExportMaps.Text = "Export Selected Maps";
-            this.H3ExportMaps.UseVisualStyleBackColor = true;
-            this.H3ExportMaps.Click += new System.EventHandler(this.H3ExportMaps_Click);
-            // 
-            // Halo3GameTypeSaves
-            // 
-            this.Halo3GameTypeSaves.AllowUserToAddRows = false;
-            this.Halo3GameTypeSaves.AllowUserToDeleteRows = false;
-            this.Halo3GameTypeSaves.AllowUserToResizeRows = false;
-            this.Halo3GameTypeSaves.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.Halo3GameTypeSaves.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Halo3GameTypeSaves.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn12,
-            this.dataGridViewTextBoxColumn13,
-            this.dataGridViewTextBoxColumn14,
-            this.dataGridViewTextBoxColumn15});
-            this.Halo3GameTypeSaves.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Halo3GameTypeSaves.Location = new System.Drawing.Point(330, 3);
-            this.Halo3GameTypeSaves.Name = "Halo3GameTypeSaves";
-            this.Halo3GameTypeSaves.RowHeadersVisible = false;
-            this.Halo3GameTypeSaves.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.Halo3GameTypeSaves.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Halo3GameTypeSaves.Size = new System.Drawing.Size(321, 299);
-            this.Halo3GameTypeSaves.TabIndex = 6;
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewTextBoxColumn12.Frozen = true;
-            this.dataGridViewTextBoxColumn12.HeaderText = "Gametype";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            this.dataGridViewTextBoxColumn12.ReadOnly = true;
-            this.dataGridViewTextBoxColumn12.Width = 80;
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            this.dataGridViewTextBoxColumn13.HeaderText = "Created";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            this.dataGridViewTextBoxColumn13.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn14
-            // 
-            this.dataGridViewTextBoxColumn14.HeaderText = "Modified";
-            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-            this.dataGridViewTextBoxColumn14.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn15
-            // 
-            this.dataGridViewTextBoxColumn15.HeaderText = "Location";
-            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            this.dataGridViewTextBoxColumn15.ReadOnly = true;
-            // 
-            // Halo3MapSaves
-            // 
-            this.Halo3MapSaves.AllowUserToAddRows = false;
-            this.Halo3MapSaves.AllowUserToDeleteRows = false;
-            this.Halo3MapSaves.AllowUserToResizeRows = false;
-            this.Halo3MapSaves.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.Halo3MapSaves.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Halo3MapSaves.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn16,
-            this.dataGridViewTextBoxColumn17,
-            this.dataGridViewTextBoxColumn18,
-            this.dataGridViewTextBoxColumn19});
-            this.Halo3MapSaves.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Halo3MapSaves.Location = new System.Drawing.Point(3, 3);
-            this.Halo3MapSaves.Name = "Halo3MapSaves";
-            this.Halo3MapSaves.RowHeadersVisible = false;
-            this.Halo3MapSaves.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.Halo3MapSaves.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Halo3MapSaves.Size = new System.Drawing.Size(321, 299);
-            this.Halo3MapSaves.TabIndex = 5;
-            // 
-            // dataGridViewTextBoxColumn16
-            // 
-            this.dataGridViewTextBoxColumn16.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewTextBoxColumn16.Frozen = true;
-            this.dataGridViewTextBoxColumn16.HeaderText = "Map";
-            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
-            this.dataGridViewTextBoxColumn16.ReadOnly = true;
-            this.dataGridViewTextBoxColumn16.Width = 81;
-            // 
-            // dataGridViewTextBoxColumn17
-            // 
-            this.dataGridViewTextBoxColumn17.HeaderText = "Created";
-            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
-            this.dataGridViewTextBoxColumn17.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn18
-            // 
-            this.dataGridViewTextBoxColumn18.HeaderText = "Modified";
-            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
-            this.dataGridViewTextBoxColumn18.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn19
-            // 
-            this.dataGridViewTextBoxColumn19.HeaderText = "Location";
-            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
-            this.dataGridViewTextBoxColumn19.ReadOnly = true;
-            // 
-            // H3ExportGameTypes
-            // 
-            this.H3ExportGameTypes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.H3ExportGameTypes.Location = new System.Drawing.Point(330, 308);
-            this.H3ExportGameTypes.Name = "H3ExportGameTypes";
-            this.H3ExportGameTypes.Size = new System.Drawing.Size(321, 44);
-            this.H3ExportGameTypes.TabIndex = 7;
-            this.H3ExportGameTypes.Text = "Export Selected Gametypes";
-            this.H3ExportGameTypes.UseVisualStyleBackColor = true;
-            this.H3ExportGameTypes.Click += new System.EventHandler(this.H3ExportGameTypes_Click);
+            this.Halo3ExportPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Halo3ExportPanel.Location = new System.Drawing.Point(3, 3);
+            this.Halo3ExportPanel.Name = "Halo3ExportPanel";
+            this.Halo3ExportPanel.Size = new System.Drawing.Size(983, 355);
+            this.Halo3ExportPanel.TabIndex = 1;
             // 
             // ODST
             // 
-            this.ODST.Controls.Add(this.tableLayoutPanel2);
+            this.ODST.Controls.Add(this.Halo3ODSTExportPanel);
             this.ODST.Location = new System.Drawing.Point(4, 22);
             this.ODST.Name = "ODST";
             this.ODST.Padding = new System.Windows.Forms.Padding(3);
@@ -639,85 +172,13 @@
             this.ODST.Text = "ODST";
             this.ODST.UseVisualStyleBackColor = true;
             // 
-            // tableLayoutPanel2
+            // Halo3ODSTExportPanel
             // 
-            this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Controls.Add(this.Halo3ODSTExportScreenshots, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.ODSTScreenshots, 0, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(983, 355);
-            this.tableLayoutPanel2.TabIndex = 18;
-            // 
-            // Halo3ODSTExportScreenshots
-            // 
-            this.Halo3ODSTExportScreenshots.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Halo3ODSTExportScreenshots.Location = new System.Drawing.Point(3, 308);
-            this.Halo3ODSTExportScreenshots.Name = "Halo3ODSTExportScreenshots";
-            this.Halo3ODSTExportScreenshots.Size = new System.Drawing.Size(977, 44);
-            this.Halo3ODSTExportScreenshots.TabIndex = 9;
-            this.Halo3ODSTExportScreenshots.Text = "Export Selected Screenshots";
-            this.Halo3ODSTExportScreenshots.UseVisualStyleBackColor = true;
-            this.Halo3ODSTExportScreenshots.Click += new System.EventHandler(this.Halo3ODSTExportScreenshots_Click);
-            // 
-            // ODSTScreenshots
-            // 
-            this.ODSTScreenshots.AllowUserToAddRows = false;
-            this.ODSTScreenshots.AllowUserToDeleteRows = false;
-            this.ODSTScreenshots.AllowUserToResizeRows = false;
-            this.ODSTScreenshots.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.ODSTScreenshots.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ODSTScreenshots.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewImageColumn2,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn10,
-            this.dataGridViewTextBoxColumn20});
-            this.ODSTScreenshots.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ODSTScreenshots.Location = new System.Drawing.Point(3, 3);
-            this.ODSTScreenshots.Name = "ODSTScreenshots";
-            this.ODSTScreenshots.RowHeadersVisible = false;
-            this.ODSTScreenshots.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.ODSTScreenshots.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ODSTScreenshots.Size = new System.Drawing.Size(977, 299);
-            this.ODSTScreenshots.TabIndex = 9;
-            // 
-            // dataGridViewImageColumn2
-            // 
-            this.dataGridViewImageColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewImageColumn2.Frozen = true;
-            this.dataGridViewImageColumn2.HeaderText = "Screenshot";
-            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
-            this.dataGridViewImageColumn2.ReadOnly = true;
-            this.dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewImageColumn2.Width = 192;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewTextBoxColumn6.Frozen = true;
-            this.dataGridViewTextBoxColumn6.HeaderText = "Name";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 80;
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.HeaderText = "Created";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn20
-            // 
-            this.dataGridViewTextBoxColumn20.HeaderText = "Location";
-            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
-            this.dataGridViewTextBoxColumn20.ReadOnly = true;
+            this.Halo3ODSTExportPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Halo3ODSTExportPanel.Location = new System.Drawing.Point(3, 3);
+            this.Halo3ODSTExportPanel.Name = "Halo3ODSTExportPanel";
+            this.Halo3ODSTExportPanel.Size = new System.Drawing.Size(983, 355);
+            this.Halo3ODSTExportPanel.TabIndex = 1;
             // 
             // OpenPannel
             // 
@@ -785,7 +246,7 @@
             // 
             // MapsTab
             // 
-            this.MapsTab.Controls.Add(this.LocationTabControl);
+            this.MapsTab.Controls.Add(this.ManageMapsPanel);
             this.MapsTab.Location = new System.Drawing.Point(4, 22);
             this.MapsTab.Name = "MapsTab";
             this.MapsTab.Padding = new System.Windows.Forms.Padding(3);
@@ -794,76 +255,17 @@
             this.MapsTab.Text = "Maps";
             this.MapsTab.UseVisualStyleBackColor = true;
             // 
-            // LocationTabControl
+            // ManageMapsPanel
             // 
-            this.LocationTabControl.Controls.Add(this.BuiltIn);
-            this.LocationTabControl.Controls.Add(this.Private);
-            this.LocationTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LocationTabControl.Location = new System.Drawing.Point(3, 3);
-            this.LocationTabControl.Name = "LocationTabControl";
-            this.LocationTabControl.SelectedIndex = 0;
-            this.LocationTabControl.Size = new System.Drawing.Size(989, 401);
-            this.LocationTabControl.TabIndex = 0;
-            // 
-            // BuiltIn
-            // 
-            this.BuiltIn.Controls.Add(this.builtInMapsTable);
-            this.BuiltIn.Location = new System.Drawing.Point(4, 22);
-            this.BuiltIn.Name = "BuiltIn";
-            this.BuiltIn.Padding = new System.Windows.Forms.Padding(3);
-            this.BuiltIn.Size = new System.Drawing.Size(981, 375);
-            this.BuiltIn.TabIndex = 0;
-            this.BuiltIn.Text = "Built In";
-            this.BuiltIn.UseVisualStyleBackColor = true;
-            // 
-            // builtInMapsTable
-            // 
-            this.builtInMapsTable.ColumnCount = 2;
-            this.builtInMapsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.builtInMapsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.builtInMapsTable.Controls.Add(this.builtInMaps3ManageGameFiles, 0, 0);
-            this.builtInMapsTable.Controls.Add(this.builtInMapsReachManageGameFiles, 0, 0);
-            this.builtInMapsTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.builtInMapsTable.Location = new System.Drawing.Point(3, 3);
-            this.builtInMapsTable.Name = "builtInMapsTable";
-            this.builtInMapsTable.RowCount = 1;
-            this.builtInMapsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.builtInMapsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 646F));
-            this.builtInMapsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 646F));
-            this.builtInMapsTable.Size = new System.Drawing.Size(975, 369);
-            this.builtInMapsTable.TabIndex = 0;
-            // 
-            // Private
-            // 
-            this.Private.Controls.Add(this.privateMapsTable);
-            this.Private.Location = new System.Drawing.Point(4, 22);
-            this.Private.Name = "Private";
-            this.Private.Padding = new System.Windows.Forms.Padding(3);
-            this.Private.Size = new System.Drawing.Size(981, 375);
-            this.Private.TabIndex = 1;
-            this.Private.Text = "Private";
-            this.Private.UseVisualStyleBackColor = true;
-            // 
-            // privateMapsTable
-            // 
-            this.privateMapsTable.ColumnCount = 2;
-            this.privateMapsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.privateMapsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.privateMapsTable.Controls.Add(this.privateMaps3ManageGameFiles, 0, 0);
-            this.privateMapsTable.Controls.Add(this.privateMapsReachManageGameFiles, 0, 0);
-            this.privateMapsTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.privateMapsTable.Location = new System.Drawing.Point(3, 3);
-            this.privateMapsTable.Name = "privateMapsTable";
-            this.privateMapsTable.RowCount = 1;
-            this.privateMapsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.privateMapsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 369F));
-            this.privateMapsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 369F));
-            this.privateMapsTable.Size = new System.Drawing.Size(975, 369);
-            this.privateMapsTable.TabIndex = 1;
+            this.ManageMapsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ManageMapsPanel.Location = new System.Drawing.Point(3, 3);
+            this.ManageMapsPanel.Name = "ManageMapsPanel";
+            this.ManageMapsPanel.Size = new System.Drawing.Size(989, 401);
+            this.ManageMapsPanel.TabIndex = 0;
             // 
             // GameTypesTab
             // 
-            this.GameTypesTab.Controls.Add(this.tabControl1);
+            this.GameTypesTab.Controls.Add(this.ManageGameTypesPanel);
             this.GameTypesTab.Location = new System.Drawing.Point(4, 22);
             this.GameTypesTab.Name = "GameTypesTab";
             this.GameTypesTab.Padding = new System.Windows.Forms.Padding(3);
@@ -871,6 +273,14 @@
             this.GameTypesTab.TabIndex = 1;
             this.GameTypesTab.Text = "Game Types";
             this.GameTypesTab.UseVisualStyleBackColor = true;
+            // 
+            // ManageGameTypesPanel
+            // 
+            this.ManageGameTypesPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ManageGameTypesPanel.Location = new System.Drawing.Point(3, 3);
+            this.ManageGameTypesPanel.Name = "ManageGameTypesPanel";
+            this.ManageGameTypesPanel.Size = new System.Drawing.Size(989, 401);
+            this.ManageGameTypesPanel.TabIndex = 0;
             // 
             // SettingsTab
             // 
@@ -883,11 +293,20 @@
             this.SettingsTab.Text = "Settings";
             this.SettingsTab.UseVisualStyleBackColor = true;
             // 
+            // settingsControl
+            // 
+            this.settingsControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.settingsControl.Location = new System.Drawing.Point(3, 3);
+            this.settingsControl.Name = "settingsControl";
+            this.settingsControl.Size = new System.Drawing.Size(1003, 433);
+            this.settingsControl.TabIndex = 0;
+            // 
             // OtherTabPage
             // 
+            this.OtherTabPage.Controls.Add(this.IssuesLinkLabel);
             this.OtherTabPage.Controls.Add(this.HelpLink);
-            this.OtherTabPage.Controls.Add(this.linkLabel3);
-            this.OtherTabPage.Controls.Add(this.linkLabel1);
+            this.OtherTabPage.Controls.Add(this.ViewLicensesLinkLabel);
+            this.OtherTabPage.Controls.Add(this.GitHubLinkLabel);
             this.OtherTabPage.Controls.Add(this.label1);
             this.OtherTabPage.Location = new System.Drawing.Point(4, 22);
             this.OtherTabPage.Name = "OtherTabPage";
@@ -900,7 +319,7 @@
             // HelpLink
             // 
             this.HelpLink.AutoSize = true;
-            this.HelpLink.Location = new System.Drawing.Point(84, 16);
+            this.HelpLink.Location = new System.Drawing.Point(84, 17);
             this.HelpLink.Name = "HelpLink";
             this.HelpLink.Size = new System.Drawing.Size(87, 13);
             this.HelpLink.TabIndex = 5;
@@ -908,27 +327,27 @@
             this.HelpLink.Text = "Wiki/Help pages";
             this.HelpLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.HelpLink_LinkClicked);
             // 
-            // linkLabel3
+            // ViewLicensesLinkLabel
             // 
-            this.linkLabel3.AutoSize = true;
-            this.linkLabel3.Location = new System.Drawing.Point(3, 16);
-            this.linkLabel3.Name = "linkLabel3";
-            this.linkLabel3.Size = new System.Drawing.Size(75, 13);
-            this.linkLabel3.TabIndex = 4;
-            this.linkLabel3.TabStop = true;
-            this.linkLabel3.Text = "View Licenses";
-            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
+            this.ViewLicensesLinkLabel.AutoSize = true;
+            this.ViewLicensesLinkLabel.Location = new System.Drawing.Point(3, 17);
+            this.ViewLicensesLinkLabel.Name = "ViewLicensesLinkLabel";
+            this.ViewLicensesLinkLabel.Size = new System.Drawing.Size(75, 13);
+            this.ViewLicensesLinkLabel.TabIndex = 4;
+            this.ViewLicensesLinkLabel.TabStop = true;
+            this.ViewLicensesLinkLabel.Text = "View Licenses";
+            this.ViewLicensesLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ViewLicensesLinkLabel_LinkClicked);
             // 
-            // linkLabel1
+            // GitHubLinkLabel
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(267, 3);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(277, 13);
-            this.linkLabel1.TabIndex = 1;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "https://github.com/ELREVENGE/HaloSaveTransferTool";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            this.GitHubLinkLabel.AutoSize = true;
+            this.GitHubLinkLabel.Location = new System.Drawing.Point(267, 3);
+            this.GitHubLinkLabel.Name = "GitHubLinkLabel";
+            this.GitHubLinkLabel.Size = new System.Drawing.Size(277, 13);
+            this.GitHubLinkLabel.TabIndex = 1;
+            this.GitHubLinkLabel.TabStop = true;
+            this.GitHubLinkLabel.Text = "https://github.com/ELREVENGE/HaloSaveTransferTool";
+            this.GitHubLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.GitHubLinkLabel_LinkClicked);
             // 
             // label1
             // 
@@ -944,144 +363,16 @@
             this.saveFileDialog.AddExtension = false;
             this.saveFileDialog.CheckFileExists = true;
             // 
-            // builtInMaps3ManageGameFiles
+            // IssuesLinkLabel
             // 
-            this.builtInMaps3ManageGameFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.builtInMaps3ManageGameFiles.Location = new System.Drawing.Point(490, 3);
-            this.builtInMaps3ManageGameFiles.Name = "builtInMaps3ManageGameFiles";
-            this.builtInMaps3ManageGameFiles.Size = new System.Drawing.Size(482, 363);
-            this.builtInMaps3ManageGameFiles.TabIndex = 1;
-            // 
-            // builtInMapsReachManageGameFiles
-            // 
-            this.builtInMapsReachManageGameFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.builtInMapsReachManageGameFiles.Location = new System.Drawing.Point(3, 3);
-            this.builtInMapsReachManageGameFiles.Name = "builtInMapsReachManageGameFiles";
-            this.builtInMapsReachManageGameFiles.Size = new System.Drawing.Size(481, 363);
-            this.builtInMapsReachManageGameFiles.TabIndex = 0;
-            // 
-            // privateMaps3ManageGameFiles
-            // 
-            this.privateMaps3ManageGameFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.privateMaps3ManageGameFiles.Location = new System.Drawing.Point(490, 3);
-            this.privateMaps3ManageGameFiles.Name = "privateMaps3ManageGameFiles";
-            this.privateMaps3ManageGameFiles.Size = new System.Drawing.Size(482, 363);
-            this.privateMaps3ManageGameFiles.TabIndex = 1;
-            // 
-            // privateMapsReachManageGameFiles
-            // 
-            this.privateMapsReachManageGameFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.privateMapsReachManageGameFiles.Location = new System.Drawing.Point(3, 3);
-            this.privateMapsReachManageGameFiles.Name = "privateMapsReachManageGameFiles";
-            this.privateMapsReachManageGameFiles.Size = new System.Drawing.Size(481, 363);
-            this.privateMapsReachManageGameFiles.TabIndex = 0;
-            // 
-            // settingsControl
-            // 
-            this.settingsControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.settingsControl.Location = new System.Drawing.Point(3, 3);
-            this.settingsControl.Name = "settingsControl";
-            this.settingsControl.Size = new System.Drawing.Size(1003, 433);
-            this.settingsControl.TabIndex = 0;
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.BuiltInGameTypesTab);
-            this.tabControl1.Controls.Add(this.PrivateGameTypesTab);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(3, 3);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(989, 401);
-            this.tabControl1.TabIndex = 1;
-            // 
-            // BuiltInGameTypesTab
-            // 
-            this.BuiltInGameTypesTab.Controls.Add(this.tableLayoutPanel3);
-            this.BuiltInGameTypesTab.Location = new System.Drawing.Point(4, 22);
-            this.BuiltInGameTypesTab.Name = "BuiltInGameTypesTab";
-            this.BuiltInGameTypesTab.Padding = new System.Windows.Forms.Padding(3);
-            this.BuiltInGameTypesTab.Size = new System.Drawing.Size(981, 375);
-            this.BuiltInGameTypesTab.TabIndex = 0;
-            this.BuiltInGameTypesTab.Text = "Built In";
-            this.BuiltInGameTypesTab.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.builtInGameTypes3ManageGameFiles, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.builtInGameTypesReachManageGameFiles, 0, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 646F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 646F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(975, 369);
-            this.tableLayoutPanel3.TabIndex = 0;
-            // 
-            // builtInGameTypes3ManageGameFiles
-            // 
-            this.builtInGameTypes3ManageGameFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.builtInGameTypes3ManageGameFiles.Location = new System.Drawing.Point(490, 3);
-            this.builtInGameTypes3ManageGameFiles.Name = "builtInGameTypes3ManageGameFiles";
-            this.builtInGameTypes3ManageGameFiles.Size = new System.Drawing.Size(482, 363);
-            this.builtInGameTypes3ManageGameFiles.TabIndex = 1;
-            // 
-            // builtInGameTypesReachManageGameFiles
-            // 
-            this.builtInGameTypesReachManageGameFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.builtInGameTypesReachManageGameFiles.Location = new System.Drawing.Point(3, 3);
-            this.builtInGameTypesReachManageGameFiles.Name = "builtInGameTypesReachManageGameFiles";
-            this.builtInGameTypesReachManageGameFiles.Size = new System.Drawing.Size(481, 363);
-            this.builtInGameTypesReachManageGameFiles.TabIndex = 0;
-            // 
-            // PrivateGameTypesTab
-            // 
-            this.PrivateGameTypesTab.Controls.Add(this.tableLayoutPanel4);
-            this.PrivateGameTypesTab.Location = new System.Drawing.Point(4, 22);
-            this.PrivateGameTypesTab.Name = "PrivateGameTypesTab";
-            this.PrivateGameTypesTab.Padding = new System.Windows.Forms.Padding(3);
-            this.PrivateGameTypesTab.Size = new System.Drawing.Size(981, 375);
-            this.PrivateGameTypesTab.TabIndex = 1;
-            this.PrivateGameTypesTab.Text = "Private";
-            this.PrivateGameTypesTab.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.ColumnCount = 2;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Controls.Add(this.privateGameTypes3ManageGameFiles, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.privateGameTypesReachManageGameFiles, 0, 0);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 1;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 369F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 369F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(975, 369);
-            this.tableLayoutPanel4.TabIndex = 1;
-            // 
-            // privateGameTypes3ManageGameFiles
-            // 
-            this.privateGameTypes3ManageGameFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.privateGameTypes3ManageGameFiles.Location = new System.Drawing.Point(490, 3);
-            this.privateGameTypes3ManageGameFiles.Name = "privateGameTypes3ManageGameFiles";
-            this.privateGameTypes3ManageGameFiles.Size = new System.Drawing.Size(482, 363);
-            this.privateGameTypes3ManageGameFiles.TabIndex = 1;
-            // 
-            // privateGameTypesReachManageGameFiles
-            // 
-            this.privateGameTypesReachManageGameFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.privateGameTypesReachManageGameFiles.Location = new System.Drawing.Point(3, 3);
-            this.privateGameTypesReachManageGameFiles.Name = "privateGameTypesReachManageGameFiles";
-            this.privateGameTypesReachManageGameFiles.Size = new System.Drawing.Size(481, 363);
-            this.privateGameTypesReachManageGameFiles.TabIndex = 0;
+            this.IssuesLinkLabel.AutoSize = true;
+            this.IssuesLinkLabel.Location = new System.Drawing.Point(177, 17);
+            this.IssuesLinkLabel.Name = "IssuesLinkLabel";
+            this.IssuesLinkLabel.Size = new System.Drawing.Size(134, 13);
+            this.IssuesLinkLabel.TabIndex = 6;
+            this.IssuesLinkLabel.TabStop = true;
+            this.IssuesLinkLabel.Text = "View or submit a new issue";
+            this.IssuesLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.IssuesLinkLabel_LinkClicked);
             // 
             // MainWindow
             // 
@@ -1097,38 +388,18 @@
             this.FilesPannel.ResumeLayout(false);
             this.gameTabControl.ResumeLayout(false);
             this.ReachTab.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.HaloReachScreenshotSaves)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HaloReachGameTypeSaves)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HaloReachMapSaves)).EndInit();
             this.Halo3.ResumeLayout(false);
-            this.Halo3TableLayoutPannel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Halo3ScreenshotSaves)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Halo3GameTypeSaves)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Halo3MapSaves)).EndInit();
             this.ODST.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ODSTScreenshots)).EndInit();
             this.OpenPannel.ResumeLayout(false);
             this.OpenPannel.PerformLayout();
             this.exportAndSettingsTabControl.ResumeLayout(false);
             this.ManageTab.ResumeLayout(false);
             this.MapAndGameTypeTabControl.ResumeLayout(false);
             this.MapsTab.ResumeLayout(false);
-            this.LocationTabControl.ResumeLayout(false);
-            this.BuiltIn.ResumeLayout(false);
-            this.builtInMapsTable.ResumeLayout(false);
-            this.Private.ResumeLayout(false);
-            this.privateMapsTable.ResumeLayout(false);
             this.GameTypesTab.ResumeLayout(false);
             this.SettingsTab.ResumeLayout(false);
             this.OtherTabPage.ResumeLayout(false);
             this.OtherTabPage.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
-            this.BuiltInGameTypesTab.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.PrivateGameTypesTab.ResumeLayout(false);
-            this.tableLayoutPanel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1142,84 +413,27 @@
         private System.Windows.Forms.TableLayoutPanel FilesPannel;
         private System.Windows.Forms.TabControl gameTabControl;
         private System.Windows.Forms.TabPage ReachTab;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button ReachExportMaps;
-        private System.Windows.Forms.DataGridView HaloReachGameTypeSaves;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GTLocation;
-        private System.Windows.Forms.DataGridView HaloReachMapSaves;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SaveName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreatedDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ModifiedDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MapLocationColumn;
-        private System.Windows.Forms.Button ReachExportGametypes;
         private System.Windows.Forms.Panel OpenPannel;
         private System.Windows.Forms.Button Open;
         private System.Windows.Forms.Label OpenedLabel;
         private System.Windows.Forms.TabPage OtherTabPage;
-        private System.Windows.Forms.LinkLabel linkLabel3;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel ViewLicensesLinkLabel;
+        private System.Windows.Forms.LinkLabel GitHubLinkLabel;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button ReachExportScreenShots;
-        private System.Windows.Forms.DataGridView HaloReachScreenshotSaves;
-        private SettingsControl settingsControl;
         private System.Windows.Forms.LinkLabel HelpLink;
         private System.Windows.Forms.TabPage Halo3;
-        private System.Windows.Forms.TableLayoutPanel Halo3TableLayoutPannel;
-        private System.Windows.Forms.Button H3ExportScreenshots;
-        private System.Windows.Forms.DataGridView Halo3ScreenshotSaves;
-        private System.Windows.Forms.Button H3ExportMaps;
-        private System.Windows.Forms.DataGridView Halo3GameTypeSaves;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
-        private System.Windows.Forms.DataGridView Halo3MapSaves;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
-        private System.Windows.Forms.Button H3ExportGameTypes;
-        private System.Windows.Forms.DataGridViewImageColumn Thumbnail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.TabPage ODST;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Button Halo3ODSTExportScreenshots;
-        private System.Windows.Forms.DataGridView ODSTScreenshots;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
         private System.Windows.Forms.TabPage ManageTab;
         private System.Windows.Forms.TabControl MapAndGameTypeTabControl;
         private System.Windows.Forms.TabPage MapsTab;
-        private System.Windows.Forms.TabControl LocationTabControl;
-        private System.Windows.Forms.TabPage BuiltIn;
-        private System.Windows.Forms.TabPage Private;
         private System.Windows.Forms.TabPage GameTypesTab;
-        private System.Windows.Forms.TableLayoutPanel builtInMapsTable;
-        private ManageGameFiles builtInMapsReachManageGameFiles;
-        private ManageGameFiles builtInMaps3ManageGameFiles;
-        private System.Windows.Forms.TableLayoutPanel privateMapsTable;
-        private ManageGameFiles privateMaps3ManageGameFiles;
-        private ManageGameFiles privateMapsReachManageGameFiles;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage BuiltInGameTypesTab;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private ManageGameFiles builtInGameTypes3ManageGameFiles;
-        private ManageGameFiles builtInGameTypesReachManageGameFiles;
-        private System.Windows.Forms.TabPage PrivateGameTypesTab;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private ManageGameFiles privateGameTypes3ManageGameFiles;
-        private ManageGameFiles privateGameTypesReachManageGameFiles;
+        private ExportPanel ReachExportPanel;
+        private ExportPanel Halo3ExportPanel;
+        private ExportPanel Halo3ODSTExportPanel;
+        private SettingsControl settingsControl;
+        private ManagePanel ManageMapsPanel;
+        private ManagePanel ManageGameTypesPanel;
+        private System.Windows.Forms.LinkLabel IssuesLinkLabel;
     }
 }
 
