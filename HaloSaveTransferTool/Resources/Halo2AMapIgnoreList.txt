@@ -1,0 +1,7 @@
+bloodline_classic.mvar
+lockdown_classic.mvar
+remnant_classic.mvar
+shrine_classic.mvar
+stonetown_classic.mvar
+warlord_classic.mvar
+zenith_classic.mvar

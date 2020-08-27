@@ -31,23 +31,50 @@ namespace HaloMCCPCSaveTransferTool
         void VerifiyResources()
         {
             //create files if they don't exist
-            string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            if (!File.Exists(currentDirectory + "Halo3GameTypeIgnoreList.txt"))
+            string ignoreListDirectory = AppDomain.CurrentDomain.BaseDirectory + @"\Ignore Lists\";
+            Directory.CreateDirectory(ignoreListDirectory);
+            #region Halo: Reach
+            if (!File.Exists(ignoreListDirectory + "HaloReachGameTypeIgnoreList.txt"))
             {
-                File.WriteAllText(currentDirectory + "Halo3GameTypeIgnoreList.txt", Resource.Halo3GameTypeIgnoreList);
+                File.WriteAllText(ignoreListDirectory + "HaloReachGameTypeIgnoreList.txt", Resource.HaloReachGameTypeIgnoreList);
             }
-            if (!File.Exists(currentDirectory + "Halo3MapIgnoreList.txt"))
+            if (!File.Exists(ignoreListDirectory + "HaloReachMapIgnoreList.txt"))
             {
-                File.WriteAllText(currentDirectory + "Halo3MapIgnoreList.txt", Resource.Halo3MapIgnoreList);
+                File.WriteAllText(ignoreListDirectory + "HaloReachMapIgnoreList.txt", Resource.HaloReachMapIgnoreList);
             }
-            if (!File.Exists(currentDirectory + "HaloReachGameTypeIgnoreList.txt"))
+            #endregion
+            #region Halo 1
+            if (!File.Exists(ignoreListDirectory + "Halo1GameTypeIgnoreList.txt"))
             {
-                File.WriteAllText(currentDirectory + "HaloReachGameTypeIgnoreList.txt", Resource.HaloReachGameTypeIgnoreList);
+                File.WriteAllText(ignoreListDirectory + "Halo1GameTypeIgnoreList.txt", Resource.HaloReachMapIgnoreList);
             }
-            if (!File.Exists(currentDirectory + "HaloReachMapIgnoreList.txt"))
+            #endregion
+            #region Halo 2
+            if (!File.Exists(ignoreListDirectory + "Halo2GameTypeIgnoreList.txt"))
             {
-                File.WriteAllText(currentDirectory + "HaloReachMapIgnoreList.txt", Resource.HaloReachMapIgnoreList);
+                File.WriteAllText(ignoreListDirectory + "Halo2GameTypeIgnoreList.txt", Resource.Halo2GameTypeIgnoreList);
             }
+            #endregion
+            #region Halo 2A
+            if (!File.Exists(ignoreListDirectory + "Halo2AGameTypeIgnoreList.txt"))
+            {
+                File.WriteAllText(ignoreListDirectory + "Halo2AGameTypeIgnoreList.txt", Resource.Halo2AGameTypeIgnoreList);
+            }
+            if (!File.Exists(ignoreListDirectory + "Halo2AMapIgnoreList.txt"))
+            {
+                File.WriteAllText(ignoreListDirectory + "Halo2AMapIgnoreList.txt", Resource.Halo2AMapIgnoreList);
+            }
+            #endregion
+            #region Halo 3
+            if (!File.Exists(ignoreListDirectory + "Halo3GameTypeIgnoreList.txt"))
+            {
+                File.WriteAllText(ignoreListDirectory + "Halo3GameTypeIgnoreList.txt", Resource.Halo3GameTypeIgnoreList);
+            }
+            if (!File.Exists(ignoreListDirectory + "Halo3MapIgnoreList.txt"))
+            {
+                File.WriteAllText(ignoreListDirectory + "Halo3MapIgnoreList.txt", Resource.Halo3MapIgnoreList);
+            }
+            #endregion
         }
         public MainWindow()
         {

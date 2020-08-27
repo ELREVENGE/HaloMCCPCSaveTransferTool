@@ -16,38 +16,11 @@ namespace HaloMCCPCSaveTransferTool
         Dictionary<string, HaloX360FileIO.ContainerInfo> MapInfo = new Dictionary<string, HaloX360FileIO.ContainerInfo>();
         Dictionary<string, HaloX360FileIO.ContainerInfo> GametypeInfo = new Dictionary<string, HaloX360FileIO.ContainerInfo>();
         Dictionary<string, HaloX360FileIO.ContainerInfo> ScreenshotInfo = new Dictionary<string, HaloX360FileIO.ContainerInfo>();
-        void RemoveColumnAt(int columnIndex)
-        {
-            if (columnIndex >= LayoutPanel.ColumnCount)
-            {
-                return;
-            }
-            //remove controls 
-            for (int i = 0; i < LayoutPanel.RowCount; i++)
-            {
-                LayoutPanel.Controls.Remove(LayoutPanel.GetControlFromPosition(columnIndex, i));
-            }
-            //shift other controls
-            for (int i = columnIndex + 1; i < LayoutPanel.ColumnCount; i++)
-            {
-                for (int j = 0; j < LayoutPanel.RowCount; j++)
-                {
-                    Control control = LayoutPanel.GetControlFromPosition(j, i);
-                    if (control != null)
-                    {
-                        LayoutPanel.SetColumn(control, i - 1);
-                    }
-                }
-            }
-            //remove column
-            LayoutPanel.ColumnStyles.RemoveAt(LayoutPanel.ColumnCount - 1);
-            LayoutPanel.ColumnCount--;
-        }
         public void SetEnabledLists(bool enableMapList = true, bool enableGameTypeList = true, bool enableScreenshotList = true)
         {
-            if (!enableGameTypeList) RemoveColumnAt(1);
-            if (!enableMapList) RemoveColumnAt(0);
-            if (!enableScreenshotList) RemoveColumnAt(LayoutPanel.ColumnCount - 1);
+            if (!enableGameTypeList) LayoutPanel.RemoveColumnAt(1);
+            if (!enableMapList) LayoutPanel.RemoveColumnAt(0);
+            if (!enableScreenshotList) LayoutPanel.RemoveColumnAt(LayoutPanel.ColumnCount - 1);
         }
         public enum FileType
         {

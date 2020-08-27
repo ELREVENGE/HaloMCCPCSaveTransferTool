@@ -87,6 +87,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\ExtentionMethods.cs" />
     <Compile Include="User Controls\ExportPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -226,6 +227,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\Halo2AMapIgnoreList.txt" />
+    <None Include="Resources\Halo2AGameTypeIgnoreList.txt" />
+    <None Include="Resources\Halo2GameTypeIgnoreList.txt" />
+    <None Include="Resources\Halo1GameTypeIgnoreList.txt" />
     <None Include="Resources\HaloReachMapIgnoreList.txt" />
     <None Include="Resources\HaloReachGameTypeIgnoreList.txt" />
     <None Include="Resources\Halo3MapIgnoreList.txt" />

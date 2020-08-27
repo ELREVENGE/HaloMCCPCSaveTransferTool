@@ -95,6 +95,14 @@ namespace HaloMCCPCSaveTransferTool
                     {
                         inGameNameAndDescription = GetReachInGameNameAndDescription(file);
                     }
+                    else if (GameName == "Halo 2 Anniversary")
+                    {
+                        inGameNameAndDescription = Get2AInGameNameAndDescription(file);
+                    }
+                    else if (GameName == "Halo 2")
+                    {
+                        inGameNameAndDescription = Get2InGameNameAndDescription(file);
+                    }
                     else if (GameName == "Halo 3")
                     {
                         inGameNameAndDescription = Get3InGameNameAndDescription(file);
@@ -457,7 +465,7 @@ namespace HaloMCCPCSaveTransferTool
         {
             return GetInGameNameAndDescription(file, 304, 560);
         }
-        //Doesn't work for maps
+        //Doesn't work for maps so it will return blank
         InGameNameAndDescription Get2AInGameNameAndDescription(string file)
         {
             if (Path.GetExtension(file) == ".bin") { return GetInGameNameAndDescription(file, 192, 448); }

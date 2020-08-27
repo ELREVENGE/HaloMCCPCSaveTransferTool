@@ -61,6 +61,113 @@ namespace HaloMCCPCSaveTransferTool {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 01_slayer.bin
+        ///02_team_slayer.bin
+        ///03_classic_slayer.bin
+        ///04_classic_slayer_pro.bin
+        ///05_classic_phantoms.bin
+        ///05_classic_team_slayer.bin
+        ///06_classic_elimination.bin
+        ///08_classic_endurance.bin
+        ///09_classic_rockets.bin
+        ///10_classic_snipers.bin
+        ///11_ctf.bin
+        ///12_classic_ctf.bin
+        ///13_classic_invasion.bin
+        ///14_classic_iron_ctf.bin
+        ///15_classic_ctf_pro.bin
+        ///16_king.bin
+        ///17_crazy_king.bin
+        ///18_team_king.bin
+        ///19_classic_king.bin
+        ///20_classic_king_pro.bin
+        ///21_classic_crazy_king.bin
+        ///22_classic_team_king.bin
+        ///23_oddball.bin
+        ///2 [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Halo1GameTypeIgnoreList {
+            get {
+                return ResourceManager.GetString("Halo1GameTypeIgnoreList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  Volume in drive D has no label.
+        /// Volume Serial Number is 0C28-0857
+        ///
+        /// Directory of D:\Games\Steam\steamapps\common\Halo The Master Chief Collection\groundhog\game_variants
+        ///
+        ///08/26/2020  10:45 PM    &lt;DIR&gt;          .
+        ///08/26/2020  10:45 PM    &lt;DIR&gt;          ..
+        ///08/26/2020  10:39 PM            32,553 H2ATestGT.bin
+        ///06/17/2020  12:19 PM             2,612 H2A_001_001_basic_editing_137.bin
+        ///06/17/2020  12:19 PM            17,115 H2A_100_100_Slayer_BASE_TeamSlayer_137.bin
+        ///06/17/2020  12:19 PM            17,291 [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Halo2AGameTypeIgnoreList {
+            get {
+                return ResourceManager.GetString("Halo2AGameTypeIgnoreList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  Volume in drive D has no label.
+        /// Volume Serial Number is 0C28-0857
+        ///
+        /// Directory of D:\Games\Steam\steamapps\common\Halo The Master Chief Collection\groundhog\map_variants
+        ///
+        ///08/26/2020  10:47 PM    &lt;DIR&gt;          .
+        ///08/26/2020  10:47 PM    &lt;DIR&gt;          ..
+        ///06/17/2020  12:19 PM            17,008 bloodline_classic.mvar
+        ///08/26/2020  02:53 PM             8,814 H2AMap.mvar
+        ///06/17/2020  12:19 PM             9,497 lockdown_classic.mvar
+        ///06/17/2020  12:26 PM            15,602 remnant_classic.mvar
+        ///06/17/2020   [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Halo2AMapIgnoreList {
+            get {
+                return ResourceManager.GetString("Halo2AMapIgnoreList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 01_slayer.bin
+        ///02_team_slayer.bin
+        ///03_rockets.bin
+        ///04_swords.bin
+        ///05_snipers.bin
+        ///06_phantoms.bin
+        ///07_team_phantoms.bin
+        ///08_elimination.bin
+        ///09_multi_flag_ctf.bin
+        ///10_ctf_classic.bin
+        ///11_01_1_flag_ctf.bin
+        ///12_1_flag_ctf_fast.bin
+        ///13_king.bin
+        ///14_team_king.bin
+        ///15_phantom_king.bin
+        ///16_crazy_king.bin
+        ///17_team_crazy_king.bin
+        ///18_oddball.bin
+        ///19_rocketball.bin
+        ///20_swordball.bin
+        ///21_team_ball.bin
+        ///22_low_ball.bin
+        ///23_fiesta.bin
+        ///24_2_on_1.bin
+        ///25_3_on_1.bin
+        ///26_ninjanaut.bin
+        ///27_phantom_fodder.bin
+        ///28_dreadnaut. [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Halo2GameTypeIgnoreList {
+            get {
+                return ResourceManager.GetString("Halo2GameTypeIgnoreList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 00_sandbox-0_010.bin
         ///assault-0_010.bin
         ///assault-1_010.bin
