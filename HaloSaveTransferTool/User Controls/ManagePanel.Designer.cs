@@ -31,21 +31,11 @@
             this.LocationTabControl = new System.Windows.Forms.TabControl();
             this.BuiltIn = new System.Windows.Forms.TabPage();
             this.BuiltInTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.Halo2AManageBuiltInGameFiles = new HaloMCCPCSaveTransferTool.ManageGameFiles();
-            this.Halo2ManageBuiltInGameFiles = new HaloMCCPCSaveTransferTool.ManageGameFiles();
-            this.ReachManageBuiltInGameFiles = new HaloMCCPCSaveTransferTool.ManageGameFiles();
-            this.Halo3ManageBuiltInGameFiles = new HaloMCCPCSaveTransferTool.ManageGameFiles();
             this.Private = new System.Windows.Forms.TabPage();
             this.PrivateTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.Halo2AManagePrivateGameFiles = new HaloMCCPCSaveTransferTool.ManageGameFiles();
-            this.Halo2ManagePrivateGameFiles = new HaloMCCPCSaveTransferTool.ManageGameFiles();
-            this.ReachManagePrivateGameFiles = new HaloMCCPCSaveTransferTool.ManageGameFiles();
-            this.Halo3ManagePrivateGameFiles = new HaloMCCPCSaveTransferTool.ManageGameFiles();
             this.LocationTabControl.SuspendLayout();
             this.BuiltIn.SuspendLayout();
-            this.BuiltInTableLayoutPanel.SuspendLayout();
             this.Private.SuspendLayout();
-            this.PrivateTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // LocationTabControl
@@ -72,15 +62,12 @@
             // 
             // BuiltInTableLayoutPanel
             // 
-            this.BuiltInTableLayoutPanel.ColumnCount = 4;
-            this.BuiltInTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.BuiltInTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.BuiltInTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.BuiltInTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.BuiltInTableLayoutPanel.Controls.Add(this.Halo2AManageBuiltInGameFiles, 0, 0);
-            this.BuiltInTableLayoutPanel.Controls.Add(this.Halo2ManageBuiltInGameFiles, 0, 0);
-            this.BuiltInTableLayoutPanel.Controls.Add(this.ReachManageBuiltInGameFiles, 0, 0);
-            this.BuiltInTableLayoutPanel.Controls.Add(this.Halo3ManageBuiltInGameFiles, 1, 0);
+            this.BuiltInTableLayoutPanel.ColumnCount = 3;
+            this.BuiltInTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.BuiltInTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.BuiltInTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.BuiltInTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.BuiltInTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.BuiltInTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BuiltInTableLayoutPanel.Location = new System.Drawing.Point(3, 3);
             this.BuiltInTableLayoutPanel.Name = "BuiltInTableLayoutPanel";
@@ -88,42 +75,6 @@
             this.BuiltInTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.BuiltInTableLayoutPanel.Size = new System.Drawing.Size(981, 375);
             this.BuiltInTableLayoutPanel.TabIndex = 0;
-            // 
-            // Halo2AManageBuiltInGameFiles
-            // 
-            this.Halo2AManageBuiltInGameFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Halo2AManageBuiltInGameFiles.Enabled = false;
-            this.Halo2AManageBuiltInGameFiles.Location = new System.Drawing.Point(493, 3);
-            this.Halo2AManageBuiltInGameFiles.Name = "Halo2AManageBuiltInGameFiles";
-            this.Halo2AManageBuiltInGameFiles.Size = new System.Drawing.Size(239, 369);
-            this.Halo2AManageBuiltInGameFiles.TabIndex = 3;
-            // 
-            // Halo2ManageBuiltInGameFiles
-            // 
-            this.Halo2ManageBuiltInGameFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Halo2ManageBuiltInGameFiles.Enabled = false;
-            this.Halo2ManageBuiltInGameFiles.Location = new System.Drawing.Point(248, 3);
-            this.Halo2ManageBuiltInGameFiles.Name = "Halo2ManageBuiltInGameFiles";
-            this.Halo2ManageBuiltInGameFiles.Size = new System.Drawing.Size(239, 369);
-            this.Halo2ManageBuiltInGameFiles.TabIndex = 2;
-            // 
-            // ReachManageBuiltInGameFiles
-            // 
-            this.ReachManageBuiltInGameFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ReachManageBuiltInGameFiles.Enabled = false;
-            this.ReachManageBuiltInGameFiles.Location = new System.Drawing.Point(3, 3);
-            this.ReachManageBuiltInGameFiles.Name = "ReachManageBuiltInGameFiles";
-            this.ReachManageBuiltInGameFiles.Size = new System.Drawing.Size(239, 369);
-            this.ReachManageBuiltInGameFiles.TabIndex = 0;
-            // 
-            // Halo3ManageBuiltInGameFiles
-            // 
-            this.Halo3ManageBuiltInGameFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Halo3ManageBuiltInGameFiles.Enabled = false;
-            this.Halo3ManageBuiltInGameFiles.Location = new System.Drawing.Point(738, 3);
-            this.Halo3ManageBuiltInGameFiles.Name = "Halo3ManageBuiltInGameFiles";
-            this.Halo3ManageBuiltInGameFiles.Size = new System.Drawing.Size(240, 369);
-            this.Halo3ManageBuiltInGameFiles.TabIndex = 1;
             // 
             // Private
             // 
@@ -138,15 +89,12 @@
             // 
             // PrivateTableLayoutPanel
             // 
-            this.PrivateTableLayoutPanel.ColumnCount = 4;
-            this.PrivateTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.PrivateTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.PrivateTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.PrivateTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.PrivateTableLayoutPanel.Controls.Add(this.Halo2AManagePrivateGameFiles, 0, 0);
-            this.PrivateTableLayoutPanel.Controls.Add(this.Halo2ManagePrivateGameFiles, 0, 0);
-            this.PrivateTableLayoutPanel.Controls.Add(this.ReachManagePrivateGameFiles, 0, 0);
-            this.PrivateTableLayoutPanel.Controls.Add(this.Halo3ManagePrivateGameFiles, 1, 0);
+            this.PrivateTableLayoutPanel.ColumnCount = 3;
+            this.PrivateTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.PrivateTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.PrivateTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.PrivateTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.PrivateTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.PrivateTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PrivateTableLayoutPanel.Location = new System.Drawing.Point(3, 3);
             this.PrivateTableLayoutPanel.Name = "PrivateTableLayoutPanel";
@@ -154,42 +102,6 @@
             this.PrivateTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.PrivateTableLayoutPanel.Size = new System.Drawing.Size(981, 375);
             this.PrivateTableLayoutPanel.TabIndex = 1;
-            // 
-            // Halo2AManagePrivateGameFiles
-            // 
-            this.Halo2AManagePrivateGameFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Halo2AManagePrivateGameFiles.Enabled = false;
-            this.Halo2AManagePrivateGameFiles.Location = new System.Drawing.Point(493, 3);
-            this.Halo2AManagePrivateGameFiles.Name = "Halo2AManagePrivateGameFiles";
-            this.Halo2AManagePrivateGameFiles.Size = new System.Drawing.Size(239, 369);
-            this.Halo2AManagePrivateGameFiles.TabIndex = 3;
-            // 
-            // Halo2ManagePrivateGameFiles
-            // 
-            this.Halo2ManagePrivateGameFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Halo2ManagePrivateGameFiles.Enabled = false;
-            this.Halo2ManagePrivateGameFiles.Location = new System.Drawing.Point(248, 3);
-            this.Halo2ManagePrivateGameFiles.Name = "Halo2ManagePrivateGameFiles";
-            this.Halo2ManagePrivateGameFiles.Size = new System.Drawing.Size(239, 369);
-            this.Halo2ManagePrivateGameFiles.TabIndex = 2;
-            // 
-            // ReachManagePrivateGameFiles
-            // 
-            this.ReachManagePrivateGameFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ReachManagePrivateGameFiles.Enabled = false;
-            this.ReachManagePrivateGameFiles.Location = new System.Drawing.Point(3, 3);
-            this.ReachManagePrivateGameFiles.Name = "ReachManagePrivateGameFiles";
-            this.ReachManagePrivateGameFiles.Size = new System.Drawing.Size(239, 369);
-            this.ReachManagePrivateGameFiles.TabIndex = 0;
-            // 
-            // Halo3ManagePrivateGameFiles
-            // 
-            this.Halo3ManagePrivateGameFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Halo3ManagePrivateGameFiles.Enabled = false;
-            this.Halo3ManagePrivateGameFiles.Location = new System.Drawing.Point(738, 3);
-            this.Halo3ManagePrivateGameFiles.Name = "Halo3ManagePrivateGameFiles";
-            this.Halo3ManagePrivateGameFiles.Size = new System.Drawing.Size(240, 369);
-            this.Halo3ManagePrivateGameFiles.TabIndex = 1;
             // 
             // ManagePanel
             // 
@@ -200,9 +112,7 @@
             this.Size = new System.Drawing.Size(995, 407);
             this.LocationTabControl.ResumeLayout(false);
             this.BuiltIn.ResumeLayout(false);
-            this.BuiltInTableLayoutPanel.ResumeLayout(false);
             this.Private.ResumeLayout(false);
-            this.PrivateTableLayoutPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -213,14 +123,6 @@
         private System.Windows.Forms.TabPage BuiltIn;
         private System.Windows.Forms.TableLayoutPanel BuiltInTableLayoutPanel;
         private System.Windows.Forms.TabPage Private;
-        private ManageGameFiles ReachManageBuiltInGameFiles;
-        private ManageGameFiles Halo2AManageBuiltInGameFiles;
-        private ManageGameFiles Halo2ManageBuiltInGameFiles;
-        private ManageGameFiles Halo3ManageBuiltInGameFiles;
         private System.Windows.Forms.TableLayoutPanel PrivateTableLayoutPanel;
-        private ManageGameFiles Halo2AManagePrivateGameFiles;
-        private ManageGameFiles Halo2ManagePrivateGameFiles;
-        private ManageGameFiles ReachManagePrivateGameFiles;
-        private ManageGameFiles Halo3ManagePrivateGameFiles;
     }
 }

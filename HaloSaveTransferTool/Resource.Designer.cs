@@ -61,49 +61,20 @@ namespace HaloMCCPCSaveTransferTool {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 01_slayer.bin
-        ///02_team_slayer.bin
-        ///03_classic_slayer.bin
-        ///04_classic_slayer_pro.bin
-        ///05_classic_phantoms.bin
-        ///05_classic_team_slayer.bin
-        ///06_classic_elimination.bin
-        ///08_classic_endurance.bin
-        ///09_classic_rockets.bin
-        ///10_classic_snipers.bin
-        ///11_ctf.bin
-        ///12_classic_ctf.bin
-        ///13_classic_invasion.bin
-        ///14_classic_iron_ctf.bin
-        ///15_classic_ctf_pro.bin
-        ///16_king.bin
-        ///17_crazy_king.bin
-        ///18_team_king.bin
-        ///19_classic_king.bin
-        ///20_classic_king_pro.bin
-        ///21_classic_crazy_king.bin
-        ///22_classic_team_king.bin
-        ///23_oddball.bin
-        ///2 [rest of string was truncated]&quot;;.
-        /// </summary>
-        public static string Halo1GameTypeIgnoreList {
-            get {
-                return ResourceManager.GetString("Halo1GameTypeIgnoreList", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to  Volume in drive D has no label.
-        /// Volume Serial Number is 0C28-0857
-        ///
-        /// Directory of D:\Games\Steam\steamapps\common\Halo The Master Chief Collection\groundhog\game_variants
-        ///
-        ///08/26/2020  10:45 PM    &lt;DIR&gt;          .
-        ///08/26/2020  10:45 PM    &lt;DIR&gt;          ..
-        ///08/26/2020  10:39 PM            32,553 H2ATestGT.bin
-        ///06/17/2020  12:19 PM             2,612 H2A_001_001_basic_editing_137.bin
-        ///06/17/2020  12:19 PM            17,115 H2A_100_100_Slayer_BASE_TeamSlayer_137.bin
-        ///06/17/2020  12:19 PM            17,291 [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to H2A_001_001_basic_editing_137.bin
+        ///H2A_100_100_Slayer_BASE_TeamSlayer_137.bin
+        ///H2A_100_150_Slayer_Pro_137.bin
+        ///H2A_100_200_Slayer_FFA_137.bin
+        ///H2A_100_250_Slayer_BR_137.bin
+        ///H2A_100_300_Slayer_BR_FFA_137.bin
+        ///H2A_100_350_Slayer_Elimination_137.bin
+        ///H2A_100_400_Slayer_Phantom_Elimination_137.bin
+        ///H2A_100_450_Slayer_Phantoms_137.bin
+        ///H2A_100_500_Slayer_Team_Phantoms_137.bin
+        ///H2A_100_550_Slayer_Rockets_137.bin
+        ///H2A_100_600_Slayer_Snipers_137.bin
+        ///H2A_100_650_Slayer_Team_Snipers_137.bin
+        ///H2A_100_700_Slayer_Swor [rest of string was truncated]&quot;;.
         /// </summary>
         public static string Halo2AGameTypeIgnoreList {
             get {
@@ -112,18 +83,13 @@ namespace HaloMCCPCSaveTransferTool {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  Volume in drive D has no label.
-        /// Volume Serial Number is 0C28-0857
-        ///
-        /// Directory of D:\Games\Steam\steamapps\common\Halo The Master Chief Collection\groundhog\map_variants
-        ///
-        ///08/26/2020  10:47 PM    &lt;DIR&gt;          .
-        ///08/26/2020  10:47 PM    &lt;DIR&gt;          ..
-        ///06/17/2020  12:19 PM            17,008 bloodline_classic.mvar
-        ///08/26/2020  02:53 PM             8,814 H2AMap.mvar
-        ///06/17/2020  12:19 PM             9,497 lockdown_classic.mvar
-        ///06/17/2020  12:26 PM            15,602 remnant_classic.mvar
-        ///06/17/2020   [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to bloodline_classic.mvar
+        ///lockdown_classic.mvar
+        ///remnant_classic.mvar
+        ///shrine_classic.mvar
+        ///stonetown_classic.mvar
+        ///warlord_classic.mvar
+        ///zenith_classic.mvar.
         /// </summary>
         public static string Halo2AMapIgnoreList {
             get {
@@ -212,6 +178,38 @@ namespace HaloMCCPCSaveTransferTool {
         public static string Halo3MapIgnoreList {
             get {
                 return ResourceManager.GetString("Halo3MapIgnoreList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 01_slayer.bin
+        ///02_team_slayer.bin
+        ///03_classic_slayer.bin
+        ///04_classic_slayer_pro.bin
+        ///05_classic_phantoms.bin
+        ///05_classic_team_slayer.bin
+        ///06_classic_elimination.bin
+        ///08_classic_endurance.bin
+        ///09_classic_rockets.bin
+        ///10_classic_snipers.bin
+        ///11_ctf.bin
+        ///12_classic_ctf.bin
+        ///13_classic_invasion.bin
+        ///14_classic_iron_ctf.bin
+        ///15_classic_ctf_pro.bin
+        ///16_king.bin
+        ///17_crazy_king.bin
+        ///18_team_king.bin
+        ///19_classic_king.bin
+        ///20_classic_king_pro.bin
+        ///21_classic_crazy_king.bin
+        ///22_classic_team_king.bin
+        ///23_oddball.bin
+        ///2 [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string HaloCEGameTypeIgnoreList {
+            get {
+                return ResourceManager.GetString("HaloCEGameTypeIgnoreList", resourceCulture);
             }
         }
         

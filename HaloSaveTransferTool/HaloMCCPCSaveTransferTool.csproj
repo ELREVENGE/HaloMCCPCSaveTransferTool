@@ -87,7 +87,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\BinaryArray.cs" />
     <Compile Include="Classes\ExtentionMethods.cs" />
+    <Compile Include="Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
     <Compile Include="User Controls\ExportPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -140,11 +146,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resource.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resource.resx</DependentUpon>
-    </Compile>
     <Compile Include="User Controls\SettingsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -230,7 +231,7 @@
     <None Include="Resources\Halo2AMapIgnoreList.txt" />
     <None Include="Resources\Halo2AGameTypeIgnoreList.txt" />
     <None Include="Resources\Halo2GameTypeIgnoreList.txt" />
-    <None Include="Resources\Halo1GameTypeIgnoreList.txt" />
+    <None Include="Resources\HaloCEGameTypeIgnoreList.txt" />
     <None Include="Resources\HaloReachMapIgnoreList.txt" />
     <None Include="Resources\HaloReachGameTypeIgnoreList.txt" />
     <None Include="Resources\Halo3MapIgnoreList.txt" />

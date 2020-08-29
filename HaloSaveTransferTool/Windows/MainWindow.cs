@@ -43,10 +43,10 @@ namespace HaloMCCPCSaveTransferTool
                 File.WriteAllText(ignoreListDirectory + "HaloReachMapIgnoreList.txt", Resource.HaloReachMapIgnoreList);
             }
             #endregion
-            #region Halo 1
-            if (!File.Exists(ignoreListDirectory + "Halo1GameTypeIgnoreList.txt"))
+            #region Halo CE
+            if (!File.Exists(ignoreListDirectory + "HaloCEGameTypeIgnoreList.txt"))
             {
-                File.WriteAllText(ignoreListDirectory + "Halo1GameTypeIgnoreList.txt", Resource.HaloReachMapIgnoreList);
+                File.WriteAllText(ignoreListDirectory + "HaloCEGameTypeIgnoreList.txt", Resource.HaloCEGameTypeIgnoreList);
             }
             #endregion
             #region Halo 2

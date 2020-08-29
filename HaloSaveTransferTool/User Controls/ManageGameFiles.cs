@@ -11,6 +11,7 @@ using System.Diagnostics;
 using System.IO;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using Microsoft.VisualBasic.FileIO;
+using System.Collections;
 
 namespace HaloMCCPCSaveTransferTool
 {
@@ -95,11 +96,15 @@ namespace HaloMCCPCSaveTransferTool
                     {
                         inGameNameAndDescription = GetReachInGameNameAndDescription(file);
                     }
-                    else if (GameName == "Halo 2 Anniversary")
+                    else if (GameName == "Halo: CE")
+                    {
+                        inGameNameAndDescription = GetCEInGameNameAndDescription(file);
+                    }
+                    else if (GameName == "Halo 2: Anniversary")
                     {
                         inGameNameAndDescription = Get2AInGameNameAndDescription(file);
                     }
-                    else if (GameName == "Halo 2")
+                    else if (GameName == "Halo 2:")
                     {
                         inGameNameAndDescription = Get2InGameNameAndDescription(file);
                     }
@@ -116,10 +121,10 @@ namespace HaloMCCPCSaveTransferTool
         private void UpdateAllButtons()
         {
             bool exists = Directory.Exists(FilesDirectory);
-            bool filesListed = FileList.SelectedRows.Count > 0;
+            bool filesSelected = FileList.SelectedRows.Count > 0;
             AddButton.Enabled = exists;
-            DeleteButton.Enabled = (exists && filesListed);
-            MoveButton.Enabled = (exists && filesListed && Directory.Exists(GetMoveLocation()));
+            DeleteButton.Enabled = (exists && filesSelected);
+            MoveButton.Enabled = (exists && filesSelected && Directory.Exists(GetMoveLocation()));
         }
         string GetMoveLocation()
         {
@@ -311,11 +316,88 @@ namespace HaloMCCPCSaveTransferTool
             return returnValue;
         }
         #region Get name and desctiption from file
+        #region General functions to get in game name and descriptions
+        InGameNameAndDescription GetInGameNameAndDescription(string file, int startOfName, int startOfDescription)
+        {
+            byte[] fileBytes;
+            InGameNameAndDescription returnInfo = new InGameNameAndDescription("", "");
+            if (file != null && File.Exists(file) && Path.GetExtension(file) == ".bin" || Path.GetExtension(file) == ".mvar")
+            {
+                fileBytes = File.ReadAllBytes(file);
+                char currentChar;
+                //Get Name
+                for (int i = startOfName; i < startOfDescription; i += 2)
+                {
+                    currentChar = (char)fileBytes[i];
+                    if (currentChar == 0) //End of name
+                    {
+                        break;
+                    }
+                    returnInfo.InGameName += currentChar;
+                }
+                //get description
+                for (int i = startOfDescription; i < startOfDescription + 256/*need exact but usually ~128 chars*/; i += 2)
+                {
+                    currentChar = (char)fileBytes[i];
+                    if (currentChar == 0) //End of description
+                    {
+                        break;
+                    }
+                    returnInfo.Description += currentChar;
+                }
+            }
+            return returnInfo;
+        }
+        char BytesToChar(byte[] bytes)
+        {
+            int returnValue = 0;
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                returnValue = returnValue << 8;
+                returnValue = bytes[i];
+            }
+            try
+            {
+                return (char)returnValue;
+            }
+            catch { return (char)0; }
+        }
+        InGameNameAndDescription BytesToInGameNameAndDescription(byte[] bytes)
+        {
+            InGameNameAndDescription returnInfo = new InGameNameAndDescription();
+            byte[] currentBytes = new byte[2] { 0, 0 };
+            string nameAndDescriptionString = "";
+            for (int i = 0; i < bytes.Length - 1; i += 2)
+            {
+                currentBytes = new byte[2] { bytes[i], bytes[i + 1] };
+                nameAndDescriptionString += BytesToChar(currentBytes);
+            }
+            if (nameAndDescriptionString.Contains('\0'))
+            {
+                string[] nameAndDescription = nameAndDescriptionString.Split('\0');
+                returnInfo.InGameName = nameAndDescription[0];
+                returnInfo.Description = nameAndDescription[1];
+            }
+            return returnInfo;
+        }
+        #endregion
         InGameNameAndDescription GetInGameNameAndDescription(string file)
         {
             if (GameName == "Halo: Reach")
             {
                 return GetReachInGameNameAndDescription(file);
+            }
+            else if (GameName == "Halo: CE")
+            {
+                return GetCEInGameNameAndDescription(file);
+            }
+            else if (GameName == "Halo 2: Classic")
+            {
+                return Get2InGameNameAndDescription(file);
+            }
+            else if (GameName == "Halo 2: Anniversary")
+            {
+                return Get2AInGameNameAndDescription(file);
             }
             else if (GameName == "Halo 3")
             {
@@ -361,6 +443,59 @@ namespace HaloMCCPCSaveTransferTool
             }
             return returnInfo;
         }
+        InGameNameAndDescription GetCEInGameNameAndDescription(string file)
+        {
+            return GetInGameNameAndDescription(file, 152, 408);
+        }
+        InGameNameAndDescription Get2InGameNameAndDescription(string file)
+        {
+            return GetInGameNameAndDescription(file, 304, 560);
+        }
+        InGameNameAndDescription Get2AInGameNameAndDescription(string file)
+        {
+            if (file == null || !File.Exists(file)) { return new InGameNameAndDescription(); }
+            if (Path.GetExtension(file) == ".bin") { return GetInGameNameAndDescription(file, 192, 448); }
+            else if (Path.GetExtension(file) == ".mvar")
+            {
+                //H2A maps' name and description are stored weird and shifted 2 bits to the left 
+                int startOfName = 161;
+                byte[] fileBytes;
+                List<byte> bytes = new List<byte>();
+                byte currentByte;
+                int nullBytesInARow = 0;
+                int doubleNulls = 0;
+                InGameNameAndDescription returnInfo = new InGameNameAndDescription("", "");
+                fileBytes = File.ReadAllBytes(file);
+                for (int i = startOfName; i < 512; i++)
+                {
+                    currentByte = fileBytes[i];
+                    if (currentByte == 0)
+                    {
+                        nullBytesInARow++;
+                        if (nullBytesInARow >= 2)//End of name or description
+                        {
+                            doubleNulls++;
+                            nullBytesInARow = 0;
+                            if (doubleNulls >= 2) //End of description
+                            {
+                                //Don't care about empty bytes at the end
+                                bytes.RemoveAt(bytes.Count - 1);
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        nullBytesInARow = 0;
+                    }
+                    bytes.Add(currentByte);
+                }
+                BinaryArray binaryArray = new BinaryArray(bytes.ToArray());
+                binaryArray.ShiftRight(2);
+                return BytesToInGameNameAndDescription(binaryArray.CopyToByteArray());
+            }
+            return new InGameNameAndDescription();
+        }
         InGameNameAndDescription Get3InGameNameAndDescription(string file)
         {
             byte[] fileBytes;
@@ -391,7 +526,7 @@ namespace HaloMCCPCSaveTransferTool
                     offset = 76;
                 }
                 int startName = 72;
-                if (fileBytes[startName+offset] == 0) { offset++; } //check if info is shifted by 1 if so adjust offset
+                if (fileBytes[startName + offset] == 0) { offset++; } //check if info is shifted by 1 if so adjust offset
                 int length = 32;
                 int startDescription = 0;
                 //Get Name
@@ -406,15 +541,15 @@ namespace HaloMCCPCSaveTransferTool
                     returnInfo.InGameName += currentChar;
                 }
                 //find start of description from end of name
-                for (int i = 0; i <32; i++)
+                for (int i = 0; i < 32; i++)
                 {
                     if (fileBytes[startDescription] != 0) break;
                     startDescription++;
                 }
                 //get description
-                for (int i = 0; i < 127; i++) 
+                for (int i = 0; i < 127; i++)
                 {
-                    currentChar = (char)fileBytes[startDescription+i];
+                    currentChar = (char)fileBytes[startDescription + i];
                     if (currentChar == 0) //End of description
                     {
                         break;
@@ -424,59 +559,13 @@ namespace HaloMCCPCSaveTransferTool
             }
             return returnInfo;
         }
-        //In Progress/Untested
+        #endregion
         #region Untested
-        InGameNameAndDescription GetInGameNameAndDescription(string file, int startOfName, int startOfDescription)
-        {
-            byte[] fileBytes;
-            InGameNameAndDescription returnInfo = new InGameNameAndDescription("", "");
-            if (file != null && File.Exists(file) && Path.GetExtension(file) == ".bin" || Path.GetExtension(file) == ".mvar")
-            {
-                fileBytes = File.ReadAllBytes(file);
-                char currentChar;
-                //Get Name
-                for (int i = startOfName; i < startOfDescription; i += 2)
-                {
-                    currentChar = (char)fileBytes[i];
-                    if (currentChar == 0) //End of name
-                    {
-                        break;
-                    }
-                    returnInfo.InGameName += currentChar;
-                }
-                //get description
-                for (int i = startOfDescription; i < startOfDescription+256/*need exact but usually ~128 chars*/; i += 2)
-                {
-                    currentChar = (char)fileBytes[i];
-                    if (currentChar == 0) //End of description
-                    {
-                        break;
-                    }
-                    returnInfo.Description += currentChar;
-                }
-            }
-            return returnInfo;
-        }
-        InGameNameAndDescription Get1InGameNameAndDescription(string file)
-        {
-            return GetInGameNameAndDescription(file, 152, 408);
-        }
-        InGameNameAndDescription Get2InGameNameAndDescription(string file)
-        {
-            return GetInGameNameAndDescription(file, 304, 560);
-        }
-        //Doesn't work for maps so it will return blank
-        InGameNameAndDescription Get2AInGameNameAndDescription(string file)
-        {
-            if (Path.GetExtension(file) == ".bin") { return GetInGameNameAndDescription(file, 192, 448); }
-            return new InGameNameAndDescription();
-        }
-        //hasen't been tested on maps 
+        //hasen't been tested on maps but works on gametypes
         InGameNameAndDescription Get4InGameNameAndDescription(string file)
         {
             return GetInGameNameAndDescription(file, 193, 449);
         }
-        #endregion
         #endregion
 
         private void LocationLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
