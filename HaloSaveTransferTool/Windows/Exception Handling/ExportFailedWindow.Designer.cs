@@ -53,7 +53,7 @@
             this.HelpLinkLabel.TabIndex = 1;
             this.HelpLinkLabel.TabStop = true;
             this.HelpLinkLabel.Text = "Help";
-            this.HelpLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.helpLinkLabel_LinkClicked);
+            this.HelpLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.HelpLinkLabel_LinkClicked);
             // 
             // label1
             // 

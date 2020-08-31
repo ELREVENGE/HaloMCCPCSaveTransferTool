@@ -7,14 +7,42 @@ namespace HaloMCCPCSaveTransferTool
 {
     public partial class ExportFailedWindow : Form
     {
+        public class ExportFailedException : Exception
+        {
+            public string exportPath;
+            string _exportDirectory;
+            public string exportDirectory
+            {
+                get { return _exportDirectory; }
+                set
+                {
+                    if (value != null && value.Length > 0 && value[value.Length - 1] != '\\') { _exportDirectory = value + @"\"; }
+                    else _exportDirectory = value;
+                }
+            }
+            public string extention;
+            public HaloX360FileIO.ContainerInfo containerInfo;
+            public ExportFailedException()
+            {
+            }
+
+            public ExportFailedException(string message)
+                : base(message)
+            {
+            }
+            public ExportFailedException(string message, Exception inner)
+        : base(message, inner)
+            {
+            }
+        }
         //failedFiles.Add(exception, save as, save name, created, modified, location, export location)
-        Dictionary<string, KeyValuePair<HaloX360FileIO.ContainerInfo, MainWindow.ExportFailedException>> failedFilesInfo;
+        Dictionary<string, KeyValuePair<HaloX360FileIO.ContainerInfo, ExportFailedException>> failedFilesInfo;
         public ExportFailedWindow()
         {
             InitializeComponent();
-            failedFilesInfo = new Dictionary<string, KeyValuePair<HaloX360FileIO.ContainerInfo, MainWindow.ExportFailedException>>();
+            failedFilesInfo = new Dictionary<string, KeyValuePair<HaloX360FileIO.ContainerInfo, ExportFailedException>>();
         }
-        public static void OpenDialog(Dictionary<HaloX360FileIO.ContainerInfo, MainWindow.ExportFailedException> failedFiles)
+        public static void OpenDialog(Dictionary<HaloX360FileIO.ContainerInfo, ExportFailedException> failedFiles)
         {
             if (failedFiles != null && failedFiles.Count > 0)
             {
@@ -23,9 +51,9 @@ namespace HaloMCCPCSaveTransferTool
                 window.ShowDialog();
             }
         }
-        void InitializeList(Dictionary<HaloX360FileIO.ContainerInfo, MainWindow.ExportFailedException> failedFiles)
+        void InitializeList(Dictionary<HaloX360FileIO.ContainerInfo, ExportFailedException> failedFiles)
         {
-            foreach (KeyValuePair<HaloX360FileIO.ContainerInfo, MainWindow.ExportFailedException> pair in failedFiles)
+            foreach (KeyValuePair<HaloX360FileIO.ContainerInfo, ExportFailedException> pair in failedFiles)
             {
                 failedFilesInfo.Add(pair.Key.path, pair);
                 string message = pair.Value.InnerException != null ? pair.Value.InnerException.Message : pair.Value.Message;
@@ -35,7 +63,7 @@ namespace HaloMCCPCSaveTransferTool
         void UpdateList()
         {
             FailedList.Rows.Clear();
-            foreach (KeyValuePair<HaloX360FileIO.ContainerInfo, MainWindow.ExportFailedException> pair in failedFilesInfo.Values)
+            foreach (KeyValuePair<HaloX360FileIO.ContainerInfo, ExportFailedException> pair in failedFilesInfo.Values)
             {
                 string message = pair.Value.InnerException != null ? pair.Value.InnerException.Message : pair.Value.Message;
                 FailedList.Rows.Add(message, "Save As", pair.Key.CON.Header.Title_Display, pair.Key.file.Created, pair.Key.file.Accessed, pair.Key.path, pair.Value.exportPath);
@@ -51,7 +79,7 @@ namespace HaloMCCPCSaveTransferTool
         {
             if (e.ColumnIndex == 1)
             {
-                KeyValuePair<HaloX360FileIO.ContainerInfo, MainWindow.ExportFailedException> pair = failedFilesInfo[FailedList.Rows[e.RowIndex].Cells[5].Value.ToString()];
+                KeyValuePair<HaloX360FileIO.ContainerInfo, ExportFailedException> pair = failedFilesInfo[FailedList.Rows[e.RowIndex].Cells[5].Value.ToString()];
                 SaveFileDialog saveFileDialog1 = new SaveFileDialog();
                 string extention = pair.Value.extention;
                 string displayName = pair.Key.CON.Header.Title_Display;
@@ -85,7 +113,7 @@ namespace HaloMCCPCSaveTransferTool
                         }
                         //change row info and failed files info to reflect new reason
                         MainWindow.Output.WriteLine(Environment.NewLine + "Export of file " + displayName + " failed from exception " + Environment.NewLine + ex.Message + Environment.NewLine);
-                        failedFilesInfo[pair.Key.path] = new KeyValuePair<HaloX360FileIO.ContainerInfo, MainWindow.ExportFailedException>(pair.Key, new MainWindow.ExportFailedException("Failed to export", ex) { containerInfo = pair.Key, exportDirectory = exportDirectory, exportPath = exportedFileName, extention = extention });
+                        failedFilesInfo[pair.Key.path] = new KeyValuePair<HaloX360FileIO.ContainerInfo, ExportFailedException>(pair.Key, new ExportFailedException("Failed to export", ex) { containerInfo = pair.Key, exportDirectory = exportDirectory, exportPath = exportedFileName, extention = extention });
                         UpdateList();
                     }
                     if (exported)
@@ -97,55 +125,16 @@ namespace HaloMCCPCSaveTransferTool
                 }
             }
         }
-        string GetUniqueName(string originalPath)
-        {
-            if (originalPath != null && File.Exists(originalPath))
-            {
-                string directory = Path.GetDirectoryName(originalPath);
-                string name = Path.GetFileNameWithoutExtension(originalPath);
-                int i = 1;
-                string extention = Path.GetExtension(originalPath);
-                string newPath = directory + @"\" + name +" (" + i + ")"+ extention;
-                while (File.Exists(newPath))
-                {
-                    i++;
-                    newPath = directory + @"\" + name + " (" + i + ")" + extention;
-                }
-                return newPath;
-            }
-            return null;
-        }
-        static string invalidChars = @"<>:" + '"' + @"/\|?*";
-        static string ReplaceInvalidCharactersFromFileName(string fileName, char replaceCharacter = '_')
-        {
-            string retval = fileName;
-            if (fileName != null && fileName.Length > 0)
-            {
-                retval = "";
-                for (int i = 0; i < fileName.Length; i++)
-                {
-                    if (invalidChars.Contains(fileName[i].ToString()))
-                    {
-                        retval += replaceCharacter;
-                    }
-                    else
-                    {
-                        retval += fileName[i];
-                    }
-                }
-            }
-            return retval;
-        }
         private void AutoResolve_Click(object sender, EventArgs e)
         {
             bool exported;
             string titleDisplay;
             List<string> exportedList = new List<string>();
-            foreach (KeyValuePair<HaloX360FileIO.ContainerInfo, MainWindow.ExportFailedException> pair in failedFilesInfo.Values)
+            foreach (KeyValuePair<HaloX360FileIO.ContainerInfo, ExportFailedException> pair in failedFilesInfo.Values)
             {
                 titleDisplay = pair.Key.CON.Header.Title_Display;
                 exported = false;
-                string newName = ReplaceInvalidCharactersFromFileName(titleDisplay);
+                string newName = FailedFileHelper.ReplaceInvalidCharactersFromFileName(titleDisplay);
                 string newPath = pair.Value.exportDirectory + newName + pair.Value.extention;
                 if (newName != titleDisplay || File.Exists(newPath))
                 {
@@ -153,7 +142,7 @@ namespace HaloMCCPCSaveTransferTool
                     {
                         if (File.Exists(newPath))
                         {
-                            newPath = GetUniqueName(newPath);
+                            newPath = FailedFileHelper.GetUniqueName(newPath);
                             newName = Path.GetFileNameWithoutExtension(newPath);
                         }
                         MainWindow.Output.WriteLine("Attempting to save with file name " + newName);
@@ -184,7 +173,8 @@ namespace HaloMCCPCSaveTransferTool
             }
             UpdateList();
         }
-        private void helpLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+
+        private void HelpLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/ELREVENGE/HaloMCCPCSaveTransferTool/wiki/Help");
         }

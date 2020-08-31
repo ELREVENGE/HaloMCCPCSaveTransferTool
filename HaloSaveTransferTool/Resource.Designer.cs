@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HaloMCCPCSaveTransferTool.Properties {
+namespace HaloMCCPCSaveTransferTool {
     using System;
     
     
@@ -22,24 +22,24 @@ namespace HaloMCCPCSaveTransferTool.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal Resource() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("HaloMCCPCSaveTransferTool.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("HaloMCCPCSaveTransferTool.Resource", typeof(Resource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,12 +51,85 @@ namespace HaloMCCPCSaveTransferTool.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to H2A_001_001_basic_editing_137.bin
+        ///H2A_100_100_Slayer_BASE_TeamSlayer_137.bin
+        ///H2A_100_150_Slayer_Pro_137.bin
+        ///H2A_100_200_Slayer_FFA_137.bin
+        ///H2A_100_250_Slayer_BR_137.bin
+        ///H2A_100_300_Slayer_BR_FFA_137.bin
+        ///H2A_100_350_Slayer_Elimination_137.bin
+        ///H2A_100_400_Slayer_Phantom_Elimination_137.bin
+        ///H2A_100_450_Slayer_Phantoms_137.bin
+        ///H2A_100_500_Slayer_Team_Phantoms_137.bin
+        ///H2A_100_550_Slayer_Rockets_137.bin
+        ///H2A_100_600_Slayer_Snipers_137.bin
+        ///H2A_100_650_Slayer_Team_Snipers_137.bin
+        ///H2A_100_700_Slayer_Swor [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Halo2AGameTypeIgnoreList {
+            get {
+                return ResourceManager.GetString("Halo2AGameTypeIgnoreList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to bloodline_classic.mvar
+        ///lockdown_classic.mvar
+        ///remnant_classic.mvar
+        ///shrine_classic.mvar
+        ///stonetown_classic.mvar
+        ///warlord_classic.mvar
+        ///zenith_classic.mvar.
+        /// </summary>
+        public static string Halo2AMapIgnoreList {
+            get {
+                return ResourceManager.GetString("Halo2AMapIgnoreList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 01_slayer.bin
+        ///02_team_slayer.bin
+        ///03_rockets.bin
+        ///04_swords.bin
+        ///05_snipers.bin
+        ///06_phantoms.bin
+        ///07_team_phantoms.bin
+        ///08_elimination.bin
+        ///09_multi_flag_ctf.bin
+        ///10_ctf_classic.bin
+        ///11_01_1_flag_ctf.bin
+        ///12_1_flag_ctf_fast.bin
+        ///13_king.bin
+        ///14_team_king.bin
+        ///15_phantom_king.bin
+        ///16_crazy_king.bin
+        ///17_team_crazy_king.bin
+        ///18_oddball.bin
+        ///19_rocketball.bin
+        ///20_swordball.bin
+        ///21_team_ball.bin
+        ///22_low_ball.bin
+        ///23_fiesta.bin
+        ///24_2_on_1.bin
+        ///25_3_on_1.bin
+        ///26_ninjanaut.bin
+        ///27_phantom_fodder.bin
+        ///28_dreadnaut. [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Halo2GameTypeIgnoreList {
+            get {
+                return ResourceManager.GetString("Halo2GameTypeIgnoreList", resourceCulture);
             }
         }
         
@@ -81,7 +154,7 @@ namespace HaloMCCPCSaveTransferTool.Properties {
         ///h3_ffa_hardcoreSlayer_12min.bin
         ///infection-0_ [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Halo3GameTypeIgnoreList {
+        public static string Halo3GameTypeIgnoreList {
             get {
                 return ResourceManager.GetString("Halo3GameTypeIgnoreList", resourceCulture);
             }
@@ -102,9 +175,41 @@ namespace HaloMCCPCSaveTransferTool.Properties {
         ///year2_snowbound_boundless_012.mvar
         ///year2_the_pit_pitstop_012.mvar.
         /// </summary>
-        internal static string Halo3MapIgnoreList {
+        public static string Halo3MapIgnoreList {
             get {
                 return ResourceManager.GetString("Halo3MapIgnoreList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 01_slayer.bin
+        ///02_team_slayer.bin
+        ///03_classic_slayer.bin
+        ///04_classic_slayer_pro.bin
+        ///05_classic_phantoms.bin
+        ///05_classic_team_slayer.bin
+        ///06_classic_elimination.bin
+        ///08_classic_endurance.bin
+        ///09_classic_rockets.bin
+        ///10_classic_snipers.bin
+        ///11_ctf.bin
+        ///12_classic_ctf.bin
+        ///13_classic_invasion.bin
+        ///14_classic_iron_ctf.bin
+        ///15_classic_ctf_pro.bin
+        ///16_king.bin
+        ///17_crazy_king.bin
+        ///18_team_king.bin
+        ///19_classic_king.bin
+        ///20_classic_king_pro.bin
+        ///21_classic_crazy_king.bin
+        ///22_classic_team_king.bin
+        ///23_oddball.bin
+        ///2 [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string HaloCEGameTypeIgnoreList {
+            get {
+                return ResourceManager.GetString("HaloCEGameTypeIgnoreList", resourceCulture);
             }
         }
         
@@ -129,7 +234,7 @@ namespace HaloMCCPCSaveTransferTool.Properties {
         ///hr_4v4_team_crazyKing_dmr_ar_150points_tu.bin
         ///hr_4v4_team_headhunter_dmr_ar_50points_ [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string HaloReachGameTypeIgnoreList {
+        public static string HaloReachGameTypeIgnoreList {
             get {
                 return ResourceManager.GetString("HaloReachGameTypeIgnoreList", resourceCulture);
             }
@@ -148,7 +253,7 @@ namespace HaloMCCPCSaveTransferTool.Properties {
         ///prisoner_cl_031.mvar
         ///timberland_cl_031.mvar.
         /// </summary>
-        internal static string HaloReachMapIgnoreList {
+        public static string HaloReachMapIgnoreList {
             get {
                 return ResourceManager.GetString("HaloReachMapIgnoreList", resourceCulture);
             }

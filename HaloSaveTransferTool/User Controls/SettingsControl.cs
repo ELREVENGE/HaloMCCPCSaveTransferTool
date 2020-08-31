@@ -21,6 +21,8 @@ namespace HaloMCCPCSaveTransferTool
             SettingsGrid.Rows.Add("Private", "Set", "Set", Properties.Settings.Default.PrivateLocation);
             SettingsGrid.Rows.Add("Other", "Set", "Set", Properties.Settings.Default.DefaultOtherLocation);
             CheckForUpdateCheckBox.Checked = Properties.Settings.Default.AutoCheckForUpdates;
+            RecycleInsteadOfDeleteCheckBox.Checked = Properties.Settings.Default.UseRecyclingBin;
+            WarnBeforeDeletingCheckBox.Checked = Properties.Settings.Default.WarnBeforeDeleting;
         }
         static string defaultBuiltInLocation = @"C:\Program Files (x86)\Steam\steamapps\common\Halo The Master Chief Collection\";
         static string defaultPrivateLocation = @"C:\Users\" + Environment.UserName + @"\AppData\LocalLow\MCC\LocalFiles\";
@@ -124,6 +126,18 @@ namespace HaloMCCPCSaveTransferTool
         private void CheckForUpdateCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.AutoCheckForUpdates = CheckForUpdateCheckBox.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void RecycleInsteadOfDeleteCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.UseRecyclingBin = RecycleInsteadOfDeleteCheckBox.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void WarnBeforeDeletingCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.WarnBeforeDeleting = WarnBeforeDeletingCheckBox.Checked;
             Properties.Settings.Default.Save();
         }
     }

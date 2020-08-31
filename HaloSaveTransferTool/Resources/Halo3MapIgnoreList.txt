@@ -1,0 +1,13 @@
+h3_epitaph_epilogue_bruteshotFix.mvar
+h3_hardcoreConstruct.mvar
+h3_hardcoreConstruct_ts.mvar
+h3_hardcoreFoundry_amplified.mvar
+h3_hardcoreFoundry_onslaught.mvar
+h3_hardcoreGuardian.mvar
+h3_hardcoreHeretic.mvar
+h3_hardcoreHeretic_ffa.mvar
+h3_hardcoreNarrows.mvar
+h3_hardcorePit.mvar
+year2_sandtrap_sandtarp_012.mvar
+year2_snowbound_boundless_012.mvar
+year2_the_pit_pitstop_012.mvar
