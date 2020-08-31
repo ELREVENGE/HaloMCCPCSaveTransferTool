@@ -89,6 +89,7 @@
             this.FileList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FileList.Location = new System.Drawing.Point(3, 38);
             this.FileList.Name = "FileList";
+            this.FileList.ReadOnly = true;
             this.FileList.RowHeadersVisible = false;
             this.FileList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.FileList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -109,6 +110,7 @@
             // 
             this.Description.HeaderText = "Description";
             this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn24
             // 

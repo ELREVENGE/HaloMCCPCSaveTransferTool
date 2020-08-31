@@ -67,6 +67,43 @@ namespace HaloMCCPCSaveTransferTool
             SetUp();
         }
         #endregion
+        #region Utilities
+        string GetMoveLocation()
+        {
+            if (MoveDirectoryManageGameFiles == null)
+            {
+                return "";
+            }
+            return MoveDirectoryManageGameFiles.FilesDirectory;
+        }
+        public List<string> GetIgnoreListFromFile(string file)
+        {
+            List<string> returnValue = new List<string>();
+            if (File.Exists(file))
+            {
+                try
+                {
+                    string line;
+                    StreamReader fileStream = new StreamReader(file);
+                    while ((line = fileStream.ReadLine()) != null)
+                    {
+                        returnValue.Add(line);
+                    }
+                    fileStream.Close();
+                }
+                catch
+                {
+                    MainWindow.Output.WriteLine("ERROR: Couldn't get ignore list for " + GameName + " from file: " + file + " Some files in " + FilesDirectory + " may be listed that are supposed to be ignored.");
+                }
+            }
+            else
+            {
+                MainWindow.Output.WriteLine("Ignore list missing for " + GameName + ". Ignore list file should have been at: " + file + ". Some files in " + FilesDirectory + " may be listed that are supposed to be ignored.");
+            }
+            return returnValue;
+        }
+        #endregion
+        #region Update lists and buttons
         void UpdateLists()
         {
             UpdateList();
@@ -91,27 +128,7 @@ namespace HaloMCCPCSaveTransferTool
                 InGameNameAndDescription inGameNameAndDescription;
                 foreach (string file in files)
                 {
-                    inGameNameAndDescription = new InGameNameAndDescription("","");
-                    if (GameName == "Halo: Reach")
-                    {
-                        inGameNameAndDescription = GetReachInGameNameAndDescription(file);
-                    }
-                    else if (GameName == "Halo: CE")
-                    {
-                        inGameNameAndDescription = GetCEInGameNameAndDescription(file);
-                    }
-                    else if (GameName == "Halo 2: Anniversary")
-                    {
-                        inGameNameAndDescription = Get2AInGameNameAndDescription(file);
-                    }
-                    else if (GameName == "Halo 2:")
-                    {
-                        inGameNameAndDescription = Get2InGameNameAndDescription(file);
-                    }
-                    else if (GameName == "Halo 3")
-                    {
-                        inGameNameAndDescription = Get3InGameNameAndDescription(file);
-                    }
+                    inGameNameAndDescription = GetInGameNameAndDescription(file);
                     FileList.Rows.Add(inGameNameAndDescription.InGameName, inGameNameAndDescription.Description, Path.GetFileNameWithoutExtension(file), File.GetLastWriteTime(file).ToString("yy/MM/dd HH:mm:ss"));
                 }
                 UpdateAllButtons();
@@ -126,14 +143,7 @@ namespace HaloMCCPCSaveTransferTool
             DeleteButton.Enabled = (exists && filesSelected);
             MoveButton.Enabled = (exists && filesSelected && Directory.Exists(GetMoveLocation()));
         }
-        string GetMoveLocation()
-        {
-            if (MoveDirectoryManageGameFiles == null)
-            {
-                return "";
-            }
-            return MoveDirectoryManageGameFiles.FilesDirectory;
-        }
+        #endregion
         #region Buttons
         private void Move_Click(object sender, EventArgs e)
         {
@@ -289,32 +299,6 @@ namespace HaloMCCPCSaveTransferTool
             }
         }
         #endregion
-        public List<string> GetIgnoreListFromFile(string file)
-        {
-            List<string> returnValue = new List<string>();
-            if (File.Exists(file))
-            {
-                try
-                {
-                    string line;
-                    StreamReader fileStream = new StreamReader(file);
-                    while ((line = fileStream.ReadLine()) != null)
-                    {
-                        returnValue.Add(line);
-                    }
-                    fileStream.Close();
-                }
-                catch
-                {
-                    MainWindow.Output.WriteLine("ERROR: Couldn't get ignore list for " + GameName + " from file: " + file + " Some files in " + FilesDirectory + " may be listed that are supposed to be ignored.");
-                }
-            }
-            else
-            {
-                MainWindow.Output.WriteLine("Ignore list missing for " + GameName + ". Ignore list file should have been at: " + file + ". Some files in " + FilesDirectory + " may be listed that are supposed to be ignored.");
-            }
-            return returnValue;
-        }
         #region Get name and desctiption from file
         #region General functions to get in game name and descriptions
         InGameNameAndDescription GetInGameNameAndDescription(string file, int startOfName, int startOfDescription)
@@ -567,7 +551,6 @@ namespace HaloMCCPCSaveTransferTool
             return GetInGameNameAndDescription(file, 193, 449);
         }
         #endregion
-
         private void LocationLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (Directory.Exists(FilesDirectory))
@@ -575,7 +558,6 @@ namespace HaloMCCPCSaveTransferTool
                 Process.Start(FilesDirectory);
             }
         }
-
         private void FileList_SelectionChanged(object sender, EventArgs e)
         {
             bool selected = FileList.SelectedRows.Count > 0;
