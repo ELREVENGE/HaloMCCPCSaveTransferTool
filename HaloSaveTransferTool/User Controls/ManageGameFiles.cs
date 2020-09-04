@@ -27,12 +27,14 @@ namespace HaloMCCPCSaveTransferTool
                 Description = description;
             }
         }
+        #region Fields
         string GameName = "";
         internal string FilesDirectory = "";
         string FileExtention = "";
         static OpenFileDialog openFileDialog = new OpenFileDialog() { Multiselect = true, RestoreDirectory = true };
         ManageGameFiles MoveDirectoryManageGameFiles; 
         List<string> IgnoreList = new List<string>();
+        #endregion
         #region Initialization and setup
         public ManageGameFiles()
         {
@@ -111,6 +113,8 @@ namespace HaloMCCPCSaveTransferTool
         }
         internal void UpdateList()
         {
+            FileList.ClearSelection();
+            FileList.Rows.Clear();
             if (Directory.Exists(FilesDirectory))
             {
                 Enabled = true;
@@ -123,8 +127,6 @@ namespace HaloMCCPCSaveTransferTool
                 {
                     files.Remove(FilesDirectory + @"\" + file);
                 }
-                FileList.ClearSelection();
-                FileList.Rows.Clear();
                 InGameNameAndDescription inGameNameAndDescription;
                 foreach (string file in files)
                 {
