@@ -28,6 +28,7 @@ namespace HaloMCCPCSaveTransferTool
             }
         }
         #region Fields
+        FileSystemWatcher watcher;
         string GameName = "";
         internal string FilesDirectory = "";
         string FileExtention = "";
@@ -47,6 +48,22 @@ namespace HaloMCCPCSaveTransferTool
             {
                 LocationLinkLabel.Text = GameName;
                 UpdateList();
+                // setup file watcher
+                if (Directory.Exists(FilesDirectory))
+                {
+                    watcher = new FileSystemWatcher(FilesDirectory, "*." + FileExtention);
+                    watcher.SynchronizingObject = this;
+                    watcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName;
+                    watcher.Changed += UpdateList;
+                    watcher.Created += UpdateList;
+                    watcher.Deleted += UpdateList;
+                    watcher.Renamed += UpdateList;
+                    watcher.EnableRaisingEvents = true;
+                }
+                else if (watcher != null)
+                {
+                    watcher.EnableRaisingEvents = false;
+                }
             }
         }
         public void Set(string gameName, string filesDirectory, string fileExtention, List<string> ignoreList, ManageGameFiles moveDirectoryManageGameFiles)
@@ -106,6 +123,10 @@ namespace HaloMCCPCSaveTransferTool
         }
         #endregion
         #region Update lists and buttons
+        void UpdateList(object source, FileSystemEventArgs e)
+        {
+            UpdateList();
+        }
         void UpdateLists()
         {
             UpdateList();
@@ -183,7 +204,7 @@ namespace HaloMCCPCSaveTransferTool
                 }
                 //attempt to resolve exceptions
                 if (exceptions.Count > 0) ManageFailedWindow.OpenDialog(exceptions, FilesDirectory, moveLocation, ManageFailedWindow.Operation.Move);
-                UpdateLists();
+                //UpdateLists();
                 MainWindow.Output.WriteLine("Move operation complete");
             }
         }
@@ -227,7 +248,7 @@ namespace HaloMCCPCSaveTransferTool
                 }
                 //attempt to resolve exceptions
                 if (exceptions.Count > 0) ManageFailedWindow.OpenDialog(exceptions, FilesDirectory, FilesDirectory, ManageFailedWindow.Operation.Delete);
-                UpdateList();
+                //UpdateList();
                 MainWindow.Output.WriteLine("Delete operation complete");
             }
         }
@@ -296,7 +317,7 @@ namespace HaloMCCPCSaveTransferTool
                 }
                 //attempt to resolve exceptions
                 if (exceptions.Count > 0) ManageFailedWindow.OpenDialog(exceptions, FilesDirectory, FilesDirectory, ManageFailedWindow.Operation.Add);
-                UpdateList();
+                //UpdateList();
                 MainWindow.Output.WriteLine("Add operation complete");
             }
         }
