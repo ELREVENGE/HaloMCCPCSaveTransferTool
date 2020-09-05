@@ -85,8 +85,8 @@ namespace HaloMCCPCSaveTransferTool
             try { Text += " v" + System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString(4); } catch { }
             Halo3ODSTExportPanel.SetEnabledLists(false, false, true);
             UpdateOpened("");
-            ManageMapsPanel.Set(ManagePanel.FileType.Map);
-            ManageGameTypesPanel.Set(ManagePanel.FileType.GameType);
+            ManageMapsPanel.SetUp(ManagePanel.FileType.Map);
+            ManageGameTypesPanel.SetUp(ManagePanel.FileType.GameType);
             Output.WriteLine("Updating Manage tab file lists");
             ManageMapsPanel.UpdateLists();
             ManageGameTypesPanel.UpdateLists();

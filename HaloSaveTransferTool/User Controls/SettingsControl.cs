@@ -14,6 +14,9 @@ namespace HaloMCCPCSaveTransferTool
 {
     public partial class SettingsControl : UserControl
     {
+        public delegate void DirectoryChanged();
+        public static DirectoryChanged BuiltInChanged;
+        public static DirectoryChanged PrivateChanged;
         public SettingsControl()
         {
             InitializeComponent();
@@ -46,6 +49,7 @@ namespace HaloMCCPCSaveTransferTool
                 SettingsGrid.Rows[0].Cells[3].Value = defaultBuiltInLocation;
                 MainWindow.Output.WriteLine("Built in location set to " + defaultBuiltInLocation);
                 Properties.Settings.Default.Save();
+                BuiltInChanged();
             }
             else { MainWindow.Output.WriteLine("Directory " + defaultBuiltInLocation + " Does not exist, you will have to enter the location manually"); }
         }
@@ -64,7 +68,8 @@ namespace HaloMCCPCSaveTransferTool
                         SettingsGrid.Rows[1].Cells[3].Value = currentDirectory;
                         MainWindow.Output.WriteLine("Private location set to " + currentDirectory);
                         Properties.Settings.Default.Save();
-                        break;
+                        PrivateChanged();
+                        return;
                     }
                 }
             }
@@ -102,6 +107,7 @@ namespace HaloMCCPCSaveTransferTool
                     SettingsGrid.Rows[0].Cells[3].Value = defaultBuiltInLocation;
                     MainWindow.Output.WriteLine("Built in location set to " + defaultBuiltInLocation);
                     Properties.Settings.Default.Save();
+                    BuiltInChanged();
                 }
                 else if (row == 1)
                 {
@@ -110,6 +116,7 @@ namespace HaloMCCPCSaveTransferTool
                     SettingsGrid.Rows[1].Cells[3].Value = dialog.FileName;
                     MainWindow.Output.WriteLine("Private location set to " + dialog.FileName);
                     Properties.Settings.Default.Save();
+                    PrivateChanged();
                 }
                 else if (row == 2)
                 {

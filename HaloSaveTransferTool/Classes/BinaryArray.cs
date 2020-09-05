@@ -7,16 +7,19 @@ using System.Collections;
 
 namespace HaloMCCPCSaveTransferTool
 {
-    /// <summary>
-    /// Wrapper class for bit array that holds bits from bytes from most significant to least significant (reverse of BitArray)
+     /// <summary>
+    /// Wrapper class for bit array that holds bits from bytes from most significant to least significant (reverse of BitArray) which allows easy bit shifting
     /// </summary>
     public class BinaryArray
     {
+        /// <summary>
+        /// The BitArray that holds all the bits
+        /// </summary>
         BitArray bitArray;
         /// <summary>
         /// Create a binary array from byte array 
         /// </summary>
-        /// <param name="bytes"></param>
+        /// <param name="bytes">Bytes to be turned into an array</param>
         public BinaryArray(byte[] bytes)
         {
             FromByteArray(bytes);
@@ -24,7 +27,7 @@ namespace HaloMCCPCSaveTransferTool
         /// <summary>
         /// Set bits from a array of bytes
         /// </summary>
-        /// <param name="bytes">the byte array to be set from</param>
+        /// <param name="bytes">The byte array to be set from</param>
         public void FromByteArray(byte[] bytes)
         {
             if (bytes != null && bytes.Length > 0)
@@ -32,7 +35,7 @@ namespace HaloMCCPCSaveTransferTool
                 byte[] singleByte = new byte[1] { bytes[0] };
                 BitArray singleByteArray;
                 List<bool> bits = new List<bool>();
-                for (int i =0; i < bytes.Length; i++)
+                for (int i = 0; i < bytes.Length; i++)
                 {
                     singleByte[0] = bytes[i];
                     singleByteArray = new BitArray(singleByte);
@@ -51,7 +54,7 @@ namespace HaloMCCPCSaveTransferTool
         /// <summary>
         /// Copy bits to a byte array
         /// </summary>
-        /// <returns>bits as a byte array</returns>
+        /// <returns>Bits as a byte array</returns>
         public byte[] CopyToByteArray()
         {
             if (bitArray.Count % 8 != 0) throw new Exception("Amount of bits in BitArray is not evenly divisable by 8 and can't be turned into bytes properly");
@@ -72,6 +75,11 @@ namespace HaloMCCPCSaveTransferTool
             }
             return returnValue;
         }
+        /// <summary>
+        /// Gets bit at a specified index as a bool
+        /// </summary>
+        /// <param name="index">Index of byte</param>
+        /// <returns>Bit as a bool</returns>
         public bool this[int index]
         {
             get => bitArray[index];
@@ -80,9 +88,9 @@ namespace HaloMCCPCSaveTransferTool
         /// <summary>
         /// Shifts bits right by a specified amount
         /// </summary>
-        /// <param name="shiftAmount">how much to shift</param>
-        /// <param name="replaceWith">what to set on the left side of the array</param>
-        /// <returns>overflow bits as a bool array</returns>
+        /// <param name="shiftAmount">How much to shift</param>
+        /// <param name="replaceWith">What to set on the left side of the array</param>
+        /// <returns>Overflow bits as a bool array</returns>
         public bool[] ShiftRight(int shiftAmount, bool replaceWith = false)
         {
             int bitArrayCount = bitArray.Count;
@@ -119,9 +127,9 @@ namespace HaloMCCPCSaveTransferTool
         /// <summary>
         /// Shifts bits left by a specified amount
         /// </summary>
-        /// <param name="shiftAmount">how much to shift</param>
-        /// <param name="replaceWith">what to set on the right side of the array</param>
-        /// <returns>overflow bits as a bool array</returns>
+        /// <param name="shiftAmount">How much to shift</param>
+        /// <param name="replaceWith">What to set on the right side of the array</param>
+        /// <returns>Overflow bits as a bool array</returns>
         public bool[] ShiftLeft(int shiftAmount, bool replaceWith = false)
         {
             int bitArrayCount = bitArray.Count;
@@ -155,6 +163,10 @@ namespace HaloMCCPCSaveTransferTool
             }
             return returnValue.ToArray();
         }
+        /// <summary>
+        /// Gets binary representation of array as a string of 1s and 0s with a space between each byte
+        /// </summary>
+        /// <returns>Returns array as a string of 1s and 0s with a space between each byte</returns>
         public override string ToString()
         {
             string bitsString = "";

@@ -89,6 +89,7 @@
   <ItemGroup>
     <Compile Include="Classes\BinaryArray.cs" />
     <Compile Include="Classes\ExtentionMethods.cs" />
+    <Compile Include="Classes\FileInfo.cs" />
     <Compile Include="Resource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

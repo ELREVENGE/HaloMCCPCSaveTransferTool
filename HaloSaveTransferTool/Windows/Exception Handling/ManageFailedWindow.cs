@@ -37,7 +37,7 @@ namespace HaloMCCPCSaveTransferTool
                     else _destinationDirectory = value;
                 }
             }
-            public ManageGameFiles.InGameNameAndDescription NameAndDescription;
+            public FileInfo FileInfo;
             public ManageFailedException()
             {
             }
@@ -45,12 +45,12 @@ namespace HaloMCCPCSaveTransferTool
                 : base(message)
             {
             }
-            public ManageFailedException(string message, Exception inner, string filePath, string destinationDirectory, ManageGameFiles.InGameNameAndDescription nameAndDescription)
+            public ManageFailedException(string message, Exception inner, string filePath, string destinationDirectory, FileInfo info)
         : base(message, inner)
             {
                 FilePath = filePath;
                 DestinationDirectory = destinationDirectory;
-                NameAndDescription = nameAndDescription;
+                FileInfo = info;
             }
         }
         public ManageFailedWindow()
@@ -94,7 +94,7 @@ namespace HaloMCCPCSaveTransferTool
             {
                 failed = FailedFilesInfo[i];
                 //exception, resolve, InGameName, Description, File, Modified
-                FailedList.Rows.Add(failed.Message, buttonText, failed.NameAndDescription.InGameName, failed.NameAndDescription.Description, failed.FilePath, File.GetLastWriteTime(failed.FilePath).ToString("yy/MM/dd HH:mm:ss"));
+                FailedList.Rows.Add(failed.Message, buttonText, failed.FileInfo.InGameName, failed.FileInfo.Description, failed.FilePath, File.GetLastWriteTime(failed.FilePath).ToString("yy/MM/dd HH:mm:ss"));
             }
             if (FailedList.Rows.Count == 0)
             {
@@ -157,7 +157,7 @@ namespace HaloMCCPCSaveTransferTool
                     {
                         //replace with new exception details
                         MainWindow.Output.WriteLine("Failed to add file " + exception.FilePath + " due to exception " + ex.Message + " updating it's details on the list");
-                        FailedFilesInfo[index] = new ManageFailedException("Failed to add file with save as dialog because: " + ex.Message, ex, exception.FilePath, Path.GetDirectoryName(newFileName), exception.NameAndDescription);
+                        FailedFilesInfo[index] = new ManageFailedException("Failed to add file with save as dialog because: " + ex.Message, ex, exception.FilePath, Path.GetDirectoryName(newFileName), exception.FileInfo);
                         return false;
                     }
                 }
@@ -182,7 +182,7 @@ namespace HaloMCCPCSaveTransferTool
                     {
                         //replace with new exception details
                         MainWindow.Output.WriteLine("Failed to move file " + exception.FilePath + " due to exception " + ex.Message + " updating it's details on the list");
-                        FailedFilesInfo[index] = new ManageFailedException("Failed to move file with save as dialog because: " + ex.Message, ex, exception.FilePath, Path.GetDirectoryName(newFileName), exception.NameAndDescription);
+                        FailedFilesInfo[index] = new ManageFailedException("Failed to move file with save as dialog because: " + ex.Message, ex, exception.FilePath, Path.GetDirectoryName(newFileName), exception.FileInfo);
                         return false;
                     }
                 }
@@ -206,7 +206,7 @@ namespace HaloMCCPCSaveTransferTool
                     catch (Exception ex)
                     {
                         MainWindow.Output.WriteLine("Failed to delete file " + exception.FilePath + " due to exception " + ex.Message + " updating it's details on the list");
-                        FailedFilesInfo[index] = new ManageFailedException("Failed to delete file with save as dialog because: " + ex.Message, ex, exception.FilePath, exception.DestinationDirectory, exception.NameAndDescription);
+                        FailedFilesInfo[index] = new ManageFailedException("Failed to delete file with save as dialog because: " + ex.Message, ex, exception.FilePath, exception.DestinationDirectory, exception.FileInfo);
                         return false;
                     }
                 }
