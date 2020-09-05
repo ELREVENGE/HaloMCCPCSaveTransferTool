@@ -89,11 +89,11 @@ namespace HaloMCCPCSaveTransferTool
                 halo2FileIgnoreList = ignoreListDirectory + "Halo2GameTypeIgnoreList.txt";
                 halo2AFileIgnoreList = ignoreListDirectory + "Halo2AGameTypeIgnoreList.txt";
                 //game types for halo CE
-                HaloCEManageBuiltInGameFiles.Set("Halo: CE", Properties.Settings.Default.BuiltInLocation + @"\halo1\" + builtInDirectory, extention, AppDomain.CurrentDomain.BaseDirectory + haloCEFileIgnoreList, HaloCEManagePrivateGameFiles);
-                HaloCEManagePrivateGameFiles.Set("Halo: CE", Properties.Settings.Default.PrivateLocation + @"\Halo1\" + privateDirectory, extention, new List<string>(), HaloCEManageBuiltInGameFiles);
+                HaloCEManageBuiltInGameFiles.Set(FileInfo.Game.HaloCE, Properties.Settings.Default.BuiltInLocation + @"\halo1\" + builtInDirectory, extention, AppDomain.CurrentDomain.BaseDirectory + haloCEFileIgnoreList, HaloCEManagePrivateGameFiles);
+                HaloCEManagePrivateGameFiles.Set(FileInfo.Game.HaloCE, Properties.Settings.Default.PrivateLocation + @"\Halo1\" + privateDirectory, extention, new List<string>(), HaloCEManageBuiltInGameFiles);
                 //gametypes for halo 2 classic
-                Halo2ManageBuiltInGameFiles.Set("Halo 2: Classic", Properties.Settings.Default.BuiltInLocation + @"\halo2\" + builtInDirectory, extention, AppDomain.CurrentDomain.BaseDirectory + halo2FileIgnoreList, Halo2ManagePrivateGameFiles);
-                Halo2ManagePrivateGameFiles.Set("Halo 2: Classic", Properties.Settings.Default.PrivateLocation + @"\Halo2\" + privateDirectory, extention, new List<string>(), Halo2ManageBuiltInGameFiles);
+                Halo2ManageBuiltInGameFiles.Set(FileInfo.Game.Halo2Classic, Properties.Settings.Default.BuiltInLocation + @"\halo2\" + builtInDirectory, extention, AppDomain.CurrentDomain.BaseDirectory + halo2FileIgnoreList, Halo2ManagePrivateGameFiles);
+                Halo2ManagePrivateGameFiles.Set(FileInfo.Game.Halo2Classic, Properties.Settings.Default.PrivateLocation + @"\Halo2\" + privateDirectory, extention, new List<string>(), Halo2ManageBuiltInGameFiles);
                 //Extention method for removing columns was causing issues so I'm adding columns here
                 //Set table
                 BuiltInTableLayoutPanel.ColumnCount = 5;
@@ -118,12 +118,12 @@ namespace HaloMCCPCSaveTransferTool
                 PrivateTableLayoutPanel.Controls.Add(Halo2AManagePrivateGameFiles, 3, 0);
                 PrivateTableLayoutPanel.Controls.Add(Halo3ManagePrivateGameFiles, 4, 0);
             }
-            ReachManageBuiltInGameFiles.Set("Halo: Reach", Properties.Settings.Default.BuiltInLocation + @"\haloreach\" + builtInDirectory, extention, AppDomain.CurrentDomain.BaseDirectory + reachFileIgnoreList, ReachManagePrivateGameFiles);
-            ReachManagePrivateGameFiles.Set("Halo: Reach", Properties.Settings.Default.PrivateLocation + @"\HaloReach\" + privateDirectory, extention, new List<string>(), ReachManageBuiltInGameFiles);
-            Halo2AManageBuiltInGameFiles.Set("Halo 2: Anniversary", Properties.Settings.Default.BuiltInLocation + @"\groundhog\" + builtInDirectory, extention, AppDomain.CurrentDomain.BaseDirectory + halo2AFileIgnoreList, Halo2AManagePrivateGameFiles);
-            Halo2AManagePrivateGameFiles.Set("Halo 2: Anniversary", Properties.Settings.Default.PrivateLocation + @"\Halo2A\" + privateDirectory, extention, new List<string>(), Halo2AManageBuiltInGameFiles);
-            Halo3ManageBuiltInGameFiles.Set("Halo 3", Properties.Settings.Default.BuiltInLocation + @"\halo3\" + builtInDirectory, extention, AppDomain.CurrentDomain.BaseDirectory + halo3FileIgnoreList, Halo3ManagePrivateGameFiles);
-            Halo3ManagePrivateGameFiles.Set("Halo 3", Properties.Settings.Default.PrivateLocation + @"\Halo3\" + privateDirectory, extention, new List<string>(), Halo3ManageBuiltInGameFiles);
+            ReachManageBuiltInGameFiles.Set(FileInfo.Game.HaloReach, Properties.Settings.Default.BuiltInLocation + @"\haloreach\" + builtInDirectory, extention, AppDomain.CurrentDomain.BaseDirectory + reachFileIgnoreList, ReachManagePrivateGameFiles);
+            ReachManagePrivateGameFiles.Set(FileInfo.Game.HaloReach, Properties.Settings.Default.PrivateLocation + @"\HaloReach\" + privateDirectory, extention, new List<string>(), ReachManageBuiltInGameFiles);
+            Halo2AManageBuiltInGameFiles.Set(FileInfo.Game.Halo2Anniversary, Properties.Settings.Default.BuiltInLocation + @"\groundhog\" + builtInDirectory, extention, AppDomain.CurrentDomain.BaseDirectory + halo2AFileIgnoreList, Halo2AManagePrivateGameFiles);
+            Halo2AManagePrivateGameFiles.Set(FileInfo.Game.Halo2Anniversary, Properties.Settings.Default.PrivateLocation + @"\Halo2A\" + privateDirectory, extention, new List<string>(), Halo2AManageBuiltInGameFiles);
+            Halo3ManageBuiltInGameFiles.Set(FileInfo.Game.Halo3, Properties.Settings.Default.BuiltInLocation + @"\halo3\" + builtInDirectory, extention, AppDomain.CurrentDomain.BaseDirectory + halo3FileIgnoreList, Halo3ManagePrivateGameFiles);
+            Halo3ManagePrivateGameFiles.Set(FileInfo.Game.Halo3, Properties.Settings.Default.PrivateLocation + @"\Halo3\" + privateDirectory, extention, new List<string>(), Halo3ManageBuiltInGameFiles);
         }
         #endregion
         #region Update
@@ -144,13 +144,13 @@ namespace HaloMCCPCSaveTransferTool
                 extention = "bin";
                 builtInDirectory = "game_variants";
                 //game types for halo CE
-                HaloCEManageBuiltInGameFiles.Set("Halo: CE", Properties.Settings.Default.BuiltInLocation + @"\halo1\" + builtInDirectory, extention, AppDomain.CurrentDomain.BaseDirectory + haloCEFileIgnoreList, HaloCEManagePrivateGameFiles);
+                HaloCEManageBuiltInGameFiles.Set(FileInfo.Game.HaloCE, Properties.Settings.Default.BuiltInLocation + @"\halo1\" + builtInDirectory, extention, AppDomain.CurrentDomain.BaseDirectory + haloCEFileIgnoreList, HaloCEManagePrivateGameFiles);
                 //gametypes for halo 2 classic
-                Halo2ManageBuiltInGameFiles.Set("Halo 2: Classic", Properties.Settings.Default.BuiltInLocation + @"\halo2\" + builtInDirectory, extention, AppDomain.CurrentDomain.BaseDirectory + halo2FileIgnoreList, Halo2ManagePrivateGameFiles);
+                Halo2ManageBuiltInGameFiles.Set(FileInfo.Game.Halo2Classic, Properties.Settings.Default.BuiltInLocation + @"\halo2\" + builtInDirectory, extention, AppDomain.CurrentDomain.BaseDirectory + halo2FileIgnoreList, Halo2ManagePrivateGameFiles);
             }
-            ReachManageBuiltInGameFiles.Set("Halo: Reach", Properties.Settings.Default.BuiltInLocation + @"\haloreach\" + builtInDirectory, extention, AppDomain.CurrentDomain.BaseDirectory + reachFileIgnoreList, ReachManagePrivateGameFiles);
-            Halo2AManageBuiltInGameFiles.Set("Halo 2: Anniversary", Properties.Settings.Default.BuiltInLocation + @"\groundhog\" + builtInDirectory, extention, AppDomain.CurrentDomain.BaseDirectory + halo2AFileIgnoreList, Halo2AManagePrivateGameFiles);
-            Halo3ManageBuiltInGameFiles.Set("Halo 3", Properties.Settings.Default.BuiltInLocation + @"\halo3\" + builtInDirectory, extention, AppDomain.CurrentDomain.BaseDirectory + halo3FileIgnoreList, Halo3ManagePrivateGameFiles);
+            ReachManageBuiltInGameFiles.Set(FileInfo.Game.HaloReach, Properties.Settings.Default.BuiltInLocation + @"\haloreach\" + builtInDirectory, extention, AppDomain.CurrentDomain.BaseDirectory + reachFileIgnoreList, ReachManagePrivateGameFiles);
+            Halo2AManageBuiltInGameFiles.Set(FileInfo.Game.Halo2Anniversary, Properties.Settings.Default.BuiltInLocation + @"\groundhog\" + builtInDirectory, extention, AppDomain.CurrentDomain.BaseDirectory + halo2AFileIgnoreList, Halo2AManagePrivateGameFiles);
+            Halo3ManageBuiltInGameFiles.Set(FileInfo.Game.Halo3, Properties.Settings.Default.BuiltInLocation + @"\halo3\" + builtInDirectory, extention, AppDomain.CurrentDomain.BaseDirectory + halo3FileIgnoreList, Halo3ManagePrivateGameFiles);
         }
         public void SetAndUpdatePrivateLists()
         {
@@ -165,13 +165,13 @@ namespace HaloMCCPCSaveTransferTool
                 extention = "bin";
                 privateDirectory = "GameType";
                 //game types for halo CE
-                HaloCEManagePrivateGameFiles.Set("Halo: CE", Properties.Settings.Default.PrivateLocation + @"\Halo1\" + privateDirectory, extention, new List<string>(), HaloCEManageBuiltInGameFiles);
+                HaloCEManagePrivateGameFiles.Set(FileInfo.Game.HaloCE, Properties.Settings.Default.PrivateLocation + @"\Halo1\" + privateDirectory, extention, new List<string>(), HaloCEManageBuiltInGameFiles);
                 //gametypes for halo 2 classic
-                Halo2ManagePrivateGameFiles.Set("Halo 2: Classic", Properties.Settings.Default.PrivateLocation + @"\Halo2\" + privateDirectory, extention, new List<string>(), Halo2ManageBuiltInGameFiles);
+                Halo2ManagePrivateGameFiles.Set(FileInfo.Game.Halo2Classic, Properties.Settings.Default.PrivateLocation + @"\Halo2\" + privateDirectory, extention, new List<string>(), Halo2ManageBuiltInGameFiles);
             }
-            ReachManagePrivateGameFiles.Set("Halo: Reach", Properties.Settings.Default.PrivateLocation + @"\HaloReach\" + privateDirectory, extention, new List<string>(), ReachManageBuiltInGameFiles);
-            Halo2AManagePrivateGameFiles.Set("Halo 2: Anniversary", Properties.Settings.Default.PrivateLocation + @"\Halo2A\" + privateDirectory, extention, new List<string>(), Halo2AManageBuiltInGameFiles);
-            Halo3ManagePrivateGameFiles.Set("Halo 3", Properties.Settings.Default.PrivateLocation + @"\Halo3\" + privateDirectory, extention, new List<string>(), Halo3ManageBuiltInGameFiles);
+            ReachManagePrivateGameFiles.Set(FileInfo.Game.HaloReach, Properties.Settings.Default.PrivateLocation + @"\HaloReach\" + privateDirectory, extention, new List<string>(), ReachManageBuiltInGameFiles);
+            Halo2AManagePrivateGameFiles.Set(FileInfo.Game.Halo2Anniversary, Properties.Settings.Default.PrivateLocation + @"\Halo2A\" + privateDirectory, extention, new List<string>(), Halo2AManageBuiltInGameFiles);
+            Halo3ManagePrivateGameFiles.Set(FileInfo.Game.Halo3, Properties.Settings.Default.PrivateLocation + @"\Halo3\" + privateDirectory, extention, new List<string>(), Halo3ManageBuiltInGameFiles);
         }
         public void UpdateLists()
         {
