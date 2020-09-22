@@ -62,6 +62,7 @@
             this.ExportGametypesButton.TabIndex = 7;
             this.ExportGametypesButton.Text = "Export Selected Gametypes";
             this.ExportGametypesButton.UseVisualStyleBackColor = true;
+            this.ExportGametypesButton.Click += new System.EventHandler(this.ExportGametypesButton_Click);
             // 
             // MapModifiedDateColumn
             // 
@@ -147,6 +148,7 @@
             this.ExportMapsButton.TabIndex = 8;
             this.ExportMapsButton.Text = "Export Selected Maps";
             this.ExportMapsButton.UseVisualStyleBackColor = true;
+            this.ExportMapsButton.Click += new System.EventHandler(this.ExportMapsButton_Click);
             // 
             // ScreenshotLocationColumn
             // 
@@ -188,6 +190,7 @@
             this.ExportScreenShotsButton.TabIndex = 9;
             this.ExportScreenShotsButton.Text = "Export Selected Screenshots";
             this.ExportScreenShotsButton.UseVisualStyleBackColor = true;
+            this.ExportScreenShotsButton.Click += new System.EventHandler(this.ExportScreenShotsButton_Click);
             // 
             // ScreenshotList
             // 
