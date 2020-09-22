@@ -142,17 +142,17 @@ namespace HaloMCCPCSaveTransferTool
 
         private void ExportMapsButton_Click(object sender, EventArgs e)
         {
-
+            ExportSelectedFromPannel(FileType.Map);
         }
 
         private void ExportGametypesButton_Click(object sender, EventArgs e)
         {
-
+            ExportSelectedFromPannel(FileType.Gametype);
         }
 
         private void ExportScreenShotsButton_Click(object sender, EventArgs e)
         {
-
+            ExportSelectedFromPannel(FileType.Screenshot);
         }
     }
 }
