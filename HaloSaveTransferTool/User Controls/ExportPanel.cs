@@ -139,5 +139,20 @@ namespace HaloMCCPCSaveTransferTool
         {
             InitializeComponent();
         }
+
+        private void ExportMapsButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ExportGametypesButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ExportScreenShotsButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
