@@ -161,6 +161,12 @@ namespace HaloMCCPCSaveTransferTool
             MainWindow.Output.WriteLine("Searching for Halo 3 ODST files");
             List<ContainerInfo> h3ODSTFiles = GetContainersForTitle(package, "Halo 3: ODST");
             haloFiles.Halo3ODST.Screenshots = GetMatchingContents(h3ODSTFiles, "screen.shot");
+            // Halo 4
+            MainWindow.Output.WriteLine("Searching for Halo 4 files");
+            List<ContainerInfo> h4Files = GetContainersForTitle(package, "Halo 4");
+            haloFiles.Halo4.Maps = GetMatchingContents(h4Files, "sandbox.map");
+            haloFiles.Halo4.GameTypes = GetMatchingContents(h4Files, "variant", false);
+            haloFiles.Halo4.Screenshots = GetMatchingContents(h4Files, "screen.shot");
 
             return haloFiles;
 
@@ -343,6 +349,7 @@ namespace HaloMCCPCSaveTransferTool
             public GameFiles Reach;
             public GameFiles Halo3;
             public GameFiles Halo3ODST;
+            public GameFiles Halo4;
 
             public HaloFiles(bool initLists) : this()
             {
@@ -357,6 +364,7 @@ namespace HaloMCCPCSaveTransferTool
                 Reach.Clear();
                 Halo3.Clear();
                 Halo3ODST.Clear();
+                Halo4.Clear();
             }
         }
         #endregion
