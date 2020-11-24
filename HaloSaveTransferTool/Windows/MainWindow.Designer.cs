@@ -52,12 +52,14 @@
             this.SettingsTab = new System.Windows.Forms.TabPage();
             this.settingsControl = new HaloMCCPCSaveTransferTool.SettingsControl();
             this.OtherTabPage = new System.Windows.Forms.TabPage();
+            this.IssuesLinkLabel = new System.Windows.Forms.LinkLabel();
             this.HelpLink = new System.Windows.Forms.LinkLabel();
             this.ViewLicensesLinkLabel = new System.Windows.Forms.LinkLabel();
             this.GitHubLinkLabel = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.IssuesLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.Halo4Tab = new System.Windows.Forms.TabPage();
+            this.Halo4ExportPanel = new HaloMCCPCSaveTransferTool.ExportPanel();
             this.ExportTab.SuspendLayout();
             this.FilesPannel.SuspendLayout();
             this.gameTabControl.SuspendLayout();
@@ -72,6 +74,7 @@
             this.GameTypesTab.SuspendLayout();
             this.SettingsTab.SuspendLayout();
             this.OtherTabPage.SuspendLayout();
+            this.Halo4Tab.SuspendLayout();
             this.SuspendLayout();
             // 
             // OutputTextBox
@@ -116,6 +119,7 @@
             this.gameTabControl.Controls.Add(this.ReachTab);
             this.gameTabControl.Controls.Add(this.Halo3);
             this.gameTabControl.Controls.Add(this.ODST);
+            this.gameTabControl.Controls.Add(this.Halo4Tab);
             this.gameTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gameTabControl.Location = new System.Drawing.Point(3, 43);
             this.gameTabControl.Name = "gameTabControl";
@@ -316,6 +320,17 @@
             this.OtherTabPage.Text = "Other";
             this.OtherTabPage.UseVisualStyleBackColor = true;
             // 
+            // IssuesLinkLabel
+            // 
+            this.IssuesLinkLabel.AutoSize = true;
+            this.IssuesLinkLabel.Location = new System.Drawing.Point(177, 17);
+            this.IssuesLinkLabel.Name = "IssuesLinkLabel";
+            this.IssuesLinkLabel.Size = new System.Drawing.Size(134, 13);
+            this.IssuesLinkLabel.TabIndex = 6;
+            this.IssuesLinkLabel.TabStop = true;
+            this.IssuesLinkLabel.Text = "View or submit a new issue";
+            this.IssuesLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.IssuesLinkLabel_LinkClicked);
+            // 
             // HelpLink
             // 
             this.HelpLink.AutoSize = true;
@@ -363,16 +378,24 @@
             this.saveFileDialog.AddExtension = false;
             this.saveFileDialog.CheckFileExists = true;
             // 
-            // IssuesLinkLabel
+            // Halo4Tab
             // 
-            this.IssuesLinkLabel.AutoSize = true;
-            this.IssuesLinkLabel.Location = new System.Drawing.Point(177, 17);
-            this.IssuesLinkLabel.Name = "IssuesLinkLabel";
-            this.IssuesLinkLabel.Size = new System.Drawing.Size(134, 13);
-            this.IssuesLinkLabel.TabIndex = 6;
-            this.IssuesLinkLabel.TabStop = true;
-            this.IssuesLinkLabel.Text = "View or submit a new issue";
-            this.IssuesLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.IssuesLinkLabel_LinkClicked);
+            this.Halo4Tab.Controls.Add(this.Halo4ExportPanel);
+            this.Halo4Tab.Location = new System.Drawing.Point(4, 22);
+            this.Halo4Tab.Name = "Halo4Tab";
+            this.Halo4Tab.Padding = new System.Windows.Forms.Padding(3);
+            this.Halo4Tab.Size = new System.Drawing.Size(989, 361);
+            this.Halo4Tab.TabIndex = 3;
+            this.Halo4Tab.Text = "Halo 4";
+            this.Halo4Tab.UseVisualStyleBackColor = true;
+            // 
+            // Halo4ExportPanel
+            // 
+            this.Halo4ExportPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Halo4ExportPanel.Location = new System.Drawing.Point(3, 3);
+            this.Halo4ExportPanel.Name = "Halo4ExportPanel";
+            this.Halo4ExportPanel.Size = new System.Drawing.Size(983, 355);
+            this.Halo4ExportPanel.TabIndex = 2;
             // 
             // MainWindow
             // 
@@ -400,6 +423,7 @@
             this.SettingsTab.ResumeLayout(false);
             this.OtherTabPage.ResumeLayout(false);
             this.OtherTabPage.PerformLayout();
+            this.Halo4Tab.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -434,6 +458,8 @@
         private ManagePanel ManageMapsPanel;
         private ManagePanel ManageGameTypesPanel;
         private System.Windows.Forms.LinkLabel IssuesLinkLabel;
+        private System.Windows.Forms.TabPage Halo4Tab;
+        private ExportPanel Halo4ExportPanel;
     }
 }
 

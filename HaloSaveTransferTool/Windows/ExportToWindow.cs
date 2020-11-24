@@ -15,6 +15,7 @@ namespace HaloMCCPCSaveTransferTool
 {
     public partial class ExportToWindow : Form
     {
+        static HaloX360FileIO.ContainerInfo container;
         internal static string selectedDirectory;
         internal static Choice choice;
         internal static string extention;
@@ -32,11 +33,14 @@ namespace HaloMCCPCSaveTransferTool
             choice = Choice.Unselected;
             extention = null;
             selectedDirectory = null;
-            BuiltIn.Enabled = Directory.Exists(Properties.Settings.Default.BuiltInLocation);
-            Private.Enabled = Directory.Exists(Properties.Settings.Default.PrivateLocation);
+            try { BuiltIn.Enabled = Directory.Exists(Properties.Settings.Default.BuiltInLocation) && Directory.Exists(GetBuiltInDirectory(container)); }
+            catch { BuiltIn.Enabled = false; }
+            try { Private.Enabled = Directory.Exists(Properties.Settings.Default.PrivateLocation) && Directory.Exists(GetPrivateDirectory(container)); }
+            catch { Private.Enabled = false; }
         }
         internal static string GetResult(HaloX360FileIO.ContainerInfo containerInfo)
         {
+            container = containerInfo;
             ExportToWindow exportToWindow = new ExportToWindow();
             extention = GetExtention(containerInfo);
             if (extention == ".jpg")
@@ -58,11 +62,11 @@ namespace HaloMCCPCSaveTransferTool
                     
                     if (choice == Choice.BuiltIn)
                     {
-                        selectedDirectory = GetBuiltInDirectory(containerInfo);
+                        selectedDirectory = GetBuiltInDirectory(container);
                     }
                     else if (choice == Choice.Private)
                     {
-                        selectedDirectory = GetPrivateDirectory(containerInfo);
+                        selectedDirectory = GetPrivateDirectory(container);
                     }
                     return selectedDirectory;
                 }
@@ -140,7 +144,8 @@ namespace HaloMCCPCSaveTransferTool
         }
         internal static string GetExtention(HaloX360FileIO.ContainerInfo containerInfo)
         {
-            if (containerInfo.CON.Header.Title_Package == "Halo: Reach" || containerInfo.CON.Header.Title_Package == "Halo 3")
+            string titlePackage = containerInfo.CON.Header.Title_Package;
+            if (titlePackage == "Halo: Reach" || titlePackage == "Halo 3" || titlePackage == "Halo 4")
             {
                 if (containerInfo.file.Name == "sandbox.map") return ".mvar";
                 else if (containerInfo.file.Name == "variant" || containerInfo.CON.Header.Title_Package == "Halo 3" && containerInfo.file.Name.Contains("variant")) return ".bin";
@@ -158,16 +163,23 @@ namespace HaloMCCPCSaveTransferTool
             string privateLocaiton = Properties.Settings.Default.PrivateLocation;
             if (privateLocaiton != null && Directory.Exists(privateLocaiton))
             {
-                if (containerInfo.CON.Header.Title_Package == "Halo: Reach")
+                string titlePackage = containerInfo.CON.Header.Title_Package;
+                if (titlePackage == "Halo: Reach")
                 {
                     string returnLocation = privateLocaiton + @"\HaloReach";
                     if (!Directory.Exists(returnLocation)) throw new Exception("Private Halo Reach folder not found");
                     return GetMapOrGametypeDirectory(containerInfo, returnLocation, false);
                 }
-                if (containerInfo.CON.Header.Title_Package == "Halo 3")
+                if (titlePackage == "Halo 3")
                 {
                     string returnLocation = privateLocaiton + @"\Halo3";
                     if (!Directory.Exists(returnLocation)) throw new Exception("Private Halo 3 folder not found");
+                    return GetMapOrGametypeDirectory(containerInfo, returnLocation, false);
+                }
+                if (titlePackage == "Halo 4")
+                {
+                    string returnLocation = privateLocaiton + @"\Halo4";
+                    if (!Directory.Exists(returnLocation)) throw new Exception("Private Halo 4 folder not found");
                     return GetMapOrGametypeDirectory(containerInfo, returnLocation, false);
                 }
             }
@@ -179,16 +191,23 @@ namespace HaloMCCPCSaveTransferTool
             string builtInLocaiton = Properties.Settings.Default.BuiltInLocation;
             if (builtInLocaiton != null && Directory.Exists(builtInLocaiton))
             {
-                if (containerInfo.CON.Header.Title_Package == "Halo: Reach")
+                string titlePackage = containerInfo.CON.Header.Title_Package;
+                if (titlePackage == "Halo: Reach")
                 {
                     string returnLocation = builtInLocaiton + @"\haloreach";
                     if (!Directory.Exists(returnLocation)) throw new Exception("Built in Halo Reach folder not found");
                     return GetMapOrGametypeDirectory(containerInfo, returnLocation, true);
                 }
-                if (containerInfo.CON.Header.Title_Package == "Halo 3")
+                if (titlePackage == "Halo 3")
                 {
                     string returnLocation = builtInLocaiton + @"\halo3";
                     if (!Directory.Exists(returnLocation)) throw new Exception("Built in Halo 3 folder not found");
+                    return GetMapOrGametypeDirectory(containerInfo, returnLocation, true);
+                }
+                if (titlePackage == "Halo 4")
+                {
+                    string returnLocation = builtInLocaiton + @"\halo4";
+                    if (!Directory.Exists(returnLocation)) throw new Exception("Built in Halo 4 folder not found");
                     return GetMapOrGametypeDirectory(containerInfo, returnLocation, true);
                 }
             }

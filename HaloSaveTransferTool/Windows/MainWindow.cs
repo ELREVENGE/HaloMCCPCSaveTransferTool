@@ -103,6 +103,7 @@ namespace HaloMCCPCSaveTransferTool
             ReachExportPanel.Clear();
             Halo3ExportPanel.Clear();
             Halo3ODSTExportPanel.Clear();
+            Halo4ExportPanel.Clear();
             Output.WriteLine(files.Reach.Maps.Count + " Maps, " + files.Reach.GameTypes.Count + " Gametypes, and " + files.Reach.Screenshots.Count + " Screenshots for Halo: Reach");
             ReachExportPanel.Add(files.Reach.Maps, ExportPanel.FileType.Map);
             ReachExportPanel.Add(files.Reach.GameTypes, ExportPanel.FileType.Gametype);
@@ -113,6 +114,13 @@ namespace HaloMCCPCSaveTransferTool
             Halo3ExportPanel.Add(files.Halo3.Screenshots, ExportPanel.FileType.Screenshot);
             Output.WriteLine(files.Halo3ODST.Screenshots.Count + " Screenshots for Halo 3: ODST");
             Halo3ODSTExportPanel.Add(files.Halo3ODST.Screenshots, ExportPanel.FileType.Screenshot);
+
+            Halo4ExportPanel.Add(files.Halo4.Maps, ExportPanel.FileType.Map);
+            Halo4ExportPanel.Add(files.Halo4.GameTypes, ExportPanel.FileType.Gametype);
+            Halo4ExportPanel.Add(files.Halo4.Screenshots, ExportPanel.FileType.Screenshot);
+            Output.WriteLine(files.Halo4.Maps.Count + " Maps, " + files.Halo4.GameTypes.Count + " Gametypes, and " + files.Halo4.Screenshots.Count + " Screenshots for Halo 4");
+
+
             Output.WriteLine("All files in Export tab listed!");
         }
         void UpdateOpened(string opened)
