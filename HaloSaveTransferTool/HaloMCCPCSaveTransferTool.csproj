@@ -26,8 +26,8 @@
     <SupportUrl>https://github.com/ELREVENGE/HaloSaveTransferTool/wiki/Help</SupportUrl>
     <ErrorReportUrl>https://github.com/ELREVENGE/HaloSaveTransferTool/wiki/Help</ErrorReportUrl>
     <PublisherName>ELREVENGE</PublisherName>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>2.0.1.0</ApplicationVersion>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>2.0.1.1</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -228,6 +228,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Halo4GameTypeIgnoreList.txt" />
+    <Content Include="Resources\Halo4MapIgnoreList.txt" />
+    <None Include="bin\Debug\Ignore Lists\Halo4GameTypeIgnoreList.txt" />
+    <None Include="bin\Debug\Ignore Lists\Halo4MapIgnoreList.txt" />
     <Content Include="icon.ico" />
     <None Include="Resources\Halo2AMapIgnoreList.txt" />
     <None Include="Resources\Halo2AGameTypeIgnoreList.txt" />
