@@ -44,6 +44,111 @@ namespace HaloMCCPCSaveTransferTool
             }
             throw new Exception("Failed to export file to " + destinationPath);
         }
+        #region Multithread
+        internal static HaloFiles asyncFiles = new HaloFiles(true);
+        public static bool RunningAsync
+        {
+            get;
+            private set;
+        }
+        public static void AddHaloFile(ContainerInfo info)
+        {
+            string title = info.CON.Header.Title_Package;
+            string[] contents = GetContentsNames(info.CON);
+            string contentName = contents.Length == 1 ? contents[0] : null;
+            if (title == "Halo: Reach")
+            {
+                if (contentName == "sandbox.map")
+                {
+                    asyncFiles.Reach.Maps.Add(info);
+                }
+                else if (contentName == "variant")
+                {
+                    asyncFiles.Reach.GameTypes.Add(info);
+                }
+                else if (contentName == "screen.shot")
+                {
+                    asyncFiles.Reach.Screenshots.Add(info);
+                }
+            }
+            else if (title == "Halo 3")
+            {
+                if (contentName == null && contents.Length > 0)
+                {
+                    if (contents.Contains("variant"))
+                    {
+                        asyncFiles.Halo3.GameTypes.Add(info);
+                    }
+                }
+                else if (contentName == "sandbox.map")
+                {
+                    asyncFiles.Halo3.Maps.Add(info);
+                }
+                else if (contentName == "screen.shot")
+                {
+                    asyncFiles.Halo3.Screenshots.Add(info);
+                }
+            }
+            else if (title == "Halo 3: ODST")
+            {
+                if (contentName == null && contents.Length > 0)
+                {
+                    if (contents.Contains("variant"))
+                    {
+                        asyncFiles.Halo3ODST.GameTypes.Add(info);
+                    }
+                }
+                else if (contentName == "screen.shot")
+                {
+                    asyncFiles.Halo3ODST.Screenshots.Add(info);
+                }
+            }
+            else if (title == "Halo 4")
+            {
+                if (contentName == null && contents.Length > 0)
+                {
+                    if (contents.Contains("variant"))
+                    {
+                        asyncFiles.Halo4.GameTypes.Add(info);
+                    }
+                }
+                else if (contentName == "sandbox.map")
+                {
+                    asyncFiles.Halo4.Maps.Add(info);
+                }
+                else if (contentName == "screen.shot")
+                {
+                    asyncFiles.Halo4.Screenshots.Add(info);
+                }
+            }
+        }
+        public async static System.Threading.Tasks.Task GetHaloFilesAsync(string path)
+        {
+            if (RunningAsync) throw new Exception("Get Halo Files Async called again before completion");
+            RunningAsync = true;
+            asyncFiles = new HaloFiles(true);
+            List<System.Threading.Tasks.Task> tasks = new List<System.Threading.Tasks.Task>();
+            int done = 0;
+            System.Threading.Tasks.Parallel.ForEach(GetAllFiles(path), file =>
+            {
+                tasks.Add(System.Threading.Tasks.Task.Run(() => GetHaloFileTask(/*ref haloFiles,*/ file)).ContinueWith(t => done++));
+            });
+            await System.Threading.Tasks.Task.WhenAll(tasks);
+            RunningAsync = false;
+        }
+        public static void GetHaloFileTask(/*ref HaloFiles asyncFiles,*/ string filePath)
+        {
+            STFSPackage package = null;
+            if (File.Exists(filePath) && FirstLettersContainerCheck(filePath))
+            {
+                package = GetContainer(filePath);
+                if (package != null)
+                {
+                    AddHaloFile(new ContainerInfo() { path = filePath, CON = package, file = package.RootDirectory.GetSubFiles()[0] });
+                }
+            }
+        }
+        #endregion
         #region PC Utilities
         static readonly char[] InvalidFileNameCharacters = Path.GetInvalidFileNameChars();
         public static bool FileNameValid(string fileName)

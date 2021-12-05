@@ -21,6 +21,12 @@ namespace HaloMCCPCSaveTransferTool
                 if (_output != null)
                 {
                     if (text == null) text = "";
+                    if (_output.InvokeRequired)
+                    {
+                        Action<string, RichTextBox> action = new Action<string, RichTextBox>(WriteLine);
+                        _output.Invoke(action, text, null);
+                        return;
+                    }
                     _output.AppendText(text + Environment.NewLine);
                     _output.ScrollToCaret();
                     Console.Write(text);
@@ -133,15 +139,25 @@ namespace HaloMCCPCSaveTransferTool
 
             Output.WriteLine("All files in Export tab listed!");
         }
-        void UpdateOpened(string opened)
+        async void UpdateOpened(string opened)
         {
+            //await HaloX360FileIO.GetHaloFilesAsync(@"C:\Users\Quinn\Downloads\mfis2yxbw0aaaab23amdiqawjznflyws2bmxkkkcx");
             if (opened != null && opened != "")
             {
                 Output.WriteLine("Updating from folder " + selectDirectoryDialog.FileName);
                 openedDirectory = opened;
                 selectDirectoryDialog.InitialDirectory = opened;
                 OpenedLabel.Text = "360 files in: " + opened;
-                UpdateLists(HaloX360FileIO.GetHaloFilesFromDirectory(selectDirectoryDialog.FileName));
+                //lock controls
+                exportAndSettingsTabControl.Enabled = false;
+                //start async tasks
+                await HaloX360FileIO.GetHaloFilesAsync(selectDirectoryDialog.FileName);
+                //update lists
+                UpdateLists(HaloX360FileIO.asyncFiles);
+                //unlock controls
+                exportAndSettingsTabControl.Enabled = true;
+                //old (All 1 thread)
+                //UpdateLists(HaloX360FileIO.GetHaloFilesFromDirectory(selectDirectoryDialog.FileName));
             }
             else
             {
