@@ -133,6 +133,12 @@
   <data name="Halo3MapIgnoreList" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Halo3MapIgnoreList.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
+  <data name="Halo4GameTypeIgnoreList" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\halo4gametypeignorelist.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Halo4MapIgnoreList" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\halo4mapignorelist.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
   <data name="HaloCEGameTypeIgnoreList" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>resources\halocegametypeignorelist.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
