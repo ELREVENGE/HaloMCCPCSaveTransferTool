@@ -11,6 +11,7 @@ namespace HaloMCCPCSaveTransferTool
 {
     public static class HaloX360FileIO
     {
+        public static bool Debug = true;
         public static bool ValidXUID(string XUID)
         {
             if (XUID.Length == 16)
@@ -125,15 +126,16 @@ namespace HaloMCCPCSaveTransferTool
         {
             MainWindow.Output.WriteLine("Gathering Files");
             List<string> allFiles = GetAllFiles(directory);
-            MainWindow.Output.WriteLine("All files Gathered, scanning for potential containers");
+            MainWindow.Output.WriteLine("All files Gathered, scanning "+ allFiles.Count +" for potential containers");
             List<string> potentialContainerFiles = GetPotentialContainerFiles(allFiles);
-            MainWindow.Output.WriteLine("All Potential Containers Gathered, Gathering Container Info from containers");
+            MainWindow.Output.WriteLine("All Potential Containers Gathered, " + potentialContainerFiles.Count + " Gathering Container Info from containers");
             List<ContainerInfo> containersInfo = GetContainerInfoFromPotentialContainers(potentialContainerFiles);
-            MainWindow.Output.WriteLine("All Container Files gathered");
+            MainWindow.Output.WriteLine("All Container Files gathered:"+containersInfo.Count);
             return containersInfo;
         }
         public static HaloFiles GetHaloFilesFromDirectory(string directory)
         {
+            if (Debug) MainWindow.Output.WriteLine("Debugging Enabled");
             if (Directory.Exists(directory))
             {
                 List<ContainerInfo> containers = GetAllContainersInfoFromDirectory(directory);
@@ -196,6 +198,11 @@ namespace HaloMCCPCSaveTransferTool
                 if (container.CON.Header.Title_Package == titleName)
                 {
                     result.Add(container);
+                    if (Debug) MainWindow.Output.WriteLine(container.path+ " title matched:" + titleName);
+                }
+                else if (Debug)
+                {
+                    MainWindow.Output.WriteLine(container.path + " title didn't match:" + container.CON.Header.Title_Package);
                 }
             }
             return result;
@@ -259,8 +266,10 @@ namespace HaloMCCPCSaveTransferTool
             List<ContainerInfo> containerFiles = new List<ContainerInfo>();
             STFSPackage package = null;
             string currentFile;
+            bool containerFound = false;
             for (int i = 0; i < potentialContainerFiles.Count; i++)
             {
+                if (Debug) containerFound = false;
                 try
                 {
                     currentFile = potentialContainerFiles[i];
@@ -269,9 +278,21 @@ namespace HaloMCCPCSaveTransferTool
                     {
                         FileEntry[] files = package.RootDirectory.GetSubFiles();
                         containerFiles.Add(new ContainerInfo() { path = currentFile, CON = package, file = files[0] });
+                        if (Debug) containerFound = true; 
                     }
                 }
                 catch { }
+                if (Debug)
+                {
+                    if (containerFound)
+                    {
+                        MainWindow.Output.WriteLine("container info gathered from file " + potentialContainerFiles[i]);
+                    }
+                    else
+                    {
+                        MainWindow.Output.WriteLine("container info couldn't be gathered from file:" + potentialContainerFiles[i]);
+                    }
+                }
             }
             return containerFiles;
         }
@@ -307,7 +328,16 @@ namespace HaloMCCPCSaveTransferTool
                             int n = reader.ReadBlock(buffer, 0, 3);
                             if (buffer[0] == 'C' && buffer[1] == 'O' && buffer[2] == 'N')
                             {
+                                if (Debug)
+                                {
+                                    MainWindow.Output.WriteLine("Potential Container letter check successful on file: " + file);
+                                }
                                 return true;
+                            }
+                            else if (Debug)
+                            {
+                                string bufferStr = buffer[0].ToString() + buffer[1].ToString() + buffer[2].ToString();
+                                MainWindow.Output.WriteLine("Potential Container letter check failed first 3 characters are (" + bufferStr + ") of file:"+ file);
                             }
                         }
                     }
